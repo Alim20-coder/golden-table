@@ -970,9 +970,27 @@ setInterval(()=>{ showHero((heroIndex+1)%slides.length); },5000);
 /* ---------- Reveal on scroll ---------- */
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); revealObserver.unobserve(e.target);} });
-},{threshold:.08, rootMargin:'0px 0px -60px 0px'});
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      // عناصر .reveal العادية
+      e.target.classList.add('show');
+      // عناصر الجاليري بـ inline style
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      revealObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0, rootMargin:'0px 0px 300px 0px'});
 revealEls.forEach(el=>revealObserver.observe(el));
+
+// Fallback شامل بعد 2.5 ثانية
+setTimeout(()=>{
+  document.querySelectorAll('.reveal:not(.show)').forEach(el=>el.classList.add('show'));
+  // كشف أي عنصر جاليري ظل مخفي
+  document.querySelectorAll('#worksGrid > div').forEach(el=>{
+    el.style.opacity='1'; el.style.transform='translateY(0)';
+  });
+}, 2500);
 
 /* ---------- Counters ---------- */
 const counters = document.querySelectorAll('.stat-num');
@@ -1019,7 +1037,10 @@ const imageList = mediaItems.filter(m=>m.type==='image').map(m=>m.src);
 
 mediaItems.forEach((item)=>{
   const col = document.createElement('div');
-  col.className = 'col-6 col-md-4 col-lg-3 reveal';
+  col.className = 'col-6 col-md-4 col-lg-3';
+  col.style.opacity = '0';
+  col.style.transform = 'translateY(24px)';
+  col.style.transition = `opacity .6s ease, transform .6s ease`;
   if(item.type==='image'){
     col.innerHTML = `
       <div class="work-item" data-src="${item.src}">
