@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الطاولة الذهبية | نجارة - ستائر - باركيه - شيبورد SPC - برماتريك بالمنطقة الشرقية</title>
+  <title>الطاولة الذهبية | نجارة - ستائر - باركيه - شيبورد SPC - برماتريك بالمنطقة الشرقية والطائف</title>
   <meta name="description"
-    content="الطاولة الذهبية لأعمال النجارة وتفصيل الستائر وتركيب أرضيات الباركيه، بديل الشيبورد (SPC) المقاوم للماء، وألواح البرماتريك الجدارية بأعلى معايير الحرفية في المنطقة الشرقية (الدمام، الخبر، القطيف، عنك). اطلب معاينة مجانية وعرض سعر الآن.">
+    content="الطاولة الذهبية لأعمال النجارة وتفصيل الستائر وتركيب أرضيات الباركيه، بديل الشيبورد (SPC) المقاوم للماء، وألواح البرماتريك بالمنطقة الشرقية (الدمام، الخبر، الظهران، القطيف، سيهات، عنك، الجبيل، الأحساء، بقيق، الخفجي، حفر الباطن) والطائف. اطلب معاينة وعرض سعر الآن.">
   <meta name="keywords"
-    content="نجارة, تفصيل ستائر, تركيب ستاير, ستاير, ستائر رول, باركيه, تركيب باركيه, بديل الشيبورد, SPC, ارضيات SPC, برماتريك, ديكور خشبي, ارضيات خشبية, نجارة الدمام, ستاير الدمام, باركيه الخبر, ستائر الخبر, نجارة القطيف, تفصيل خشب الشرقية, الطاولة الذهبية">
+    content="نجارة, تفصيل ستائر, تركيب ستاير, ستاير, ستائر رول, باركيه, تركيب باركيه, بديل الشيبورد, SPC, ارضيات SPC, برماتريك, ديكور خشبي, ارضيات خشبية, نجارة الدمام, ستاير الدمام, باركيه الخبر, ستائر الخبر, نجارة القطيف, ستاير سيهات, نجارة الجبيل, باركيه الاحساء, ديكور الطائف, ستائر الطائف, باركيه الطائف, الطاولة الذهبية">
   <meta name="author" content="الطاولة الذهبية للنجارة والديكور">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0a0a">
@@ -17,9 +17,9 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="الطاولة الذهبية للنجارة والديكور">
-  <meta property="og:title" content="الطاولة الذهبية | نجارة - ستائر - باركيه - شيبورد SPC بالمنطقة الشرقية">
+  <meta property="og:title" content="الطاولة الذهبية | نجارة - ستائر - باركيه - شيبورد SPC بالمنطقة الشرقية والطائف">
   <meta property="og:description"
-    content="تصميم وتفصيل أعمال النجارة، الستائر الفاخرة، أرضيات الباركيه، بديل الشيبورد SPC، وألواح البرماتريك الجدارية بالمنطقة الشرقية.">
+    content="تصميم وتفصيل أعمال النجارة، الستائر الفاخرة، أرضيات الباركيه، بديل الشيبورد SPC، وألواح البرماتريك بالمنطقة الشرقية والطائف.">
   <meta property="og:image" content="css/logo.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="1200">
@@ -28,9 +28,9 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="الطاولة الذهبية للنجارة والديكور | المنطقة الشرقية">
+  <meta name="twitter:title" content="الطاولة الذهبية للنجارة والديكور | المنطقة الشرقية والطائف">
   <meta name="twitter:description"
-    content="أعمال النجارة وتفصيل الستائر والباركيه وبديل الشيبورد والبرماتريك بأعلى معايير الجودة بالمنطقة الشرقية.">
+    content="أعمال النجارة وتفصيل الستائر والباركيه وبديل الشيبورد والبرماتريك بأعلى معايير الجودة بالمنطقة الشرقية ومدينة الطائف.">
   <meta name="twitter:image" content="css/logo.png">
 
   <link rel="icon" href="css/favicon.png">
@@ -1341,6 +1341,65 @@
       width: 100%;
     }
 
+    .area-districts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .district-pill {
+      font-size: .75rem;
+      padding: 3px 9px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 6px;
+      color: #dfd7cc;
+      transition: all .25s ease;
+    }
+
+    .area-card:hover .district-pill {
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .2);
+      color: var(--white);
+    }
+
+    .special-project-card {
+      background: linear-gradient(135deg, rgba(243, 165, 58, .12), rgba(20, 17, 16, .85));
+      border: 1.5px solid rgba(243, 165, 58, .4);
+      border-radius: 20px;
+      padding: 35px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .4);
+    }
+
+    .special-project-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(243, 165, 58, .08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .special-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 800;
+      font-size: .82rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 15px;
+    }
+
     .areas-map-hint {
       background: rgba(243, 165, 58, .07);
       border: 1px solid rgba(243, 165, 58, .2);
@@ -1349,7 +1408,7 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
     .areas-map-hint i {
@@ -1588,7 +1647,7 @@
           <div class="quality-card">
             <div class="num">01</div>
             <h4 class="fw-bold mt-2">سهولة التركيب</h4>
-            <p class="text-muted mb-0">تركيب سريع ونظيف بأنظمة عزل حديثة، بأقل وقت وبدون فوضى في موقع العمل.</p>
+            <p class="text-white mb-0">تركيب سريع ونظيف بأنظمة عزل حديثة، بأقل وقت وبدون فوضى في موقع العمل.</p>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
@@ -1751,74 +1810,176 @@
             <path d="M10 45c0-10 8-16 16-14 6 1.5 4 10-3 10-6 0-9-6-4-11 6-6 18-8 26-2" />
           </svg>
         </div>
-        <div class="section-eyebrow">المنطقة الشرقية</div>
-        <h2 class="section-title">نخدم <span>مناطقك</span> كلها</h2>
-        <p class="section-sub mx-auto mt-2">فريقنا يصل إليك أينما كنت في المنطقة الشرقية، بنفس مستوى الجودة والاحترافية
-          في كل موقع</p>
+        <div class="section-eyebrow">تغطية شاملة</div>
+        <h2 class="section-title">نخدم <span>المنطقة الشرقية</span> وكبرى مدن المملكة</h2>
+        <p class="section-sub mx-auto mt-2">فريقنا الحرفي يصل إليك أينما كنت في كافة مدن ومحافظات المنطقة الشرقية، بالإضافة لتنفيذ المشاريع الخاصة في الطائف ومختلف مناطق المملكة</p>
       </div>
 
       <div class="row g-4">
 
-        <!-- الدمام -->
-        <div class="col-sm-6 col-lg-3 reveal">
+        <!-- 01 الدمام -->
+        <div class="col-sm-6 col-lg-4 reveal">
           <div class="area-card"
-            style="--ac-color:#f3a53a;--ac-grad:linear-gradient(135deg,rgba(243,165,58,.1),rgba(243,165,58,.03))">
+            style="--ac-color:#f3a53a;--ac-grad:linear-gradient(135deg,rgba(243,165,58,.12),rgba(243,165,58,.03))">
             <div class="area-num">01</div>
             <div class="area-icon"><i class="fa-solid fa-city"></i></div>
             <h3>الدمام</h3>
-            <p>عاصمة المنطقة الشرقية، نغطي جميع أحيائها السكنية والتجارية بخبرة ودقة.</p>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <p>عاصمة المنطقة الشرقية ومركز الأعمال؛ نغطي كافة الأحياء السكنية والتجارية بدقة متناهية وسرعة إنجاز.</p>
+            <div class="area-districts">
+              <span class="district-pill">الشاطئ</span>
+              <span class="district-pill">الفيصلية</span>
+              <span class="district-pill">المزروعية</span>
+              <span class="district-pill">الفاخرية</span>
+              <span class="district-pill">ضاحية الملك فهد</span>
+              <span class="district-pill">النورس</span>
+              <span class="district-pill">طيبة</span>
+            </div>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية لكافة الأحياء</span>
             <div class="area-line"></div>
           </div>
         </div>
 
-        <!-- الخبر -->
-        <div class="col-sm-6 col-lg-3 reveal" style="transition-delay:.1s">
+        <!-- 02 الخبر والظهران -->
+        <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:.1s">
           <div class="area-card"
-            style="--ac-color:#60d4f4;--ac-grad:linear-gradient(135deg,rgba(96,212,244,.1),rgba(96,212,244,.03))">
+            style="--ac-color:#60d4f4;--ac-grad:linear-gradient(135deg,rgba(96,212,244,.12),rgba(96,212,244,.03))">
             <div class="area-num">02</div>
             <div class="area-icon"><i class="fa-solid fa-building"></i></div>
-            <h3>الخبر</h3>
-            <p>مدينة الأعمال الراقية، نقدم خدماتنا لمشاريع الديكور الفاخر والتشطيبات الحديثة.</p>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <h3>الخبر والظهران</h3>
+            <p>أرقى المجمعات والفلل السكنية ومراكز الأعمال؛ خدمات ديكور وتفصيل خشب وستائر بمستوى VIP.</p>
+            <div class="area-districts">
+              <span class="district-pill">الحزام الذهبي</span>
+              <span class="district-pill">الحزام الأخضر</span>
+              <span class="district-pill">الراكة</span>
+              <span class="district-pill">العليا</span>
+              <span class="district-pill">العقربية</span>
+              <span class="district-pill">الدانة</span>
+              <span class="district-pill">الدوحة</span>
+              <span class="district-pill">الشبيلي</span>
+            </div>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية لكافة الأحياء</span>
             <div class="area-line"></div>
           </div>
         </div>
 
-        <!-- القطيف -->
-        <div class="col-sm-6 col-lg-3 reveal" style="transition-delay:.2s">
+        <!-- 03 القطيف وسيهات وعنك -->
+        <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:.2s">
           <div class="area-card"
-            style="--ac-color:#a78bfa;--ac-grad:linear-gradient(135deg,rgba(167,139,250,.1),rgba(167,139,250,.03))">
+            style="--ac-color:#a78bfa;--ac-grad:linear-gradient(135deg,rgba(167,139,250,.12),rgba(167,139,250,.03))">
             <div class="area-num">03</div>
             <div class="area-icon"><i class="fa-solid fa-house-chimney"></i></div>
-            <h3>القطيف</h3>
-            <p>نصل لجميع أحياء القطيف لتنفيذ أعمال النجارة، الستائر، والباركيه باحترافية.</p>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <h3>القطيف، سيهات وعنك</h3>
+            <p>حرفية متوارثة وتفصيل راقٍ؛ نصل لكافة مدن وبلدات محافظة القطيف وسيهات وعنك وجزيرة تاروت وصفوى.</p>
+            <div class="area-districts">
+              <span class="district-pill">سيهات (الغدير، الكوثر)</span>
+              <span class="district-pill">عنك وضواحيها</span>
+              <span class="district-pill">تاروت</span>
+              <span class="district-pill">صفوى</span>
+              <span class="district-pill">الناصرة</span>
+              <span class="district-pill">المجيدية</span>
+              <span class="district-pill">أم الحمام</span>
+            </div>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية لكافة الأحياء</span>
             <div class="area-line"></div>
           </div>
         </div>
 
-        <!-- عنك -->
-        <div class="col-sm-6 col-lg-3 reveal" style="transition-delay:.3s">
+        <!-- 04 الجبيل ورأس تنورة -->
+        <div class="col-sm-6 col-lg-4 reveal">
           <div class="area-card"
-            style="--ac-color:#34d399;--ac-grad:linear-gradient(135deg,rgba(52,211,153,.1),rgba(52,211,153,.03))">
+            style="--ac-color:#34d399;--ac-grad:linear-gradient(135deg,rgba(52,211,153,.12),rgba(52,211,153,.03))">
             <div class="area-num">04</div>
-            <div class="area-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-            <h3>عنك</h3>
-            <p>خدماتنا تمتد لعنك وضواحيها، تفصيل وتركيب ومتابعة حتى تسليم المشروع.</p>
+            <div class="area-icon"><i class="fa-solid fa-industry"></i></div>
+            <h3>الجبيل ورأس تنورة</h3>
+            <p>خدمات متكاملة للجبيل البلد، الجبيل الصناعية ورأس تنورة؛ للشركات والمساكن ومشاريع الهيئة الملكية.</p>
+            <div class="area-districts">
+              <span class="district-pill">الفناتير</span>
+              <span class="district-pill">جلمودة</span>
+              <span class="district-pill">الدفي</span>
+              <span class="district-pill">الحويلات</span>
+              <span class="district-pill">الجبيل البلد</span>
+              <span class="district-pill">رأس تنورة (رحيمة)</span>
+            </div>
             <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
             <div class="area-line"></div>
           </div>
         </div>
 
+        <!-- 05 الأحساء وبقيق -->
+        <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:.1s">
+          <div class="area-card"
+            style="--ac-color:#fb923c;--ac-grad:linear-gradient(135deg,rgba(251,146,60,.12),rgba(251,146,60,.03))">
+            <div class="area-num">05</div>
+            <div class="area-icon"><i class="fa-solid fa-tree"></i></div>
+            <h3>الأحساء وبقيق</h3>
+            <p>نخدم جميع مدن وبلدات واحة الأحساء وبقيق؛ تصاميم تجمع بين الأصالة والفخامة الحديثة للفلل والمجالس.</p>
+            <div class="area-districts">
+              <span class="district-pill">الهفوف</span>
+              <span class="district-pill">المبرز</span>
+              <span class="district-pill">العيون</span>
+              <span class="district-pill">العمران</span>
+              <span class="district-pill">محافظة بقيق</span>
+              <span class="district-pill">القرى الشرقية</span>
+            </div>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <div class="area-line"></div>
+          </div>
+        </div>
+
+        <!-- 06 حفر الباطن والخفجي والنعيرية -->
+        <div class="col-sm-6 col-lg-4 reveal" style="transition-delay:.2s">
+          <div class="area-card"
+            style="--ac-color:#e879f9;--ac-grad:linear-gradient(135deg,rgba(232,121,249,.12),rgba(232,121,249,.03))">
+            <div class="area-num">06</div>
+            <div class="area-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3>حفر الباطن، الخفجي والنعيرية</h3>
+            <p>تغطية شاملة لشمال وغرب المنطقة الشرقية؛ تنفيذ وشحن وتركيب أعمال النجارة والستائر والباركيه المعتمدة.</p>
+            <div class="area-districts">
+              <span class="district-pill">حفر الباطن</span>
+              <span class="district-pill">الخفجي</span>
+              <span class="district-pill">النعيرية</span>
+              <span class="district-pill">قرية العليا</span>
+              <span class="district-pill">سلوى والبطحاء</span>
+            </div>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <div class="area-line"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- كارت خاص لمدينة الطائف والمشاريع الكبرى -->
+      <div class="special-project-card mt-4 reveal">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="special-badge"><i class="fa-solid fa-crown"></i> تغطية خاصة للمشاريع والفلل الفاخرة</span>
+            <h3 class="text-white fw-bold mb-3">مدينة الطائف وكبرى مدن المملكة</h3>
+            <p class="text-white mb-3" style="font-size:1rem;line-height:1.8;">
+              نوفر فرق عمل وتجهيزات مخصصة للانتقال المباشر وتنفيذ أرقى أعمال <strong>النجارة المخصصة، تفصيل الستائر الفاخرة، تركيب أرضيات الباركيه، بديل الشيبورد SPC وألواح البرماتريك</strong> في <strong>مدينة الطائف</strong> بكافة مناطقها (الهدا، الشفا، الحوية، الوسام، جبرة، الردف، الخالدية) بالإضافة للمشاريع الخاصة في (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق ووفق أعلى معايير الجودة والضمان.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="district-pill" style="background:rgba(243,165,58,.15);color:var(--gold);border-color:rgba(243,165,58,.3)">الطائف - الهدا</span>
+              <span class="district-pill" style="background:rgba(243,165,58,.15);color:var(--gold);border-color:rgba(243,165,58,.3)">الطائف - الشفا</span>
+              <span class="district-pill" style="background:rgba(243,165,58,.15);color:var(--gold);border-color:rgba(243,165,58,.3)">الطائف - الحوية</span>
+              <span class="district-pill" style="background:rgba(243,165,58,.15);color:var(--gold);border-color:rgba(243,165,58,.3)">الطائف - الوسام</span>
+              <span class="district-pill" style="background:rgba(243,165,58,.15);color:var(--gold);border-color:rgba(243,165,58,.3)">الرياض</span>
+              <span class="district-pill" style="background:rgba(243,165,58,.15);color:var(--gold);border-color:rgba(243,165,58,.3)">جدة ومكة المكرمة</span>
+            </div>
+          </div>
+          <div class="col-lg-4 text-lg-end text-center">
+            <a href="https://wa.me/966578358398?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AE%D8%A7%D8%B5%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B7%D8%A7%D8%A6%D9%81%20/%20%D8%AE%D8%A7%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9" target="_blank" class="btn-gold d-inline-flex align-items-center gap-2">
+              <i class="fa-brands fa-whatsapp fs-5"></i> حجز معاينة لمشروعك
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- تلميح الخريطة -->
       <div class="areas-map-hint reveal">
         <i class="fa-solid fa-route"></i>
-        <p><strong>هل موقعك خارج هذه المدن؟</strong> لا تتردد في التواصل معنا — نغطي كافة مدن ومحافظات المنطقة الشرقية (الجبيل، الظهران، سيهات، الأحساء، وغيرها) بكل احترافية وسرعة.</p>
+        <p><strong>موقعك في أي مدينة أخرى؟</strong> لا تتردد في التواصل معنا — نصل لجميع مواقع المنطقة الشرقية والطائف وكبرى مدن المملكة بكل احترافية وسرعة.</p>
         <a href="https://wa.me/966578358398" target="_blank" class="btn-gold me-0 ms-auto"
-          style="white-space:nowrap">تواصل معنا</a>
+          style="white-space:nowrap">تواصل معنا الآن</a>
       </div>
 
     </div>
@@ -1948,7 +2109,7 @@
                   data-bs-target="#faq4">ما هي المناطق التي تخدمونها؟</button>
               </h2>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">نخدم جميع مدن ومحافظات المنطقة الشرقية (الدمام، الخبر، القطيف، عنك، الجبيل، الظهران، سيهات، الأحساء وما جاورها).</div>
+                <div class="accordion-body">نغطي كافة مدن ومحافظات المنطقة الشرقية (الدمام، الخبر، الظهران، القطيف، سيهات، عنك، الجبيل، الأحساء، رأس تنورة، بقيق، الخفجي، حفر الباطن، والنعيرية). كما نقدم خدماتنا للمشاريع الخاصة والفلل في <strong>مدينة الطائف</strong> (الهدا، الشفا، الحوية، الوسام، وغيرها) وكبرى مدن المملكة (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق.</div>
               </div>
             </div>
             <div class="accordion-item">
@@ -1972,22 +2133,22 @@
       <div class="text-center mb-5 reveal">
         <div class="section-eyebrow">تواصل معنا</div>
         <h2 class="section-title text-white">ابدأ <span>مشروعك</span> اليوم</h2>
-        <p class="section-sub mx-auto mt-2" style="color:var(--muted)">فريقنا جاهز للرد على استفساراتك وتقديم عرض سعر مناسب لمشروعك في المنطقة الشرقية</p>
+        <p class="section-sub mx-auto mt-2" style="color:var(--muted)">فريقنا جاهز للرد على استفساراتك وتقديم عرض سعر مناسب لمشروعك في المنطقة الشرقية والطائف وكافة المناطق</p>
       </div>
       <div class="row g-4">
         <div class="col-md-4 reveal">
-          <div class="contact-card">
+          <a href="https://wa.me/966578358398" target="_blank" class="contact-card d-block text-decoration-none">
             <i class="fa-brands fa-whatsapp"></i>
-            <h5 class="fw-bold">واتساب</h5>
-            <p class="text-muted small mb-0">راسلنا مباشرة لطلب عرض سعر سريع</p>
-          </div>
+            <h5 class="fw-bold text-white">واتساب</h5>
+            <p class="text-white small mb-0">راسلنا مباشرة لطلب عرض سعر سريع</p>
+          </a>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
-          <div class="contact-card">
+          <a href="tel:+966578358398" class="contact-card d-block text-decoration-none">
             <i class="fa-solid fa-phone"></i>
-            <h5 class="fw-bold">اتصال هاتفي</h5>
-            <p class="text-muted small mb-0">تحدث مباشرة مع فريق المبيعات</p>
-          </div>
+            <h5 class="fw-bold text-white">اتصال هاتفي</h5>
+            <p class="text-white small mb-0">تحدث مباشرة مع فريق المبيعات</p>
+          </a>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.2s">
           <div class="contact-card">
@@ -2011,37 +2172,61 @@
             <form class="gt-form" id="gtContactForm">
               <div class="row g-3">
                 <div class="col-md-6">
-                  <label>الاسم</label>
+                  <label>الاسم الكريم</label>
                   <input type="text" class="form-control" id="gtName" placeholder="اكتب اسمك" required>
                 </div>
                 <div class="col-md-6">
-                  <label>رقم الجوال</label>
-                  <input type="tel" class="form-control" id="gtPhone" placeholder="05XXXXXXXX" required>
+                  <label>رقم الجوال (واتساب)</label>
+                  <input type="tel" class="form-control" id="gtPhone" placeholder="05XXXXXXXX" dir="ltr" required>
                 </div>
                 <div class="col-md-6">
-                  <label>نوع الخدمة</label>
-                  <select class="form-select" id="gtService">
-                    <option value="أعمال النجارة والتفصيل">أعمال النجارة والتفصيل</option>
-                    <option value="تفصيل وتركيب الستائر">تفصيل وتركيب الستائر</option>
-                    <option value="باركيه">أرضيات باركيه</option>
-                    <option value="شيبورد SPC">بديل الشيبورد SPC</option>
-                    <option value="برماتريك">ألواح برماتريك جدارية</option>
-                    <option value="ديكور وتشطيب متكامل">ديكور وتشطيب متكامل</option>
-                    <option value="استشارة عامة">استشارة عامة</option>
+                  <label>نوع الخدمة المطلوبة</label>
+                  <select class="form-select" id="gtService" required>
+                    <option value="أعمال النجارة والتفصيل">أعمال النجارة والتفصيل المخصص</option>
+                    <option value="تفصيل وتركيب الستائر">تفصيل وتركيب الستائر الفاخرة</option>
+                    <option value="أرضيات باركيه">أرضيات باركيه خشبية</option>
+                    <option value="بديل الشيبورد SPC">بديل الشيبورد SPC المقاوم للماء</option>
+                    <option value="ألواح برماتريك جدارية">ألواح برماتريك جدارية مودرن</option>
+                    <option value="ديكور وتشطيب متكامل">ديكور وتشطيب متكامل للفيلا / الشقة</option>
+                    <option value="استشارة ومعاينة ميدانية">طلب استشارة ومعاينة ميدانية</option>
                   </select>
                 </div>
                 <div class="col-md-6">
-                  <label>المدينة بالمنطقة الشرقية</label>
-                  <input type="text" class="form-control" id="gtCity" placeholder="مثال: الدمام، الخبر، القطيف">
+                  <label>المدينة / المنطقة</label>
+                  <select class="form-select" id="gtCity" required>
+                    <option value="" disabled selected>اختر مدينتك أو منطقتك...</option>
+                    <optgroup label="مدن ومحافظات المنطقة الشرقية">
+                      <option value="الدمام">الدمام (كافة الأحياء)</option>
+                      <option value="الخبر">الخبر (الحزام الذهبي، الراكة، العليا...)</option>
+                      <option value="الظهران">الظهران (الدانة، الدوحة، الجامعة...)</option>
+                      <option value="القطيف">القطيف (الناصرة، المجيدية، تاروت، صفوى...)</option>
+                      <option value="سيهات">سيهات (الغدير، الكوثر...)</option>
+                      <option value="عنك">عنك وضواحيها</option>
+                      <option value="الجبيل">الجبيل والجبيل الصناعية (الفناتير، جلمودة...)</option>
+                      <option value="الأحساء">الأحساء (الهفوف، المبرز، العيون، العمران)</option>
+                      <option value="رأس تنورة">رأس تنورة (رحيمة)</option>
+                      <option value="بقيق">بقيق</option>
+                      <option value="الخفجي">الخفجي</option>
+                      <option value="حفر الباطن">حفر الباطن</option>
+                      <option value="النعيرية وقرية العليا">النعيرية وقرية العليا</option>
+                    </optgroup>
+                    <optgroup label="مدينة الطائف والمشاريع الخاصة">
+                      <option value="الطائف - الهدا والشفا والوسام">الطائف (الهدا، الشفا، الوسام)</option>
+                      <option value="الطائف - الحوية وباقي الأحياء">الطائف (الحوية، جبرة، الردف، الخالدية...)</option>
+                      <option value="الرياض">الرياض (مشاريع خاصة)</option>
+                      <option value="جدة ومكة المكرمة">جدة ومكة المكرمة (مشاريع خاصة)</option>
+                    </optgroup>
+                    <option value="مدينة أخرى">مدينة أخرى (سأذكرها بالتفاصيل)</option>
+                  </select>
                 </div>
                 <div class="col-12">
-                  <label>تفاصيل الطلب</label>
+                  <label>تفاصيل الطلب أو المقاسات (اختياري)</label>
                   <textarea class="form-control" id="gtMessage" rows="3"
-                    placeholder="اكتب مساحة المكان وأي تفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
+                    placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
                 </div>
                 <div class="col-12 mt-3">
-                  <button type="submit" class="btn-submit-wa"><i class="fa-brands fa-whatsapp fs-5"></i> إرسال عبر
-                    واتساب</button>
+                  <button type="submit" class="btn-submit-wa"><i class="fa-brands fa-whatsapp fs-5"></i> إرسال الطلب عبر واتساب</button>
+                  <div id="formStatus"></div>
                 </div>
               </div>
             </form>
@@ -2072,7 +2257,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     /* ============================================================
-       إعدادات سريعة - عدّل اللينكات دي بس يا برنس
+       إعدادات سريعة - أرقام وروابط التواصل
     =============================================================*/
     const CONTACT = {
       whatsapp: "https://wa.me/966578358398",
@@ -2080,7 +2265,11 @@
       instagram: "https://www.instagram.com/_00golden_table",
       tiktok: "https://www.tiktok.com/@golden_table0"
     };
-    document.querySelectorAll('.fbtn.whatsapp, a[href*="wa.me"]').forEach(el => el.href = CONTACT.whatsapp);
+    document.querySelectorAll('.fbtn.whatsapp, a[href*="wa.me"]').forEach(el => {
+      if (!el.href.includes('text=')) {
+        el.href = CONTACT.whatsapp;
+      }
+    });
     document.querySelectorAll('.fbtn.call, a[href^="tel:"]').forEach(el => el.href = CONTACT.phone);
 
     /* ---------- Navbar scroll ---------- */
@@ -2109,9 +2298,7 @@
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          // عناصر .reveal العادية
           e.target.classList.add('show');
-          // عناصر الجاليري بـ inline style
           e.target.style.opacity = '1';
           e.target.style.transform = 'translateY(0)';
           revealObserver.unobserve(e.target);
@@ -2123,7 +2310,6 @@
     // Fallback شامل بعد 2.5 ثانية
     setTimeout(() => {
       document.querySelectorAll('.reveal:not(.show)').forEach(el => el.classList.add('show'));
-      // كشف أي عنصر جاليري ظل مخفي
       document.querySelectorAll('#worksGrid > div').forEach(el => {
         el.style.opacity = '1'; el.style.transform = 'translateY(0)';
       });
@@ -2150,7 +2336,7 @@
 
     /* ---------- Works Gallery (no filters, no data attrs) ---------- */
     const worksGrid = document.getElementById('worksGrid');
-    const totalImages = 43;
+    const totalImages = 60;
     const totalVideos = 6;
     let mediaItems = [];
     for (let i = 1; i <= totalImages; i++) { mediaItems.push({ type: 'image', src: `css/P%28${i}%29.png` }); }
@@ -2254,31 +2440,64 @@
 
     /* ---------- Contact form -> WhatsApp ---------- */
     const gtForm = document.getElementById('gtContactForm');
-    gtForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const name = document.getElementById('gtName').value.trim();
-      const phone = document.getElementById('gtPhone').value.trim();
-      const service = document.getElementById('gtService').value;
-      const city = document.getElementById('gtCity').value.trim();
-      const message = document.getElementById('gtMessage').value.trim();
+    const formStatus = document.getElementById('formStatus');
 
-      if (!name || !phone) {
-        alert('من فضلك اكتب الاسم ورقم الجوال قبل الإرسال');
-        return;
-      }
+    if (gtForm) {
+      gtForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('gtName').value.trim();
+        const phone = document.getElementById('gtPhone').value.trim();
+        const service = document.getElementById('gtService').value;
+        const city = document.getElementById('gtCity').value;
+        const message = document.getElementById('gtMessage').value.trim();
 
-      let text = `مرحباً الطاولة الذهبية، معي طلب جديد:\n`;
-      text += `الاسم: ${name}\n`;
-      text += `الجوال: ${phone}\n`;
-      text += `الخدمة المطلوبة: ${service}\n`;
-      if (city) text += `المدينة: ${city}\n`;
-      if (message) text += `تفاصيل الطلب: ${message}\n`;
+        if (!name || !phone || !city) {
+          alert('من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال');
+          return;
+        }
 
-      const waNumber = CONTACT.whatsapp.replace(/\D/g, '');
-      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
-      window.open(waUrl, '_blank');
-      gtForm.reset();
-    });
+        let text = `السلام عليكم ورحمة الله،\nطلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n`;
+        text += `👤 *الاسم:* ${name}\n`;
+        text += `📱 *الجوال:* ${phone}\n`;
+        text += `🛠 *الخدمة المطلوبة:* ${service}\n`;
+        text += `📍 *المدينة / المنطقة:* ${city}\n`;
+        if (message) {
+          text += `📝 *تفاصيل إضافية:* ${message}\n`;
+        }
+
+        const waNumber = '966578358398';
+        const encodedText = encodeURIComponent(text);
+        const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedText}`;
+
+        const submitBtn = gtForm.querySelector('.btn-submit-wa');
+        const origText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري فتح واتساب...';
+
+        // محاولة الفتح برابط مباشر لتجاوز حظر النوافذ المنبثقة
+        const waLink = document.createElement('a');
+        waLink.href = waUrl;
+        waLink.target = '_blank';
+        waLink.rel = 'noopener noreferrer';
+        document.body.appendChild(waLink);
+        waLink.click();
+        waLink.remove();
+
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = origText;
+          if (formStatus) {
+            formStatus.innerHTML = `
+              <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.12);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
+                <div class="mb-2">✅ تم تجهيز طلبك بنجاح وجاري نقلك لواتساب!</div>
+                <a href="${waUrl}" target="_blank" class="btn btn-sm btn-success fw-bold px-3 py-1" style="background:#25D366;border:none;">
+                  <i class="fa-brands fa-whatsapp"></i> اضغط هنا إذا لم يفتح واتساب تلقائياً
+                </a>
+              </div>`;
+          }
+        }, 800);
+      });
+    }
   </script>
 </body>
 
