@@ -1016,8 +1016,8 @@ const worksGrid = document.getElementById('worksGrid');
 const totalImages = 34;
 const totalVideos = 6;
 let mediaItems = [];
-for(let i=1;i<=totalImages;i++){ mediaItems.push({type:'image', src:`css/P(${i}).png`}); }
-for(let i=1;i<=totalVideos;i++){ mediaItems.push({type:'video', src:`css/v (${i}).mp4`}); }
+for(let i=1;i<=totalImages;i++){ mediaItems.push({type:'image', src:`css/P%28${i}%29.png`}); }
+for(let i=1;i<=totalVideos;i++){ mediaItems.push({type:'video', src:`css/v%20%28${i}%29.mp4`}); }
 
 function interleave(items){
   const images = items.filter(i=>i.type==='image');
