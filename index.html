@@ -150,6 +150,26 @@ a{text-decoration:none;}
 }
 .btn-nav-cta:hover{background:transparent;color:var(--gold-light);}
 
+/* ---------- Nav Social Icons ---------- */
+.nav-socials{
+  display:flex;align-items:center;gap:8px;margin-inline-end:14px;
+}
+.nav-social-btn{
+  width:34px;height:34px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1.5px solid rgba(243,165,58,.35);
+  color:var(--muted);font-size:.88rem;
+  transition:all .3s var(--ease);
+  background:transparent;
+}
+.nav-social-btn:hover{
+  border-color:var(--gold);color:var(--gold);
+  background:rgba(243,165,58,.1);
+  transform:translateY(-2px);
+}
+.nav-social-btn.insta:hover{border-color:#e1306c;color:#e1306c;background:rgba(225,48,108,.1);}
+.nav-social-btn.tiktok:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08);}
+
 /* ---------- Hero ---------- */
 .hero{
   position:relative;height:100vh;min-height:640px;
@@ -481,6 +501,14 @@ footer a.credit:hover{color:var(--gold);}
         <li class="nav-item"><a class="nav-link" href="#location">موقعنا</a></li>
         <li class="nav-item"><a class="nav-link" href="#faq">الأسئلة الشائعة</a></li>
       </ul>
+    </div>
+    <div class="nav-socials d-none d-lg-flex">
+      <a href="https://www.instagram.com/_00golden_table" target="_blank" rel="noopener" class="nav-social-btn insta" title="إنستجرام">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@golden_table0" target="_blank" rel="noopener" class="nav-social-btn tiktok" title="تيك توك">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
     </div>
     <a href="#contact" class="btn-nav-cta d-none d-lg-inline-block">اتصل بنا</a>
   </div>
@@ -1013,7 +1041,7 @@ counters.forEach(c=>counterObserver.observe(c));
 
 /* ---------- Works Gallery (no filters, no data attrs) ---------- */
 const worksGrid = document.getElementById('worksGrid');
-const totalImages = 30;
+const totalImages = 36;
 const totalVideos = 6;
 let mediaItems = [];
 for(let i=1;i<=totalImages;i++){ mediaItems.push({type:'image', src:`css/P%28${i}%29.png`}); }
