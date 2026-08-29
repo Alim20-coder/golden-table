@@ -2849,65 +2849,57 @@
 
     /* ---------- Contact form -> WhatsApp ---------- */
     const gtForm = document.getElementById('gtContactForm');
-    const formStatus = document.getElementById('formStatus');
+const formStatus = document.getElementById('formStatus');
 
-    if (gtForm) {
-      gtForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+if (gtForm) {
+  gtForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-        const name = document.getElementById('gtName').value.trim();
-        const phone = document.getElementById('gtPhone').value.trim();
-        const service = document.getElementById('gtService').value;
-        const city = document.getElementById('gtCity').value;
-        const message = document.getElementById('gtMessage').value.trim();
+    const name = document.getElementById('gtName').value.trim();
+    const phone = document.getElementById('gtPhone').value.trim();
+    const service = document.getElementById('gtService').value;
+    const city = document.getElementById('gtCity').value;
+    const message = document.getElementById('gtMessage').value.trim();
 
-        if (!name || !phone || !city) {
-          alert(currentLang === 'en'
-            ? 'Please fill in your name, phone number, and choose your city before sending.'
-            : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال');
-          return;
-        }
-
-        let text = `السلام عليكم ورحمة الله،\nطلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n`;
-        text += `👤 *الاسم:* ${name}\n`;
-        text += `📱 *الجوال:* ${phone}\n`;
-        text += `🛠 *الخدمة المطلوبة:* ${service}\n`;
-        text += `📍 *المدينة / المنطقة:* ${city}\n`;
-        if (message) {
-          text += `📝 *تفاصيل إضافية:* ${message}\n`;
-        }
-
-        const waNumber = CONTACT.numbers[0];
-        const encodedText = encodeURIComponent(text);
-        const waUrl = `https://wa.me/${waNumber}?text=${encodedText}`;
-
-        const submitBtn = document.getElementById('gtSubmitBtn');
-        const origText = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = currentLang === 'en'
-          ? '<i class="fa-solid fa-spinner fa-spin"></i> Opening WhatsApp...'
-          : '<i class="fa-solid fa-spinner fa-spin"></i> جاري فتح واتساب...';
-
-        openWhatsApp(waUrl);
-
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = origText;
-          if (formStatus) {
-            const successMsg = currentLang === 'en' ? 'Your request is ready, redirecting you to WhatsApp!' : 'تم تجهيز طلبك بنجاح، وجاري نقلك لواتساب!';
-            const manualMsg = currentLang === 'en' ? "Tap here if WhatsApp didn't open automatically" : 'اضغط هنا إذا لم يفتح واتساب تلقائياً';
-            formStatus.innerHTML = `
-              <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.12);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
-                <div class="mb-2">✅ ${successMsg}</div>
-                <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-sm btn-success fw-bold px-3 py-1" style="background:#25D366;border:none;">
-                  <i class="fa-brands fa-whatsapp"></i> ${manualMsg}
-                </a>
-              </div>`;
-          }
-        }, 600);
-      });
+    if (!name || !phone || !city) {
+      alert(currentLang === 'en'
+        ? 'Please fill in your name, phone number, and choose your city before sending.'
+        : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال');
+      return;
     }
 
+    let text = `السلام عليكم ورحمة الله،\nطلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n`;
+    text += `👤 *الاسم:* ${name}\n`;
+    text += `📱 *الجوال:* ${phone}\n`;
+    text += `🛠 *الخدمة المطلوبة:* ${service}\n`;
+    text += `📍 *المدينة / المنطقة:* ${city}\n`;
+    if (message) {
+      text += `📝 *تفاصيل إضافية:* ${message}\n`;
+    }
+
+    const waNumber = CONTACT.numbers[0]; // تأكد أن الرقم يتكون من أرقام فقط بدون + أو مساحات (مثال: 966578358398)
+    const cleanNumber = waNumber.replace(/[^0-9]/g, ''); 
+    const encodedText = encodeURIComponent(text);
+    
+    // استخدام api.whatsapp.com يضمن التوافق الأفضل مع الموبايل
+    const waUrl = `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encodedText}`;
+
+    // فتح الرابط فوراً بـ location.href لتجنب حظر Pop-up الموبايل
+    window.location.href = waUrl;
+
+    if (formStatus) {
+      const successMsg = currentLang === 'en' ? 'Your request is ready, redirecting you to WhatsApp!' : 'تم تجهيز طلبك بنجاح، وجاري نقلك لواتساب!';
+      const manualMsg = currentLang === 'en' ? "Tap here if WhatsApp didn't open automatically" : 'اضغط هنا إذا لم يفتح واتساب تلقائياً';
+      formStatus.innerHTML = `
+        <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.12);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
+          <div class="mb-2">✅ ${successMsg}</div>
+          <a href="${waUrl}" class="btn btn-sm btn-success fw-bold px-3 py-1" style="background:#25D366;border:none;">
+            <i class="fa-brands fa-whatsapp"></i> ${manualMsg}
+          </a>
+        </div>`;
+    }
+  });
+}
     /* ---------- Review form -> render + save to page ---------- */
     const starRatingInput = document.getElementById('starRatingInput');
     const reviewRatingValue = document.getElementById('reviewRatingValue');
