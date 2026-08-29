@@ -2877,23 +2877,40 @@ if (gtForm) {
       text += `📝 *تفاصيل إضافية:* ${message}\n`;
     }
 
-    const waNumber = CONTACT.numbers[0]; // تأكد أن الرقم يتكون من أرقام فقط بدون + أو مساحات (مثال: 966578358398)
-    const cleanNumber = waNumber.replace(/[^0-9]/g, ''); 
+    // 1. تنظيف الرقم وتأكيده
+    let waNumber = "966578358398"; // ضع رقمك الأساسي هنا مباشرة للتجربة أو ترك CONTACT.numbers[0]
+    if (typeof CONTACT !== 'undefined' && CONTACT.numbers && CONTACT.numbers[0]) {
+      waNumber = CONTACT.numbers[0];
+    }
+    const cleanNumber = waNumber.replace(/\D/g, ''); 
     const encodedText = encodeURIComponent(text);
+
+    // 2. فحص ما إذا كان المستخدم يفتح الموقع من جوال
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
-    // استخدام api.whatsapp.com يضمن التوافق الأفضل مع الموبايل
-    const waUrl = `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encodedText}`;
+    // رابط الموبايل المباشر للتطبيق، ورابط الويب للكمبيوتر
+    const waUrl = isMobile 
+      ? `whatsapp://send?phone=${cleanNumber}&text=${encodedText}`
+      : `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encodedText}`;
 
-    // فتح الرابط فوراً بـ location.href لتجنب حظر Pop-up الموبايل
-    window.location.href = waUrl;
+    // 3. محاكاة ضغطة زائر حقيقية لتجاوز حظر المتصفح
+    const link = document.createElement('a');
+    link.href = waUrl;
+    if (!isMobile) link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
+    // 4. إظهار رسالة وزر احتياطي في حال كان المتصفح يُقيد الفتح التلقائي
     if (formStatus) {
-      const successMsg = currentLang === 'en' ? 'Your request is ready, redirecting you to WhatsApp!' : 'تم تجهيز طلبك بنجاح، وجاري نقلك لواتساب!';
-      const manualMsg = currentLang === 'en' ? "Tap here if WhatsApp didn't open automatically" : 'اضغط هنا إذا لم يفتح واتساب تلقائياً';
+      const fallbackUrl = `https://api.whatsapp.com/send?phone=${cleanNumber}&text=${encodedText}`;
+      const successMsg = currentLang === 'en' ? 'Redirecting you to WhatsApp...' : 'جاري نقلك إلى واتساب...';
+      const manualMsg = currentLang === 'en' ? "Tap here if WhatsApp didn't open" : 'اضغط هنا لفتح واتساب مباشرة';
+      
       formStatus.innerHTML = `
-        <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.12);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
-          <div class="mb-2">✅ ${successMsg}</div>
-          <a href="${waUrl}" class="btn btn-sm btn-success fw-bold px-3 py-1" style="background:#25D366;border:none;">
+        <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.15);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
+          <div class="mb-2 fw-bold">✅ ${successMsg}</div>
+          <a href="${fallbackUrl}" class="btn btn-sm btn-success fw-bold px-3 py-2 mt-1" style="background:#25D366;border:none;color:#fff;display:inline-block;">
             <i class="fa-brands fa-whatsapp"></i> ${manualMsg}
           </a>
         </div>`;
