@@ -37,13 +37,13 @@
   <link rel="apple-touch-icon" href="css/logo.png">
 
   <!-- Bootstrap RTL -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" id="bsRtlCss">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
   <script type="application/ld+json">
@@ -99,12 +99,24 @@
       overflow-x: hidden;
     }
 
+    html[lang="en"] body {
+      font-family: 'Poppins', sans-serif;
+    }
+
     h1,
     h2,
     h3,
     h4,
     .brand-font {
       font-family: 'Cairo', sans-serif;
+    }
+
+    html[lang="en"] h1,
+    html[lang="en"] h2,
+    html[lang="en"] h3,
+    html[lang="en"] h4,
+    html[lang="en"] .brand-font {
+      font-family: 'Poppins', sans-serif;
     }
 
     a {
@@ -179,124 +191,166 @@
     }
 
     /* ---------- Navbar ---------- */
-    .navbar {
-      background: rgba(11, 11, 13, .92);
-      backdrop-filter: blur(10px);
-      padding: 14px 0;
-      transition: all .4s var(--ease);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(232, 163, 60, .15);
-    }
+ /* ---------- Navbar Container ---------- */
+.navbar {
+  background: rgba(11, 11, 13, .92);
+  backdrop-filter: blur(10px);
+  padding: 14px 24px;
+  transition: all .4s var(--ease);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(232, 163, 60, .15);
+}
 
-    .navbar.scrolled {
-      padding: 8px 0;
-      background: rgba(11, 11, 13, .98);
-      box-shadow: 0 6px 25px rgba(0, 0, 0, .35);
-    }
+.navbar-content {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .navbar-brand img {
-      height: 52px;
-      border-radius: 50px;
-      transition: height .4s var(--ease);
-      box-shadow: 0 0 0 2px rgba(243, 165, 58, .4);
-    }
+.navbar.scrolled {
+  padding: 8px 24px;
+  background: rgba(11, 11, 13, .98);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, .35);
+}
 
-    .navbar.scrolled .navbar-brand img {
-      height: 42px;
-    }
+/* ---------- Brand Logo ---------- */
+.navbar-brand img {
+  height: 52px;
+  border-radius: 50px;
+  transition: height .4s var(--ease);
+  box-shadow: 0 0 0 2px rgba(243, 165, 58, .4);
+}
 
-    .navbar-nav {
-      margin: auto;
-    }
+.navbar.scrolled .navbar-brand img {
+  height: 42px;
+}
 
-    .nav-link {
-      color: var(--white) !important;
-      font-weight: 600;
-      padding: 8px 18px !important;
-      position: relative;
-      transition: color .3s;
-    }
+/* ---------- Nav Links (فرد القائمة والكلمات أفقياً) ---------- */
+.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important; /* تجبر العناصر تكون جنب بعض أفقيًا */
+  align-items: center;
+  gap: 8px; /* مسافة بين كل رابط والثاني */
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 2px;
-      right: 18px;
-      left: 18px;
-      height: 2px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform .35s var(--ease);
-    }
+.nav-link {
+  color: var(--white) !important;
+  font-weight: 600;
+  padding: 8px 18px !important;
+  position: relative;
+  transition: color .3s;
+  white-space: nowrap !important; /* تمنع نزول الكلمات تحت بعضها */
+  display: inline-block;
+}
 
-    .nav-link:hover {
-      color: var(--gold-light) !important;
-    }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 18px;
+  left: 18px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .35s var(--ease);
+}
 
-    .nav-link:hover::after {
-      transform: scaleX(1);
-    }
+.nav-link:hover {
+  color: var(--gold-light) !important;
+}
 
-    .btn-nav-cta {
-      background: var(--gold);
-      color: var(--black);
-      font-weight: 700;
-      padding: 9px 24px;
-      border-radius: 30px;
-      transition: all .3s var(--ease);
-      border: 2px solid var(--gold);
-    }
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
 
-    .btn-nav-cta:hover {
-      background: transparent;
-      color: var(--gold-light);
-    }
+/* ---------- Nav Action Button ---------- */
+.btn-nav-cta {
+  background: var(--gold);
+  color: var(--black);
+  font-weight: 700;
+  padding: 9px 24px;
+  border-radius: 30px;
+  transition: all .3s var(--ease);
+  border: 2px solid var(--gold);
+  white-space: nowrap !important;
+}
 
-    /* ---------- Nav Social Icons ---------- */
-    .nav-socials {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-inline-end: 14px;
-    }
+.btn-nav-cta:hover {
+  background: transparent;
+  color: var(--gold-light);
+}
 
-    .nav-social-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1.5px solid rgba(243, 165, 58, .35);
-      color: var(--muted);
-      font-size: .88rem;
-      transition: all .3s var(--ease);
-      background: transparent;
-    }
+/* ---------- Nav Social Icons ---------- */
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-inline-end: 14px;
+}
 
-    .nav-social-btn:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: rgba(243, 165, 58, .1);
-      transform: translateY(-2px);
-    }
+.nav-social-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(243, 165, 58, .35);
+  color: var(--muted);
+  font-size: .88rem;
+  transition: all .3s var(--ease);
+  background: transparent;
+}
 
-    .nav-social-btn.insta:hover {
-      border-color: #e1306c;
-      color: #e1306c;
-      background: rgba(225, 48, 108, .1);
-    }
+.nav-social-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(243, 165, 58, .1);
+  transform: translateY(-2px);
+}
 
-    .nav-social-btn.tiktok:hover {
-      border-color: #fff;
-      color: #fff;
-      background: rgba(255, 255, 255, .08);
-    }
+.nav-social-btn.insta:hover {
+  border-color: #e1306c;
+  color: #e1306c;
+  background: rgba(225, 48, 108, .1);
+}
 
+.nav-social-btn.tiktok:hover {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, .08);
+}
+
+.lang-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid rgba(243, 165, 58, .5);
+  color: var(--gold-light);
+  background: transparent;
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: .85rem;
+  margin-inline-end: 10px;
+  transition: all .3s var(--ease);
+  cursor: pointer;
+  white-space: nowrap !important;
+}
+
+.lang-switch-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+}
     /* ---------- Hero ---------- */
     .hero {
       position: relative;
@@ -833,6 +887,35 @@
       font-size: .85rem;
     }
 
+    .review-card .review-name-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+    }
+
+    .review-card .review-date {
+      color: #a89f8f;
+      font-size: .78rem;
+    }
+
+    .review-card.user-submitted {
+      border: 1px solid rgba(243, 165, 58, .35);
+      background: linear-gradient(160deg, #fffaf1, #ffffff);
+    }
+
+    .review-badge-new {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-size: .68rem;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-inline-start: 8px;
+      vertical-align: middle;
+    }
+
     .trust-icon {
       width: 64px;
       height: 64px;
@@ -851,6 +934,70 @@
       background: var(--gold);
       color: var(--black);
       transform: rotate(8deg);
+    }
+
+    /* ---------- Review form ---------- */
+    .review-form-wrap {
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, .06);
+      border-radius: 16px;
+      padding: 34px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .06);
+    }
+
+    .review-form-wrap h4 {
+      font-weight: 800;
+    }
+
+    .star-rating-input {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: 6px;
+      font-size: 1.8rem;
+      color: #d8d0c2;
+      margin: 10px 0 6px;
+    }
+
+    .star-rating-input i {
+      cursor: pointer;
+      transition: color .2s, transform .2s;
+    }
+
+    .star-rating-input i:hover,
+    .star-rating-input i.hovered {
+      transform: scale(1.12);
+    }
+
+    .star-rating-input i.selected,
+    .star-rating-input i.hovered {
+      color: var(--gold);
+    }
+
+    .review-form-wrap .form-control {
+      border-radius: 8px;
+      padding: 11px 14px;
+      border: 1px solid #e6ded0;
+    }
+
+    .review-form-wrap .form-control:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(243, 165, 58, .15);
+    }
+
+    .btn-submit-review {
+      background: var(--black-2);
+      color: var(--white);
+      font-weight: 700;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      transition: all .35s var(--ease);
+    }
+
+    .btn-submit-review:hover {
+      background: var(--gold);
+      color: var(--black);
     }
 
     /* ---------- FAQ ---------- */
@@ -1612,18 +1759,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#home">الرئيسية</a></li>
-          <li class="nav-item"><a class="nav-link" href="#categories">أقسامنا</a></li>
-          <li class="nav-item"><a class="nav-link" href="#quality">جودة التصنيع</a></li>
-          <li class="nav-item"><a class="nav-link" href="#catalogs">الكتالوجات</a></li>
-          <li class="nav-item"><a class="nav-link" href="#why">من نحن</a></li>
-          <li class="nav-item"><a class="nav-link" href="#works">أعمالنا</a></li>
-          <li class="nav-item"><a class="nav-link" href="#location">موقعنا</a></li>
-          <li class="nav-item"><a class="nav-link" href="#areas">مناطق الخدمة</a></li>
-          <li class="nav-item"><a class="nav-link" href="#faq">الأسئلة الشائعة</a></li>
+          <li class="nav-item"><a class="nav-link" href="#home" data-i18n="nav.home">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categories" data-i18n="nav.categories">أقسامنا</a></li>
+          <li class="nav-item"><a class="nav-link" href="#quality" data-i18n="nav.quality">جودة التصنيع</a></li>
+          <li class="nav-item"><a class="nav-link" href="#catalogs" data-i18n="nav.catalogs">الكتالوجات</a></li>
+          <li class="nav-item"><a class="nav-link" href="#why" data-i18n="nav.why">من نحن</a></li>
+          <li class="nav-item"><a class="nav-link" href="#works" data-i18n="nav.works">أعمالنا</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location" data-i18n="nav.location">موقعنا</a></li>
+          <li class="nav-item"><a class="nav-link" href="#areas" data-i18n="nav.areas">مناطق الخدمة</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq" data-i18n="nav.faq">الأسئلة الشائعة</a></li>
         </ul>
       </div>
       <div class="nav-socials d-none d-lg-flex">
+        <button type="button" class="lang-switch-btn" id="langSwitchBtn">
+          <i class="fa-solid fa-globe"></i> <span id="langSwitchLabel">EN</span>
+        </button>
         <a href="https://www.instagram.com/_00golden_table" target="_blank" rel="noopener" class="nav-social-btn insta"
           title="إنستجرام">
           <i class="fa-brands fa-instagram"></i>
@@ -1633,7 +1783,7 @@
           <i class="fa-brands fa-tiktok"></i>
         </a>
       </div>
-      <a href="#contact" class="btn-nav-cta d-none d-lg-inline-block">اتصل بنا</a>
+      <a href="#contact" class="btn-nav-cta d-none d-lg-inline-block" data-i18n="nav.contactBtn">اتصل بنا</a>
     </div>
   </nav>
 
@@ -1652,12 +1802,12 @@
     <div class="container hero-content text-center">
       <div class="row justify-content-center">
         <div class="col-lg-9 mx-auto">
-          <span class="eyebrow">نجارة • ستائر • باركيه • شيبورد • برماتريك • صيانة</span>
-          <h1>حرفية الخشب والستائر تصنع <span>ديكورات فاخرة</span></h1>
-          <p class="mx-auto">نحول مساحتك بأعمال نجارة متقنة، تفصيل أرقى موديلات الستائر، وأرضيات وتشطيبات خشبية عالية الجودة في المنطقة الشرقية. من اختيار الخامة والتصميم الدقيق، إلى التركيب الاحترافي وخدمات الصيانة الدورية، لنضمن لك لمسة فخامة تدوم.</p>
+          <span class="eyebrow" data-i18n="hero.eyebrow">نجارة • ستائر • باركيه • شيبورد • برماتريك • صيانة</span>
+          <h1 data-i18n="hero.title">حرفية الخشب والستائر تصنع <span data-i18n="hero.titleSpan">ديكورات فاخرة</span></h1>
+          <p class="mx-auto" data-i18n="hero.desc">نحول مساحتك بأعمال نجارة متقنة، تفصيل أرقى موديلات الستائر، وأرضيات وتشطيبات خشبية عالية الجودة في المنطقة الشرقية. من اختيار الخامة والتصميم الدقيق، إلى التركيب الاحترافي وخدمات الصيانة الدورية، لنضمن لك لمسة فخامة تدوم — بخبرة أكثر من 25 عاماً.</p>
           <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
-            <a href="#contact" class="btn-gold">تواصل معنا</a>
-            <a href="#why" class="btn-outline-cream">من نحن</a>
+            <a href="#contact" class="btn-gold" data-i18n="hero.ctaContact">تواصل معنا</a>
+            <a href="#why" class="btn-outline-cream" data-i18n="hero.ctaAbout">من نحن</a>
           </div>
         </div>
       </div>
@@ -1678,9 +1828,9 @@
             <path d="M10 45c0-10 8-16 16-14 6 1.5 4 10-3 10-6 0-9-6-4-11 6-6 18-8 26-2" />
           </svg>
         </div>
-        <div class="section-eyebrow">اكتشف نشاطاتنا وأقسامنا</div>
-        <h2 class="section-title">حلول متكاملة لكل <span>مساحة</span></h2>
-        <p class="section-sub mx-auto mt-2">من النجارة والتفصيل والستائر إلى الأرضيات والتشطيبات الجدارية وخدمات الصيانة، نقدم حلولاً متكاملة بأعلى معايير الجودة بالمنطقة الشرقية</p>
+        <div class="section-eyebrow" data-i18n="cat.eyebrow">اكتشف نشاطاتنا وأقسامنا</div>
+        <h2 class="section-title" data-i18n="cat.title">حلول متكاملة لكل <span data-i18n="cat.titleSpan">مساحة</span></h2>
+        <p class="section-sub mx-auto mt-2" data-i18n="cat.sub">من النجارة والتفصيل والستائر إلى الأرضيات والتشطيبات الجدارية وخدمات الصيانة، نقدم حلولاً متكاملة بأعلى معايير الجودة بالمنطقة الشرقية</p>
       </div>
       <div class="row g-4 justify-content-center">
         <!-- النجارة والتفصيل -->
@@ -1690,10 +1840,10 @@
               alt="قسم أعمال النجارة والتفصيل">
             <div class="cat-overlay"></div>
             <div class="cat-text">
-              <small>تفصيل مخصص وإتقان حرفي</small>
-              <h3>أعمال النجارة والتفصيل</h3>
+              <small data-i18n="cat.c1.small">تفصيل مخصص وإتقان حرفي</small>
+              <h3 data-i18n="cat.c1.title">أعمال النجارة والتفصيل</h3>
               <div class="cat-line"></div>
-              <p class="cat-desc mb-0 mt-2">تفصيل خزائن، أبواب، غرف نوم، طاولات، وديكورات خشبية مخصصة بالكامل حسب رغبتك وبأجود أنواع الأخشاب.</p>
+              <p class="cat-desc mb-0 mt-2" data-i18n="cat.c1.desc">تفصيل خزائن، أبواب، غرف نوم، طاولات، وديكورات خشبية مخصصة بالكامل حسب رغبتك وبأجود أنواع الأخشاب.</p>
             </div>
           </div>
         </div>
@@ -1704,10 +1854,10 @@
               alt="قسم تفصيل وتركيب الستائر">
             <div class="cat-overlay"></div>
             <div class="cat-text">
-              <small>أناقة وخصوصية عصرية</small>
-              <h3>تفصيل وتركيب الستائر</h3>
+              <small data-i18n="cat.c2.small">أناقة وخصوصية عصرية</small>
+              <h3 data-i18n="cat.c2.title">تفصيل وتركيب الستائر</h3>
               <div class="cat-line"></div>
-              <p class="cat-desc mb-0 mt-2">أحدث موديلات الستائر الكلاسيكية والمودرن، ستائر رول، بلاك أوت، وأقمشة فاخرة تناسب كافة الأذواق والمساحات.</p>
+              <p class="cat-desc mb-0 mt-2" data-i18n="cat.c2.desc">أحدث موديلات الستائر الكلاسيكية والمودرن، ستائر رول، بلاك أوت، وأقمشة فاخرة تناسب كافة الأذواق والمساحات.</p>
             </div>
           </div>
         </div>
@@ -1718,10 +1868,10 @@
               alt="قسم الباركيه">
             <div class="cat-overlay"></div>
             <div class="cat-text">
-              <small>أرضيات دافئة وأنيقة</small>
-              <h3>قسم الباركيه</h3>
+              <small data-i18n="cat.c3.small">أرضيات دافئة وأنيقة</small>
+              <h3 data-i18n="cat.c3.title">قسم الباركيه</h3>
               <div class="cat-line"></div>
-              <p class="cat-desc mb-0 mt-2">خشب طبيعي وهندسي بدرجات لونية متعددة، يضيف دفء وفخامة لأي مساحة سكنية أو تجارية.</p>
+              <p class="cat-desc mb-0 mt-2" data-i18n="cat.c3.desc">خشب طبيعي وهندسي بدرجات لونية متعددة، يضيف دفء وفخامة لأي مساحة سكنية أو تجارية.</p>
             </div>
           </div>
         </div>
@@ -1732,10 +1882,10 @@
               alt="قسم الشيبورد">
             <div class="cat-overlay"></div>
             <div class="cat-text">
-              <small>مقاوم للماء وسهل الصيانة</small>
-              <h3>قسم الشيبورد SPC</h3>
+              <small data-i18n="cat.c4.small">مقاوم للماء وسهل الصيانة</small>
+              <h3 data-i18n="cat.c4.title">قسم الشيبورد SPC</h3>
               <div class="cat-line"></div>
-              <p class="cat-desc mb-0 mt-2">حل عملي وأنيق للمساحات المعرضة للرطوبة، يجمع بين مظهر الخشب الطبيعي ومقاومة عالية للماء والخدوش.</p>
+              <p class="cat-desc mb-0 mt-2" data-i18n="cat.c4.desc">حل عملي وأنيق للمساحات المعرضة للرطوبة، يجمع بين مظهر الخشب الطبيعي ومقاومة عالية للماء والخدوش.</p>
             </div>
           </div>
         </div>
@@ -1746,25 +1896,25 @@
               alt="قسم البرماتريك">
             <div class="cat-overlay"></div>
             <div class="cat-text">
-              <small>تصاميم جدارية عصرية</small>
-              <h3>قسم البرماتريك</h3>
+              <small data-i18n="cat.c5.small">تصاميم جدارية عصرية</small>
+              <h3 data-i18n="cat.c5.title">قسم البرماتريك</h3>
               <div class="cat-line"></div>
-              <p class="cat-desc mb-0 mt-2">ألواح خشبية بتصاميم هندسية دقيقة تمنح الجدران طابعاً عصرياً فاخراً، مثالية لواجهات الاستقبال والديكورات المميزة.</p>
+              <p class="cat-desc mb-0 mt-2" data-i18n="cat.c5.desc">ألواح خشبية بتصاميم هندسية دقيقة تمنح الجدران طابعاً عصرياً فاخراً، مثالية لواجهات الاستقبال والديكورات المميزة.</p>
             </div>
           </div>
         </div>
         <!-- الصيانة -->
         <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.2s">
           <div class="category-card maintenance-card">
-            <span class="maintenance-ribbon"><i class="fa-solid fa-screwdriver-wrench"></i> خدمة سريعة</span>
+            <span class="maintenance-ribbon"><i class="fa-solid fa-screwdriver-wrench"></i> <span data-i18n="cat.c6.ribbon">خدمة سريعة</span></span>
             <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=900&q=80&auto=format&fit=crop"
               alt="قسم صيانة النجارة والديكور">
             <div class="cat-overlay"></div>
             <div class="cat-text">
-              <small>إصلاح وتجديد بلا تعقيد</small>
-              <h3>قسم الصيانة</h3>
+              <small data-i18n="cat.c6.small">إصلاح وتجديد بلا تعقيد</small>
+              <h3 data-i18n="cat.c6.title">قسم الصيانة</h3>
               <div class="cat-line"></div>
-              <p class="cat-desc mb-0 mt-2">صيانة الأبواب والخزائن، إصلاح مكانيزمات الستائر، ترميم الباركيه المتضرر، وإصلاح ألواح الشيبورد والبرماتريك بسرعة واحترافية.</p>
+              <p class="cat-desc mb-0 mt-2" data-i18n="cat.c6.desc">صيانة الأبواب والخزائن، إصلاح مكانيزمات الستائر، ترميم الباركيه المتضرر، وإصلاح ألواح الشيبورد والبرماتريك بسرعة واحترافية.</p>
             </div>
           </div>
         </div>
@@ -1776,31 +1926,31 @@
   <section class="py-5 bg-white" id="quality">
     <div class="container py-4">
       <div class="text-center mb-5 reveal">
-        <div class="section-eyebrow">لماذا تثق بمنتجاتنا</div>
-        <h2 class="section-title">جودة <span>التصنيع</span></h2>
-        <p class="section-sub mx-auto mt-2">نصنع منتجات خشبية تجمع بين المتانة والمظهر الفاخر، مطابقة لأعلى معايير
+        <div class="section-eyebrow" data-i18n="quality.eyebrow">لماذا تثق بمنتجاتنا</div>
+        <h2 class="section-title" data-i18n="quality.title">جودة <span data-i18n="quality.titleSpan">التصنيع</span></h2>
+        <p class="section-sub mx-auto mt-2" data-i18n="quality.sub">نصنع منتجات خشبية تجمع بين المتانة والمظهر الفاخر، مطابقة لأعلى معايير
           الجودة العالمية</p>
       </div>
       <div class="row g-4">
         <div class="col-md-4 reveal">
           <div class="quality-card">
             <div class="num">01</div>
-            <h4 class="fw-bold mt-2">سهولة التركيب</h4>
-            <p class="text-white mb-0">تركيب سريع ونظيف بأنظمة عزل حديثة، بأقل وقت وبدون فوضى في موقع العمل.</p>
+            <h4 class="fw-bold mt-2" data-i18n="quality.q1.title">سهولة التركيب</h4>
+            <p class="text-white mb-0" data-i18n="quality.q1.desc">تركيب سريع ونظيف بأنظمة عزل حديثة، بأقل وقت وبدون فوضى في موقع العمل.</p>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
           <div class="quality-card">
             <div class="num">02</div>
-            <h4 class="fw-bold mt-2">مقاومة عالية</h4>
-            <p class="mb-0">مقاوم للرطوبة والحرارة والخدوش، ومصمم ليتحمل الاستخدام اليومي لسنوات طويلة.</p>
+            <h4 class="fw-bold mt-2" data-i18n="quality.q2.title">مقاومة عالية</h4>
+            <p class="mb-0" data-i18n="quality.q2.desc">مقاوم للرطوبة والحرارة والخدوش، ومصمم ليتحمل الاستخدام اليومي لسنوات طويلة.</p>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.2s">
           <div class="quality-card">
             <div class="num">03</div>
-            <h4 class="fw-bold mt-2">خامات فاخرة</h4>
-            <p class="mb-0">خشب ومواد مختارة بعناية تمنح كل مساحة لمسة دافئة وفخامة تدوم.</p>
+            <h4 class="fw-bold mt-2" data-i18n="quality.q3.title">خامات فاخرة</h4>
+            <p class="mb-0" data-i18n="quality.q3.desc">خشب ومواد مختارة بعناية تمنح كل مساحة لمسة دافئة وفخامة تدوم.</p>
           </div>
         </div>
       </div>
@@ -1816,64 +1966,64 @@
             <path d="M10 45c0-10 8-16 16-14 6 1.5 4 10-3 10-6 0-9-6-4-11 6-6 18-8 26-2" />
           </svg>
         </div>
-        <div class="section-eyebrow">حمّل قبل ما تقرر</div>
-        <h2 class="section-title">كتالوجات <span>منتجاتنا</span></h2>
-        <p class="section-sub mx-auto mt-2">تصفح مواصفات وألوان كل قسم بالتفصيل، وحمّل الكتالوج المناسب لمشروعك</p>
+        <div class="section-eyebrow" data-i18n="catalog.eyebrow">حمّل قبل ما تقرر</div>
+        <h2 class="section-title" data-i18n="catalog.title">كتالوجات <span data-i18n="catalog.titleSpan">منتجاتنا</span></h2>
+        <p class="section-sub mx-auto mt-2" data-i18n="catalog.sub">تصفح مواصفات وألوان كل قسم بالتفصيل، وحمّل الكتالوج المناسب لمشروعك</p>
       </div>
       <div class="row g-4">
         <div class="col-md-4 reveal">
           <div class="catalog-card">
             <div class="catalog-icon"><i class="fa-solid fa-file-pdf"></i></div>
-            <h4>كتالوج الباركيه</h4>
-            <p class="mb-0">جميع درجات ألوان الباركيه الطبيعي والهندسي مع أنماط التركيب المتاحة.</p>
+            <h4 data-i18n="catalog.c1.title">كتالوج الباركيه</h4>
+            <p class="mb-0" data-i18n="catalog.c1.desc">جميع درجات ألوان الباركيه الطبيعي والهندسي مع أنماط التركيب المتاحة.</p>
             <div class="catalog-meta"><span><i class="fa-solid fa-file"></i> PDF</span><span><i
-                  class="fa-solid fa-layer-group"></i> +30 موديل</span></div>
-            <a href="css/barkih.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> تحميل
-              الكتالوج</a>
+                  class="fa-solid fa-layer-group"></i> <span data-i18n="catalog.c1.count">+30 موديل</span></span></div>
+            <a href="css/barkih.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> <span data-i18n="catalog.download">تحميل
+              الكتالوج</span></a>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
           <div class="catalog-card">
             <div class="catalog-icon"><i class="fa-solid fa-file-pdf"></i></div>
-            <h4>كتالوج بديل الشيبورد</h4>
-            <p class="mb-0">مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.</p>
+            <h4 data-i18n="catalog.c2.title">كتالوج بديل الشيبورد</h4>
+            <p class="mb-0" data-i18n="catalog.c2.desc">مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.</p>
             <div class="catalog-meta"><span><i class="fa-solid fa-file"></i> PDF</span><span><i
-                  class="fa-solid fa-layer-group"></i> +20 موديل</span></div>
-            <a href="css/badil1.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> تحميل
-              الكتالوج</a>
+                  class="fa-solid fa-layer-group"></i> <span data-i18n="catalog.c2.count">+20 موديل</span></span></div>
+            <a href="css/badil1.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> <span data-i18n="catalog.download">تحميل
+              الكتالوج</span></a>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
           <div class="catalog-card">
             <div class="catalog-icon"><i class="fa-solid fa-file-pdf"></i></div>
-            <h4>كتالوج بديل الشيبورد</h4>
-            <p class="mb-0">مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.</p>
+            <h4 data-i18n="catalog.c3.title">كتالوج بديل الشيبورد</h4>
+            <p class="mb-0" data-i18n="catalog.c3.desc">مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.</p>
             <div class="catalog-meta"><span><i class="fa-solid fa-file"></i> PDF</span><span><i
-                  class="fa-solid fa-layer-group"></i> +20 موديل</span></div>
-            <a href="css/badil2.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> تحميل
-              الكتالوج</a>
+                  class="fa-solid fa-layer-group"></i> <span data-i18n="catalog.c3.count">+20 موديل</span></span></div>
+            <a href="css/badil2.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> <span data-i18n="catalog.download">تحميل
+              الكتالوج</span></a>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
           <div class="catalog-card">
             <div class="catalog-icon"><i class="fa-solid fa-file-pdf"></i></div>
-            <h4>كتالوج بديل الشيبورد</h4>
-            <p class="mb-0">مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.</p>
+            <h4 data-i18n="catalog.c4.title">كتالوج بديل الشيبورد</h4>
+            <p class="mb-0" data-i18n="catalog.c4.desc">مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.</p>
             <div class="catalog-meta"><span><i class="fa-solid fa-file"></i> PDF</span><span><i
-                  class="fa-solid fa-layer-group"></i> +20 موديل</span></div>
-            <a href="css/badil3.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> تحميل
-              الكتالوج</a>
+                  class="fa-solid fa-layer-group"></i> <span data-i18n="catalog.c4.count">+20 موديل</span></span></div>
+            <a href="css/badil3.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> <span data-i18n="catalog.download">تحميل
+              الكتالوج</span></a>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.2s">
           <div class="catalog-card">
             <div class="catalog-icon"><i class="fa-solid fa-file-pdf"></i></div>
-            <h4>كتالوج البرماتريك</h4>
-            <p class="mb-0">تصاميم الألواح الجدارية الهندسية بمختلف الأنماط والألوان الخشبية.</p>
+            <h4 data-i18n="catalog.c5.title">كتالوج البرماتريك</h4>
+            <p class="mb-0" data-i18n="catalog.c5.desc">تصاميم الألواح الجدارية الهندسية بمختلف الأنماط والألوان الخشبية.</p>
             <div class="catalog-meta"><span><i class="fa-solid fa-file"></i> PDF</span><span><i
-                  class="fa-solid fa-layer-group"></i> +15 موديل</span></div>
-            <a href="css/brimatric.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> تحميل
-              الكتالوج</a>
+                  class="fa-solid fa-layer-group"></i> <span data-i18n="catalog.c5.count">+15 موديل</span></span></div>
+            <a href="css/brimatric.pdf" target="_blank" class="btn-catalog"><i class="fa-solid fa-download"></i> <span data-i18n="catalog.download">تحميل
+              الكتالوج</span></a>
           </div>
         </div>
       </div>
@@ -1885,25 +2035,25 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-7 reveal">
-          <div class="section-eyebrow">لماذا تختارنا</div>
-          <h2 class="section-title">حرفية تصنع <span>فرقاً</span></h2>
-          <p class="mt-3">تتميز الطاولة الذهبية بفريق من الحرفيين والمصممين المتخصصين في أعمال النجارة والتفصيل، الستائر، وجميع أعمال الأرضيات والتشطيبات الخشبية، بخبرة عملية تراكمت على مدار سنوات في المنطقة الشرقية. نحرص على متابعة كل مشروع من أول معاينة الموقع ورفع المقاسات وحتى تسليمه، باستخدام خامات مختارة بعناية وأدوات حديثة تضمن دقة التنفيذ ونظافة العمل.</p>
-          <p>سواء كان مشروعك منزلاً، مكتباً، أو محلاً تجارياً، هدفنا أن تحصل على مساحة تعكس ذوقك وتدوم معك لسنوات دون الحاجة لصيانة متكررة.</p>
-          <a href="#contact" class="btn-gold mt-3">اطلب عرض سعر</a>
+          <div class="section-eyebrow" data-i18n="why.eyebrow">لماذا تختارنا</div>
+          <h2 class="section-title" data-i18n="why.title">حرفية تصنع <span data-i18n="why.titleSpan">فرقاً</span></h2>
+          <p class="mt-3" data-i18n="why.p1">تتميز الطاولة الذهبية بفريق من الحرفيين والمصممين المتخصصين في أعمال النجارة والتفصيل، الستائر، وجميع أعمال الأرضيات والتشطيبات الخشبية، بخبرة عملية تتجاوز 25 عاماً في المنطقة الشرقية. نحرص على متابعة كل مشروع من أول معاينة الموقع ورفع المقاسات وحتى تسليمه، باستخدام خامات مختارة بعناية وأدوات حديثة تضمن دقة التنفيذ ونظافة العمل.</p>
+          <p data-i18n="why.p2">سواء كان مشروعك منزلاً، مكتباً، أو محلاً تجارياً، هدفنا أن تحصل على مساحة تعكس ذوقك وتدوم معك لسنوات دون الحاجة لصيانة متكررة.</p>
+          <a href="#contact" class="btn-gold mt-3" data-i18n="why.cta">اطلب عرض سعر</a>
         </div>
         <div class="col-lg-5 mt-5 mt-lg-0 reveal">
           <div class="row">
             <div class="col-4 stat-box">
-              <div class="stat-num" data-count="8">0</div>
-              <div class="stat-label">سنوات خبرة</div>
+              <div class="stat-num" data-count="25" data-suffix="+">0</div>
+              <div class="stat-label" data-i18n="why.stat1">سنة خبرة</div>
             </div>
             <div class="col-4 stat-box">
-              <div class="stat-num" data-count="450">0</div>
-              <div class="stat-label">مشروع منجز</div>
+              <div class="stat-num" data-count="450" data-suffix="+">0</div>
+              <div class="stat-label" data-i18n="why.stat2">مشروع منجز</div>
             </div>
             <div class="col-4 stat-box">
-              <div class="stat-num" data-count="97">0</div>
-              <div class="stat-label">% رضا العملاء</div>
+              <div class="stat-num" data-count="97" data-suffix="%">0</div>
+              <div class="stat-label" data-i18n="why.stat3">رضا العملاء</div>
             </div>
           </div>
         </div>
@@ -1915,8 +2065,8 @@
   <section class="py-5 my-4" id="location">
     <div class="container">
       <div class="text-center mb-5 reveal">
-        <div class="section-eyebrow">زورونا</div>
-        <h2 class="section-title">موقع <span>المعرض</span></h2>
+        <div class="section-eyebrow" data-i18n="loc.eyebrow">زورونا</div>
+        <h2 class="section-title" data-i18n="loc.title">موقع <span data-i18n="loc.titleSpan">المعرض</span></h2>
       </div>
       <div class="row g-4 align-items-stretch">
         <div class="col-lg-8 reveal">
@@ -1928,13 +2078,13 @@
         </div>
         <div class="col-lg-4 reveal" style="transition-delay:.1s">
           <div class="location-info">
-            <h4 class="fw-bold mb-3">بيانات التواصل</h4>
-            <p><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية - المنطقة الشرقية</p>
+            <h4 class="fw-bold mb-3" data-i18n="loc.infoTitle">بيانات التواصل</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc.addr">المملكة العربية السعودية - المنطقة الشرقية</span></p>
             <p class="phone-line"><i class="fa-solid fa-phone"></i> <span dir="ltr">+966 57 835 8398</span></p>
             <p><i class="fa-solid fa-phone"></i> <span dir="ltr">+966 56 430 0282</span></p>
-            <p><i class="fa-solid fa-clock"></i> السبت - الخميس: 9ص - 10م</p>
+            <p><i class="fa-solid fa-clock"></i> <span data-i18n="loc.hours">السبت - الخميس: 9ص - 10م</span></p>
             <hr>
-            <p class="mb-0">تابعنا على مواقع التواصل لمشاهدة أحدث أعمالنا أولاً بأول.</p>
+            <p class="mb-0" data-i18n="loc.follow">تابعنا على مواقع التواصل لمشاهدة أحدث أعمالنا أولاً بأول.</p>
           </div>
         </div>
       </div>
@@ -1950,9 +2100,9 @@
             <path d="M10 45c0-10 8-16 16-14 6 1.5 4 10-3 10-6 0-9-6-4-11 6-6 18-8 26-2" />
           </svg>
         </div>
-        <div class="section-eyebrow">تغطية شاملة</div>
-        <h2 class="section-title">نخدم <span>المنطقة الشرقية</span> وكبرى مدن المملكة</h2>
-        <p class="section-sub mx-auto mt-2">فريقنا الحرفي يصل إليك أينما كنت في كافة مدن ومحافظات المنطقة الشرقية، بالإضافة لتنفيذ المشاريع الخاصة في الطائف ومختلف مناطق المملكة</p>
+        <div class="section-eyebrow" data-i18n="areas.eyebrow">تغطية شاملة</div>
+        <h2 class="section-title" data-i18n="areas.title">نخدم <span data-i18n="areas.titleSpan">المنطقة الشرقية</span> وكبرى مدن المملكة</h2>
+        <p class="section-sub mx-auto mt-2" data-i18n="areas.sub">فريقنا الحرفي يصل إليك أينما كنت في كافة مدن ومحافظات المنطقة الشرقية، بالإضافة لتنفيذ المشاريع الخاصة في الطائف ومختلف مناطق المملكة</p>
       </div>
 
       <div class="row g-4">
@@ -1963,8 +2113,8 @@
             style="--ac-color:#f3a53a;--ac-grad:linear-gradient(135deg,rgba(243,165,58,.12),rgba(243,165,58,.03))">
             <div class="area-num">01</div>
             <div class="area-icon"><i class="fa-solid fa-city"></i></div>
-            <h3>الدمام</h3>
-            <p>عاصمة المنطقة الشرقية ومركز الأعمال؛ نغطي كافة الأحياء السكنية والتجارية بدقة متناهية وسرعة إنجاز.</p>
+            <h3 data-i18n="areas.a1.title">الدمام</h3>
+            <p data-i18n="areas.a1.desc">عاصمة المنطقة الشرقية ومركز الأعمال؛ نغطي كافة الأحياء السكنية والتجارية بدقة متناهية وسرعة إنجاز.</p>
             <div class="area-districts">
               <span class="district-pill">الشاطئ</span>
               <span class="district-pill">الفيصلية</span>
@@ -1974,7 +2124,7 @@
               <span class="district-pill">النورس</span>
               <span class="district-pill">طيبة</span>
             </div>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية لكافة الأحياء</span>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> <span data-i18n="areas.fullCoverage">تغطية لكافة الأحياء</span></span>
             <div class="area-line"></div>
           </div>
         </div>
@@ -1985,8 +2135,8 @@
             style="--ac-color:#60d4f4;--ac-grad:linear-gradient(135deg,rgba(96,212,244,.12),rgba(96,212,244,.03))">
             <div class="area-num">02</div>
             <div class="area-icon"><i class="fa-solid fa-building"></i></div>
-            <h3>الخبر والظهران</h3>
-            <p>أرقى المجمعات والفلل السكنية ومراكز الأعمال؛ خدمات ديكور وتفصيل خشب وستائر بمستوى VIP.</p>
+            <h3 data-i18n="areas.a2.title">الخبر والظهران</h3>
+            <p data-i18n="areas.a2.desc">أرقى المجمعات والفلل السكنية ومراكز الأعمال؛ خدمات ديكور وتفصيل خشب وستائر بمستوى VIP.</p>
             <div class="area-districts">
               <span class="district-pill">الحزام الذهبي</span>
               <span class="district-pill">الحزام الأخضر</span>
@@ -1997,7 +2147,7 @@
               <span class="district-pill">الدوحة</span>
               <span class="district-pill">الشبيلي</span>
             </div>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية لكافة الأحياء</span>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> <span data-i18n="areas.fullCoverage">تغطية لكافة الأحياء</span></span>
             <div class="area-line"></div>
           </div>
         </div>
@@ -2008,8 +2158,8 @@
             style="--ac-color:#a78bfa;--ac-grad:linear-gradient(135deg,rgba(167,139,250,.12),rgba(167,139,250,.03))">
             <div class="area-num">03</div>
             <div class="area-icon"><i class="fa-solid fa-house-chimney"></i></div>
-            <h3>القطيف، سيهات وعنك</h3>
-            <p>حرفية متوارثة وتفصيل راقٍ؛ نصل لكافة مدن وبلدات محافظة القطيف وسيهات وعنك وجزيرة تاروت وصفوى.</p>
+            <h3 data-i18n="areas.a3.title">القطيف، سيهات وعنك</h3>
+            <p data-i18n="areas.a3.desc">حرفية متوارثة وتفصيل راقٍ؛ نصل لكافة مدن وبلدات محافظة القطيف وسيهات وعنك وجزيرة تاروت وصفوى.</p>
             <div class="area-districts">
               <span class="district-pill">سيهات (الغدير، الكوثر)</span>
               <span class="district-pill">عنك وضواحيها</span>
@@ -2019,7 +2169,7 @@
               <span class="district-pill">المجيدية</span>
               <span class="district-pill">أم الحمام</span>
             </div>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية لكافة الأحياء</span>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> <span data-i18n="areas.fullCoverage">تغطية لكافة الأحياء</span></span>
             <div class="area-line"></div>
           </div>
         </div>
@@ -2030,8 +2180,8 @@
             style="--ac-color:#34d399;--ac-grad:linear-gradient(135deg,rgba(52,211,153,.12),rgba(52,211,153,.03))">
             <div class="area-num">04</div>
             <div class="area-icon"><i class="fa-solid fa-industry"></i></div>
-            <h3>الجبيل ورأس تنورة</h3>
-            <p>خدمات متكاملة للجبيل البلد، الجبيل الصناعية ورأس تنورة؛ للشركات والمساكن ومشاريع الهيئة الملكية.</p>
+            <h3 data-i18n="areas.a4.title">الجبيل ورأس تنورة</h3>
+            <p data-i18n="areas.a4.desc">خدمات متكاملة للجبيل البلد، الجبيل الصناعية ورأس تنورة؛ للشركات والمساكن ومشاريع الهيئة الملكية.</p>
             <div class="area-districts">
               <span class="district-pill">الفناتير</span>
               <span class="district-pill">جلمودة</span>
@@ -2040,7 +2190,7 @@
               <span class="district-pill">الجبيل البلد</span>
               <span class="district-pill">رأس تنورة (رحيمة)</span>
             </div>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> <span data-i18n="areas.fullCov2">تغطية كاملة</span></span>
             <div class="area-line"></div>
           </div>
         </div>
@@ -2051,8 +2201,8 @@
             style="--ac-color:#fb923c;--ac-grad:linear-gradient(135deg,rgba(251,146,60,.12),rgba(251,146,60,.03))">
             <div class="area-num">05</div>
             <div class="area-icon"><i class="fa-solid fa-tree"></i></div>
-            <h3>الأحساء وبقيق</h3>
-            <p>نخدم جميع مدن وبلدات واحة الأحساء وبقيق؛ تصاميم تجمع بين الأصالة والفخامة الحديثة للفلل والمجالس.</p>
+            <h3 data-i18n="areas.a5.title">الأحساء وبقيق</h3>
+            <p data-i18n="areas.a5.desc">نخدم جميع مدن وبلدات واحة الأحساء وبقيق؛ تصاميم تجمع بين الأصالة والفخامة الحديثة للفلل والمجالس.</p>
             <div class="area-districts">
               <span class="district-pill">الهفوف</span>
               <span class="district-pill">المبرز</span>
@@ -2061,7 +2211,7 @@
               <span class="district-pill">محافظة بقيق</span>
               <span class="district-pill">القرى الشرقية</span>
             </div>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> <span data-i18n="areas.fullCov2">تغطية كاملة</span></span>
             <div class="area-line"></div>
           </div>
         </div>
@@ -2072,8 +2222,8 @@
             style="--ac-color:#e879f9;--ac-grad:linear-gradient(135deg,rgba(232,121,249,.12),rgba(232,121,249,.03))">
             <div class="area-num">06</div>
             <div class="area-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-            <h3>حفر الباطن، الخفجي والنعيرية</h3>
-            <p>تغطية شاملة لشمال وغرب المنطقة الشرقية؛ تنفيذ وشحن وتركيب أعمال النجارة والستائر والباركيه المعتمدة.</p>
+            <h3 data-i18n="areas.a6.title">حفر الباطن، الخفجي والنعيرية</h3>
+            <p data-i18n="areas.a6.desc">تغطية شاملة لشمال وغرب المنطقة الشرقية؛ تنفيذ وشحن وتركيب أعمال النجارة والستائر والباركيه المعتمدة.</p>
             <div class="area-districts">
               <span class="district-pill">حفر الباطن</span>
               <span class="district-pill">الخفجي</span>
@@ -2081,7 +2231,7 @@
               <span class="district-pill">قرية العليا</span>
               <span class="district-pill">سلوى والبطحاء</span>
             </div>
-            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> تغطية كاملة</span>
+            <span class="area-badge"><i class="fa-solid fa-location-dot"></i> <span data-i18n="areas.fullCov2">تغطية كاملة</span></span>
             <div class="area-line"></div>
           </div>
         </div>
@@ -2092,10 +2242,10 @@
       <div class="special-project-card mt-4 reveal">
         <div class="row align-items-center g-4">
           <div class="col-lg-8">
-            <span class="special-badge"><i class="fa-solid fa-crown"></i> تغطية خاصة للمشاريع والفلل الفاخرة</span>
-            <h3 class="text-white fw-bold mb-3">مدينة الطائف وكبرى مدن المملكة</h3>
-            <p class="text-white mb-3" style="font-size:1rem;line-height:1.8;">
-              نوفر فرق عمل وتجهيزات مخصصة للانتقال المباشر وتنفيذ أرقى أعمال <strong>النجارة المخصصة، تفصيل الستائر الفاخرة، تركيب أرضيات الباركيه، بديل الشيبورد SPC وألواح البرماتريك</strong> في <strong>مدينة الطائف</strong> بكافة مناطقها (الهدا، الشفا، الحوية، الوسام، جبرة، الردف، الخالدية) بالإضافة للمشاريع الخاصة في (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق ووفق أعلى معايير الجودة والضمان.
+            <span class="special-badge"><i class="fa-solid fa-crown"></i> <span data-i18n="areas.special.badge">تغطية خاصة للمشاريع والفلل الفاخرة</span></span>
+            <h3 class="text-white fw-bold mb-3" data-i18n="areas.special.title">مدينة الطائف وكبرى مدن المملكة</h3>
+            <p class="text-white mb-3" style="font-size:1rem;line-height:1.8;" data-i18n="areas.special.desc">
+              نوفر فرق عمل وتجهيزات مخصصة للانتقال المباشر وتنفيذ أرقى أعمال النجارة المخصصة، تفصيل الستائر الفاخرة، تركيب أرضيات الباركيه، بديل الشيبورد SPC وألواح البرماتريك في مدينة الطائف بكافة مناطقها (الهدا، الشفا، الحوية، الوسام، جبرة، الردف، الخالدية) بالإضافة للمشاريع الخاصة في (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق ووفق أعلى معايير الجودة والضمان.
             </p>
             <div class="d-flex flex-wrap gap-2">
               <span class="district-pill" style="background:rgba(243,165,58,.15);color:var(--gold);border-color:rgba(243,165,58,.3)">الطائف - الهدا</span>
@@ -2108,19 +2258,12 @@
           </div>
           <div class="col-lg-4 text-lg-end text-center">
             <a href="https://wa.me/966578358398?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AE%D8%A7%D8%B5%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B7%D8%A7%D8%A6%D9%81%20/%20%D8%AE%D8%A7%D8%B1%D8%AC%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9" target="_blank" class="btn-gold d-inline-flex align-items-center gap-2">
-              <i class="fa-brands fa-whatsapp fs-5"></i> حجز معاينة لمشروعك
+              <i class="fa-brands fa-whatsapp fs-5"></i> <span data-i18n="areas.special.cta">حجز معاينة لمشروعك</span>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- تلميح الخريطة -->
-      <div class="areas-map-hint reveal">
-        <i class="fa-solid fa-route"></i>
-        <p><strong>موقعك في أي مدينة أخرى؟</strong> لا تتردد في التواصل معنا — نصل لجميع مواقع المنطقة الشرقية والطائف وكبرى مدن المملكة بكل احترافية وسرعة.</p>
-        <a href="https://wa.me/966578358398" target="_blank" class="btn-gold me-0 ms-auto"
-          style="white-space:nowrap">تواصل معنا الآن</a>
-      </div>
 
     </div>
   </section>
@@ -2129,9 +2272,9 @@
   <section class="works-section" id="works">
     <div class="container">
       <div class="text-center mb-5 reveal">
-        <div class="section-eyebrow">معرض الأعمال</div>
-        <h2 class="section-title">لمسات من <span>أعمالنا</span></h2>
-        <p class="section-sub mx-auto mt-2">مجموعة مختارة من مشاريعنا المنفذة في النجارة والتفصيل، الستائر، الباركيه، الشيبورد، والبرماتريك بالمنطقة الشرقية، تعكس دقة التنفيذ ومستوى التشطيب الراقي الذي نلتزم به.</p>
+        <div class="section-eyebrow" data-i18n="works.eyebrow">معرض الأعمال</div>
+        <h2 class="section-title" data-i18n="works.title">لمسات من <span data-i18n="works.titleSpan">أعمالنا</span></h2>
+        <p class="section-sub mx-auto mt-2" data-i18n="works.sub">مجموعة مختارة من مشاريعنا المنفذة في النجارة والتفصيل، الستائر، الباركيه، الشيبورد، والبرماتريك بالمنطقة الشرقية، تعكس دقة التنفيذ ومستوى التشطيب الراقي الذي نلتزم به.</p>
       </div>
       <div class="row g-3 works-grid" id="worksGrid"></div>
     </div>
@@ -2157,51 +2300,92 @@
   </div>
 
   <!-- ============ الثقة / التقييمات ============ -->
-  <section class="py-5">
+  <section class="py-5" id="reviews">
     <div class="container py-4">
       <div class="text-center mb-5 reveal">
-        <div class="section-eyebrow">تقييمات عملائنا</div>
+        <div class="section-eyebrow" data-i18n="rev.eyebrow">تقييمات عملائنا</div>
+        <h2 class="section-title" data-i18n="rev.title">آراء <span data-i18n="rev.titleSpan">عملائنا</span></h2>
         <div class="review-stars fs-4">★★★★★</div>
       </div>
-      <div class="row g-4 mb-5">
+      <div class="row g-4 mb-5" id="reviewsGrid">
         <div class="col-md-4 reveal">
           <div class="review-card">
             <div class="review-stars mb-2">★★★★★</div>
-            <p class="mb-3">جودة تنفيذ عالية والتزام بالمواعيد، تم تفصيل الخزائن وتركيب الباركيه باحترافية تامة في الخبر.</p>
-            <strong>عميل - الخبر</strong>
+            <p class="mb-3" data-i18n="rev.r1.text">جودة تنفيذ عالية والتزام بالمواعيد، تم تفصيل الخزائن وتركيب الباركيه باحترافية تامة في الخبر.</p>
+            <strong data-i18n="rev.r1.name">عميل - الخبر</strong>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
           <div class="review-card">
             <div class="review-stars mb-2">★★★★★</div>
-            <p class="mb-3">فريق محترف من اختيار أقمشة الستائر وتفصيلها لغاية التركيب، النتيجة فاقت التوقعات والتشطيب ممتاز.</p>
-            <strong>عميل - القطيف</strong>
+            <p class="mb-3" data-i18n="rev.r2.text">فريق محترف من اختيار أقمشة الستائر وتفصيلها لغاية التركيب، النتيجة فاقت التوقعات والتشطيب ممتاز.</p>
+            <strong data-i18n="rev.r2.name">عميل - القطيف</strong>
           </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.2s">
           <div class="review-card">
             <div class="review-stars mb-2">★★★★★</div>
-            <p class="mb-3">أسعار مناسبة وخامات ممتازة في الباركيه والشيبورد، تعامل راقٍ وسرعة في الإنجاز بالدمام.</p>
-            <strong>عميل - الدمام</strong>
+            <p class="mb-3" data-i18n="rev.r3.text">أسعار مناسبة وخامات ممتازة في الباركيه والشيبورد، تعامل راقٍ وسرعة في الإنجاز بالدمام.</p>
+            <strong data-i18n="rev.r3.name">عميل - الدمام</strong>
           </div>
         </div>
       </div>
+
+      <!-- فورم إضافة تقييم -->
+      <div class="row justify-content-center mb-5 reveal">
+        <div class="col-lg-7">
+          <div class="review-form-wrap text-center">
+            <h4 class="mb-2" data-i18n="rev.form.title">شاركنا رأيك</h4>
+            <p class="section-sub mx-auto mb-3" data-i18n="rev.form.sub">عملنا معك؟ نسعد جداً بتقييمك، رأيك يظهر مباشرة في قسم آراء العملاء</p>
+            <form id="gtReviewForm">
+              <label class="d-block" data-i18n="rev.form.ratingLabel">تقييمك</label>
+              <div class="star-rating-input" id="starRatingInput">
+                <i class="fa-solid fa-star" data-val="5"></i>
+                <i class="fa-solid fa-star" data-val="4"></i>
+                <i class="fa-solid fa-star" data-val="3"></i>
+                <i class="fa-solid fa-star" data-val="2"></i>
+                <i class="fa-solid fa-star" data-val="1"></i>
+              </div>
+              <input type="hidden" id="reviewRatingValue" value="5">
+              <div class="row g-3 mt-1 text-start">
+                <div class="col-md-6">
+                  <label data-i18n="rev.form.nameLabel">الاسم</label>
+                  <input type="text" class="form-control" id="reviewName" data-i18n-ph="rev.form.namePh" placeholder="اكتب اسمك" required>
+                </div>
+                <div class="col-md-6">
+                  <label data-i18n="rev.form.cityLabel">المدينة (اختياري)</label>
+                  <input type="text" class="form-control" id="reviewCity" data-i18n-ph="rev.form.cityPh" placeholder="مثال: الدمام">
+                </div>
+                <div class="col-12">
+                  <label data-i18n="rev.form.textLabel">تعليقك</label>
+                  <textarea class="form-control" id="reviewText" rows="3" data-i18n-ph="rev.form.textPh" placeholder="شاركنا تجربتك معنا" required></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn-submit-review mt-3" id="reviewSubmitBtn">
+                <i class="fa-solid fa-paper-plane"></i> <span data-i18n="rev.form.submit">إرسال التقييم</span>
+              </button>
+              <div id="reviewFormStatus" class="mt-3"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div class="row g-4 text-center">
         <div class="col-6 col-md-3 reveal trust-item">
           <div class="trust-icon"><i class="fa-solid fa-headset"></i></div>
-          <p class="mt-2 mb-0 fw-bold">خدمة عملاء</p>
+          <p class="mt-2 mb-0 fw-bold" data-i18n="trust.t1">خدمة عملاء</p>
         </div>
         <div class="col-6 col-md-3 reveal trust-item" style="transition-delay:.1s">
           <div class="trust-icon"><i class="fa-solid fa-rotate-left"></i></div>
-          <p class="mt-2 mb-0 fw-bold">إرجاع وتبديل</p>
+          <p class="mt-2 mb-0 fw-bold" data-i18n="trust.t2">إرجاع وتبديل</p>
         </div>
         <div class="col-6 col-md-3 reveal trust-item" style="transition-delay:.2s">
           <div class="trust-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-          <p class="mt-2 mb-0 fw-bold">دفع إلكتروني</p>
+          <p class="mt-2 mb-0 fw-bold" data-i18n="trust.t3">دفع إلكتروني</p>
         </div>
         <div class="col-6 col-md-3 reveal trust-item" style="transition-delay:.3s">
           <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
-          <p class="mt-2 mb-0 fw-bold">توصيل سريع</p>
+          <p class="mt-2 mb-0 fw-bold" data-i18n="trust.t4">توصيل سريع</p>
         </div>
       </div>
     </div>
@@ -2211,63 +2395,63 @@
   <section class="py-5 bg-white" id="faq">
     <div class="container py-4">
       <div class="text-center mb-5 reveal">
-        <div class="section-eyebrow">استفساراتكم</div>
-        <h2 class="section-title">الأسئلة <span>الشائعة</span></h2>
+        <div class="section-eyebrow" data-i18n="faq.eyebrow">استفساراتكم</div>
+        <h2 class="section-title" data-i18n="faq.title">الأسئلة <span data-i18n="faq.titleSpan">الشائعة</span></h2>
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-9 reveal">
           <div class="accordion" id="faqAccordion">
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">كم تستغرق مدة تنفيذ أعمال النجارة وتركيب الباركيه؟</button>
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" data-i18n="faq.q1.q">كم تستغرق مدة تنفيذ أعمال النجارة وتركيب الباركيه؟</button>
               </h2>
               <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">تعتمد المدة على مساحة المشروع ونوع التفصيل، وعادة ما يستغرق تركيب الباركيه من يوم إلى يومين، بينما التفصيل الخشبي المخصص يتم تحديد وقته بدقة والالتزام بموعد التسليم.</div>
+                <div class="accordion-body" data-i18n="faq.q1.a">تعتمد المدة على مساحة المشروع ونوع التفصيل، وعادة ما يستغرق تركيب الباركيه من يوم إلى يومين، بينما التفصيل الخشبي المخصص يتم تحديد وقته بدقة والالتزام بموعد التسليم.</div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faq2">هل توفرون تفصيل وتركيب الستائر بمقاسات مخصصة؟</button>
+                  data-bs-target="#faq2" data-i18n="faq.q2.q">هل توفرون تفصيل وتركيب الستائر بمقاسات مخصصة؟</button>
               </h2>
               <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">نعم، نوفر خدمة المعاينة ورفع المقاسات وتفصيل كافة أنواع الستائر (مودرن، كلاسيك، رول، بلاك أوت) بأقمشة عالية الجودة مع التركيب الاحترافي.</div>
+                <div class="accordion-body" data-i18n="faq.q2.a">نعم، نوفر خدمة المعاينة ورفع المقاسات وتفصيل كافة أنواع الستائر (مودرن، كلاسيك، رول، بلاك أوت) بأقمشة عالية الجودة مع التركيب الاحترافي.</div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faq3">هل الشيبورد مناسب للمطابخ والحمامات؟</button>
+                  data-bs-target="#faq3" data-i18n="faq.q3.q">هل الشيبورد مناسب للمطابخ والحمامات؟</button>
               </h2>
               <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">نعم، ألواح SPC مقاومة للماء والرطوبة بالكامل وهي الخيار الأمثل للمساحات المعرضة للماء والحرارة.</div>
+                <div class="accordion-body" data-i18n="faq.q3.a">نعم، ألواح SPC مقاومة للماء والرطوبة بالكامل وهي الخيار الأمثل للمساحات المعرضة للماء والحرارة.</div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faqMaint">هل تقدمون خدمات صيانة للأعمال المنفذة سابقاً أو المنازل القديمة؟</button>
+                  data-bs-target="#faqMaint" data-i18n="faq.q4.q">هل تقدمون خدمات صيانة للأعمال المنفذة سابقاً أو المنازل القديمة؟</button>
               </h2>
               <div id="faqMaint" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">نعم، لدينا قسم صيانة مخصص لإصلاح الأبواب والخزائن، معالجة مكانيزمات الستائر، ترميم أجزاء الباركيه المتضررة، وإصلاح ألواح الشيبورد والبرماتريك، سواء كانت من تنفيذنا أو من تنفيذ جهة أخرى.</div>
+                <div class="accordion-body" data-i18n="faq.q4.a">نعم، لدينا قسم صيانة مخصص لإصلاح الأبواب والخزائن، معالجة مكانيزمات الستائر، ترميم أجزاء الباركيه المتضررة، وإصلاح ألواح الشيبورد والبرماتريك، سواء كانت من تنفيذنا أو من تنفيذ جهة أخرى.</div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faq4">ما هي المناطق التي تخدمونها؟</button>
+                  data-bs-target="#faq4" data-i18n="faq.q5.q">ما هي المناطق التي تخدمونها؟</button>
               </h2>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">نغطي كافة مدن ومحافظات المنطقة الشرقية (الدمام، الخبر، الظهران، القطيف، سيهات، عنك، الجبيل، الأحساء، رأس تنورة، بقيق، الخفجي، حفر الباطن، والنعيرية). كما نقدم خدماتنا للمشاريع الخاصة والفلل في <strong>مدينة الطائف</strong> (الهدا، الشفا، الحوية، الوسام، وغيرها) وكبرى مدن المملكة (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق.</div>
+                <div class="accordion-body" data-i18n="faq.q5.a">نغطي كافة مدن ومحافظات المنطقة الشرقية (الدمام، الخبر، الظهران، القطيف، سيهات، عنك، الجبيل، الأحساء، رأس تنورة، بقيق، الخفجي، حفر الباطن، والنعيرية). كما نقدم خدماتنا للمشاريع الخاصة والفلل في مدينة الطائف (الهدا، الشفا، الحوية، الوسام، وغيرها) وكبرى مدن المملكة (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق.</div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faq5">هل تقدمون ضماناً ومعاينة ميدانية للمشروع؟</button>
+                  data-bs-target="#faq5" data-i18n="faq.q6.q">هل تقدمون ضماناً ومعاينة ميدانية للمشروع؟</button>
               </h2>
               <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">بالتأكيد، نوفر معاينة ميدانية مجانية ورفع مقاسات دقيق، وجميع منتجاتنا وأعمال التركيب مغطاة بضمان جودة معتمد.</div>
+                <div class="accordion-body" data-i18n="faq.q6.a">بالتأكيد، نوفر معاينة ميدانية مجانية ورفع مقاسات دقيق، وجميع منتجاتنا وأعمال التركيب مغطاة بضمان جودة معتمد.</div>
               </div>
             </div>
           </div>
@@ -2280,16 +2464,16 @@
   <section class="contact-section" id="contact">
     <div class="container">
       <div class="text-center mb-5 reveal">
-        <div class="section-eyebrow">تواصل معنا</div>
-        <h2 class="section-title text-white">ابدأ <span>مشروعك</span> اليوم</h2>
-        <p class="section-sub mx-auto mt-2" style="color:var(--muted)">فريقنا جاهز للرد على استفساراتك وتقديم عرض سعر مناسب لمشروعك في المنطقة الشرقية والطائف وكافة المناطق</p>
+        <div class="section-eyebrow" data-i18n="contact.eyebrow">تواصل معنا</div>
+        <h2 class="section-title text-white" data-i18n="contact.title">ابدأ <span data-i18n="contact.titleSpan">مشروعك</span> اليوم</h2>
+        <p class="section-sub mx-auto mt-2" style="color:var(--muted)" data-i18n="contact.sub">فريقنا جاهز للرد على استفساراتك وتقديم عرض سعر مناسب لمشروعك في المنطقة الشرقية والطائف وكافة المناطق</p>
       </div>
       <div class="row g-4">
         <div class="col-md-4 reveal">
           <div class="contact-card">
             <i class="fa-brands fa-whatsapp"></i>
-            <h5 class="fw-bold text-white">واتساب</h5>
-            <p class="text-white small mb-1">راسلنا مباشرة لطلب عرض سعر سريع</p>
+            <h5 class="fw-bold text-white" data-i18n="contact.wa.title">واتساب</h5>
+            <p class="text-white small mb-1" data-i18n="contact.wa.desc">راسلنا مباشرة لطلب عرض سعر سريع</p>
             <div class="phone-num-list" dir="ltr">
               <a href="https://wa.me/966578358398" target="_blank" rel="noopener">+966 57 835 8398</a>
               <a href="https://wa.me/966564300282" target="_blank" rel="noopener">+966 56 430 0282</a>
@@ -2299,8 +2483,8 @@
         <div class="col-md-4 reveal" style="transition-delay:.1s">
           <div class="contact-card">
             <i class="fa-solid fa-phone"></i>
-            <h5 class="fw-bold text-white">اتصال هاتفي</h5>
-            <p class="text-white small mb-1">تحدث مباشرة مع فريق المبيعات</p>
+            <h5 class="fw-bold text-white" data-i18n="contact.call.title">اتصال هاتفي</h5>
+            <p class="text-white small mb-1" data-i18n="contact.call.desc">تحدث مباشرة مع فريق المبيعات</p>
             <div class="phone-num-list" dir="ltr">
               <a href="tel:+966578358398">+966 57 835 8398</a>
               <a href="tel:+966564300282">+966 56 430 0282</a>
@@ -2310,7 +2494,7 @@
         <div class="col-md-4 reveal" style="transition-delay:.2s">
           <div class="contact-card">
             <i class="fa-solid fa-share-nodes"></i>
-            <h5 class="fw-bold">تابعنا</h5>
+            <h5 class="fw-bold" data-i18n="contact.follow.title">تابعنا</h5>
             <div class="social-icons mt-2">
               <a href="https://www.tiktok.com/@golden_table0" target="_blank" rel="noopener"><i
                   class="fa-brands fa-tiktok"></i></a>
@@ -2324,66 +2508,66 @@
       <div class="row justify-content-center">
         <div class="col-lg-9 reveal">
           <div class="contact-form-wrap">
-            <h4 class="mb-2">اطلب عرض سعرك الآن</h4>
-            <p class="form-sub mb-4">عبّي البيانات دي وهتوصلنا مباشرة على واتساب عشان نرد عليك بأسرع وقت</p>
+            <h4 class="mb-2" data-i18n="contact.form.title">اطلب عرض سعرك الآن</h4>
+            <p class="form-sub mb-4" data-i18n="contact.form.sub">عبّي البيانات دي وهتوصلنا مباشرة على واتساب عشان نرد عليك بأسرع وقت</p>
             <form class="gt-form" id="gtContactForm">
               <div class="row g-3">
                 <div class="col-md-6">
-                  <label>الاسم الكريم</label>
-                  <input type="text" class="form-control" id="gtName" placeholder="اكتب اسمك" required>
+                  <label data-i18n="contact.form.nameLabel">الاسم الكريم</label>
+                  <input type="text" class="form-control" id="gtName" data-i18n-ph="contact.form.namePh" placeholder="اكتب اسمك" required>
                 </div>
                 <div class="col-md-6">
-                  <label>رقم الجوال (واتساب)</label>
+                  <label data-i18n="contact.form.phoneLabel">رقم الجوال (واتساب)</label>
                   <input type="tel" class="form-control" id="gtPhone" placeholder="05XXXXXXXX" dir="ltr" required>
                 </div>
                 <div class="col-md-6">
-                  <label>نوع الخدمة المطلوبة</label>
+                  <label data-i18n="contact.form.serviceLabel">نوع الخدمة المطلوبة</label>
                   <select class="form-select" id="gtService" required>
-                    <option value="أعمال النجارة والتفصيل">أعمال النجارة والتفصيل المخصص</option>
-                    <option value="تفصيل وتركيب الستائر">تفصيل وتركيب الستائر الفاخرة</option>
-                    <option value="أرضيات باركيه">أرضيات باركيه خشبية</option>
-                    <option value="بديل الشيبورد SPC">بديل الشيبورد SPC المقاوم للماء</option>
-                    <option value="ألواح برماتريك جدارية">ألواح برماتريك جدارية مودرن</option>
-                    <option value="ديكور وتشطيب متكامل">ديكور وتشطيب متكامل للفيلا / الشقة</option>
-                    <option value="صيانة أعمال نجارة وديكور">صيانة أعمال نجارة وديكور سابقة</option>
-                    <option value="استشارة ومعاينة ميدانية">طلب استشارة ومعاينة ميدانية</option>
+                    <option value="أعمال النجارة والتفصيل" data-i18n="contact.form.svc1">أعمال النجارة والتفصيل المخصص</option>
+                    <option value="تفصيل وتركيب الستائر" data-i18n="contact.form.svc2">تفصيل وتركيب الستائر الفاخرة</option>
+                    <option value="أرضيات باركيه" data-i18n="contact.form.svc3">أرضيات باركيه خشبية</option>
+                    <option value="بديل الشيبورد SPC" data-i18n="contact.form.svc4">بديل الشيبورد SPC المقاوم للماء</option>
+                    <option value="ألواح برماتريك جدارية" data-i18n="contact.form.svc5">ألواح برماتريك جدارية مودرن</option>
+                    <option value="ديكور وتشطيب متكامل" data-i18n="contact.form.svc6">ديكور وتشطيب متكامل للفيلا / الشقة</option>
+                    <option value="صيانة أعمال نجارة وديكور" data-i18n="contact.form.svc7">صيانة أعمال نجارة وديكور سابقة</option>
+                    <option value="استشارة ومعاينة ميدانية" data-i18n="contact.form.svc8">طلب استشارة ومعاينة ميدانية</option>
                   </select>
                 </div>
                 <div class="col-md-6">
-                  <label>المدينة / المنطقة</label>
+                  <label data-i18n="contact.form.cityLabel">المدينة / المنطقة</label>
                   <select class="form-select" id="gtCity" required>
-                    <option value="" disabled selected>اختر مدينتك أو منطقتك...</option>
-                    <optgroup label="مدن ومحافظات المنطقة الشرقية">
-                      <option value="الدمام">الدمام (كافة الأحياء)</option>
-                      <option value="الخبر">الخبر (الحزام الذهبي، الراكة، العليا...)</option>
-                      <option value="الظهران">الظهران (الدانة، الدوحة، الجامعة...)</option>
-                      <option value="القطيف">القطيف (الناصرة، المجيدية، تاروت، صفوى...)</option>
-                      <option value="سيهات">سيهات (الغدير، الكوثر...)</option>
-                      <option value="عنك">عنك وضواحيها</option>
-                      <option value="الجبيل">الجبيل والجبيل الصناعية (الفناتير، جلمودة...)</option>
-                      <option value="الأحساء">الأحساء (الهفوف، المبرز، العيون، العمران)</option>
-                      <option value="رأس تنورة">رأس تنورة (رحيمة)</option>
-                      <option value="بقيق">بقيق</option>
-                      <option value="الخفجي">الخفجي</option>
-                      <option value="حفر الباطن">حفر الباطن</option>
-                      <option value="النعيرية وقرية العليا">النعيرية وقرية العليا</option>
+                    <option value="" disabled selected data-i18n="contact.form.cityPh">اختر مدينتك أو منطقتك...</option>
+                    <optgroup label="مدن ومحافظات المنطقة الشرقية" data-i18n-label="contact.form.grp1">
+                      <option value="الدمام" data-i18n="contact.form.city1">الدمام (كافة الأحياء)</option>
+                      <option value="الخبر" data-i18n="contact.form.city2">الخبر (الحزام الذهبي، الراكة، العليا...)</option>
+                      <option value="الظهران" data-i18n="contact.form.city3">الظهران (الدانة، الدوحة، الجامعة...)</option>
+                      <option value="القطيف" data-i18n="contact.form.city4">القطيف (الناصرة، المجيدية، تاروت، صفوى...)</option>
+                      <option value="سيهات" data-i18n="contact.form.city5">سيهات (الغدير، الكوثر...)</option>
+                      <option value="عنك" data-i18n="contact.form.city6">عنك وضواحيها</option>
+                      <option value="الجبيل" data-i18n="contact.form.city7">الجبيل والجبيل الصناعية (الفناتير، جلمودة...)</option>
+                      <option value="الأحساء" data-i18n="contact.form.city8">الأحساء (الهفوف، المبرز، العيون، العمران)</option>
+                      <option value="رأس تنورة" data-i18n="contact.form.city9">رأس تنورة (رحيمة)</option>
+                      <option value="بقيق" data-i18n="contact.form.city10">بقيق</option>
+                      <option value="الخفجي" data-i18n="contact.form.city11">الخفجي</option>
+                      <option value="حفر الباطن" data-i18n="contact.form.city12">حفر الباطن</option>
+                      <option value="النعيرية وقرية العليا" data-i18n="contact.form.city13">النعيرية وقرية العليا</option>
                     </optgroup>
-                    <optgroup label="مدينة الطائف والمشاريع الخاصة">
-                      <option value="الطائف - الهدا والشفا والوسام">الطائف (الهدا، الشفا، الوسام)</option>
-                      <option value="الطائف - الحوية وباقي الأحياء">الطائف (الحوية، جبرة، الردف، الخالدية...)</option>
-                      <option value="الرياض">الرياض (مشاريع خاصة)</option>
-                      <option value="جدة ومكة المكرمة">جدة ومكة المكرمة (مشاريع خاصة)</option>
+                    <optgroup label="مدينة الطائف والمشاريع الخاصة" data-i18n-label="contact.form.grp2">
+                      <option value="الطائف - الهدا والشفا والوسام" data-i18n="contact.form.city14">الطائف (الهدا، الشفا، الوسام)</option>
+                      <option value="الطائف - الحوية وباقي الأحياء" data-i18n="contact.form.city15">الطائف (الحوية، جبرة، الردف، الخالدية...)</option>
+                      <option value="الرياض" data-i18n="contact.form.city16">الرياض (مشاريع خاصة)</option>
+                      <option value="جدة ومكة المكرمة" data-i18n="contact.form.city17">جدة ومكة المكرمة (مشاريع خاصة)</option>
                     </optgroup>
-                    <option value="مدينة أخرى">مدينة أخرى (سأذكرها بالتفاصيل)</option>
+                    <option value="مدينة أخرى" data-i18n="contact.form.city18">مدينة أخرى (سأذكرها بالتفاصيل)</option>
                   </select>
                 </div>
                 <div class="col-12">
-                  <label>تفاصيل الطلب أو المقاسات (اختياري)</label>
+                  <label data-i18n="contact.form.msgLabel">تفاصيل الطلب أو المقاسات (اختياري)</label>
                   <textarea class="form-control" id="gtMessage" rows="3"
-                    placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
+                    data-i18n-ph="contact.form.msgPh" placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
                 </div>
                 <div class="col-12 mt-3">
-                  <button type="submit" class="btn-submit-wa" id="gtSubmitBtn"><i class="fa-brands fa-whatsapp fs-5"></i> إرسال الطلب عبر واتساب</button>
+                  <button type="submit" class="btn-submit-wa" id="gtSubmitBtn"><i class="fa-brands fa-whatsapp fs-5"></i> <span data-i18n="contact.form.submit">إرسال الطلب عبر واتساب</span></button>
                   <div id="formStatus"></div>
                 </div>
               </div>
@@ -2398,7 +2582,7 @@
   <div class="floating-btns">
     <div class="fbtn-wrap">
       <div class="fbtn-menu" id="waMenu">
-        <div class="menu-label">تواصل واتساب</div>
+        <div class="menu-label" data-i18n="float.waLabel">تواصل واتساب</div>
         <a href="https://wa.me/966578358398" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +966 57 835 8398</a>
         <a href="https://wa.me/966564300282" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +966 56 430 0282</a>
       </div>
@@ -2406,7 +2590,7 @@
     </div>
     <div class="fbtn-wrap">
       <div class="fbtn-menu" id="callMenu">
-        <div class="menu-label">اتصال هاتفي</div>
+        <div class="menu-label" data-i18n="float.callLabel">اتصال هاتفي</div>
         <a href="tel:+966578358398"><i class="fa-solid fa-phone"></i> +966 57 835 8398</a>
         <a href="tel:+966564300282"><i class="fa-solid fa-phone"></i> +966 56 430 0282</a>
       </div>
@@ -2423,8 +2607,8 @@
         <a href="tel:+966578358398"><i class="fa-solid fa-phone"></i> +966 57 835 8398</a>
         <a href="tel:+966564300282"><i class="fa-solid fa-phone"></i> +966 56 430 0282</a>
       </div>
-      <p class="mb-1">© 2026 الطاولة الذهبية للنجارة والديكور - جميع الحقوق محفوظة</p>
-      <p class="mb-0 small">تم التصميم بواسطة <a class="credit"
+      <p class="mb-1" data-i18n="footer.rights">© 2026 الطاولة الذهبية للنجارة والديكور - جميع الحقوق محفوظة</p>
+      <p class="mb-0 small"><span data-i18n="footer.credit">تم التصميم بواسطة</span> <a class="credit"
           href="https://www.facebook.com/profile.php?id=100090592885243&locale=ar_AR" target="_blank"
           rel="noopener">GMTWEB</a></p>
     </div>
@@ -2515,17 +2699,21 @@
 
     /* ---------- Counters ---------- */
     const counters = document.querySelectorAll('.stat-num');
+    function runCounter(el) {
+      const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || '';
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target / 60));
+      const timer = setInterval(() => {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(timer); }
+        el.textContent = cur + suffix;
+      }, 25);
+    }
     const counterObserver = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          const target = +e.target.dataset.count;
-          let cur = 0;
-          const step = Math.max(1, Math.ceil(target / 60));
-          const timer = setInterval(() => {
-            cur += step;
-            if (cur >= target) { cur = target; clearInterval(timer); }
-            e.target.textContent = cur;
-          }, 25);
+          runCounter(e.target);
           counterObserver.unobserve(e.target);
         }
       });
@@ -2638,6 +2826,27 @@
     /* ---------- Back to top ---------- */
     document.getElementById('backTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+    /* ---------- Mobile / WhatsApp helpers ---------- */
+    function isMobileDevice() {
+      return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    }
+
+    /* يفتح رابط واتساب بأضمن طريقة تعمل على الموبايل واللاب توب معاً */
+    function openWhatsApp(url) {
+      if (isMobileDevice()) {
+        // على الموبايل: التنقل المباشر في نفس الصفحة هو الطريقة الأضمن
+        // لأن المتصفحات على الموبايل (خصوصاً متصفحات التطبيقات مثل انستجرام/فيسبوك)
+        // تمنع عادة فتح نافذة/تبويب جديدة (window.open) إلا بشروط صارمة جداً
+        window.location.href = url;
+      } else {
+        const opened = window.open(url, '_blank', 'noopener');
+        if (!opened) {
+          // popup blocker على اللاب توب: fallback لنفس الصفحة
+          window.location.href = url;
+        }
+      }
+    }
+
     /* ---------- Contact form -> WhatsApp ---------- */
     const gtForm = document.getElementById('gtContactForm');
     const formStatus = document.getElementById('formStatus');
@@ -2653,7 +2862,9 @@
         const message = document.getElementById('gtMessage').value.trim();
 
         if (!name || !phone || !city) {
-          alert('من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال');
+          alert(currentLang === 'en'
+            ? 'Please fill in your name, phone number, and choose your city before sending.'
+            : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال');
           return;
         }
 
@@ -2673,31 +2884,415 @@
         const submitBtn = document.getElementById('gtSubmitBtn');
         const origText = submitBtn.innerHTML;
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري فتح واتساب...';
+        submitBtn.innerHTML = currentLang === 'en'
+          ? '<i class="fa-solid fa-spinner fa-spin"></i> Opening WhatsApp...'
+          : '<i class="fa-solid fa-spinner fa-spin"></i> جاري فتح واتساب...';
 
-        // فتح مباشر داخل نفس نداء حدث الضغط لتفادي حظر النوافذ المنبثقة في المتصفح والموبايل
-        const opened = window.open(waUrl, '_blank', 'noopener');
+        openWhatsApp(waUrl);
 
         setTimeout(() => {
           submitBtn.disabled = false;
           submitBtn.innerHTML = origText;
           if (formStatus) {
+            const successMsg = currentLang === 'en' ? 'Your request is ready, redirecting you to WhatsApp!' : 'تم تجهيز طلبك بنجاح، وجاري نقلك لواتساب!';
+            const manualMsg = currentLang === 'en' ? "Tap here if WhatsApp didn't open automatically" : 'اضغط هنا إذا لم يفتح واتساب تلقائياً';
             formStatus.innerHTML = `
               <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.12);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
-                <div class="mb-2">✅ تم تجهيز طلبك بنجاح${opened ? '، وجاري نقلك لواتساب!' : '.'}</div>
+                <div class="mb-2">✅ ${successMsg}</div>
                 <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-sm btn-success fw-bold px-3 py-1" style="background:#25D366;border:none;">
-                  <i class="fa-brands fa-whatsapp"></i> اضغط هنا إذا لم يفتح واتساب تلقائياً
+                  <i class="fa-brands fa-whatsapp"></i> ${manualMsg}
                 </a>
               </div>`;
           }
         }, 600);
-
-        // في حال حظر المتصفح للنافذة المنبثقة نفتحها في نفس التبويب كحل بديل
-        if (!opened) {
-          window.location.href = waUrl;
-        }
       });
     }
+
+    /* ---------- Review form -> render + save to page ---------- */
+    const starRatingInput = document.getElementById('starRatingInput');
+    const reviewRatingValue = document.getElementById('reviewRatingValue');
+    const starIcons = starRatingInput ? Array.from(starRatingInput.querySelectorAll('i')) : [];
+
+    function paintStars(val) {
+      starIcons.forEach(icon => {
+        icon.classList.toggle('selected', +icon.dataset.val <= val);
+      });
+    }
+    paintStars(5);
+
+    starIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        const val = +icon.dataset.val;
+        reviewRatingValue.value = val;
+        paintStars(val);
+      });
+      icon.addEventListener('mouseenter', () => {
+        const val = +icon.dataset.val;
+        starIcons.forEach(i => i.classList.toggle('hovered', +i.dataset.val <= val));
+      });
+      icon.addEventListener('mouseleave', () => {
+        starIcons.forEach(i => i.classList.remove('hovered'));
+      });
+    });
+
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    const REVIEWS_STORAGE_KEY = 'gt_customer_reviews_v1';
+
+    function loadStoredReviews() {
+      try {
+        const raw = localStorage.getItem(REVIEWS_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : [];
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function saveStoredReviews(list) {
+      try {
+        localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(list));
+      } catch (err) { /* تجاهل أي خطأ تخزين */ }
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function renderReviewCard(review, animate) {
+      const col = document.createElement('div');
+      col.className = 'col-md-4' + (animate ? ' reveal show' : '');
+      const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+      const dateLabel = new Date(review.date).toLocaleDateString(currentLang === 'en' ? 'en-GB' : 'ar-SA');
+      const newBadge = currentLang === 'en' ? 'New' : 'جديد';
+      col.innerHTML = `
+        <div class="review-card user-submitted">
+          <div class="review-stars mb-2">${stars}</div>
+          <p class="mb-3">${escapeHtml(review.text)}</p>
+          <div class="review-name-row">
+            <strong>${escapeHtml(review.name)}${review.city ? ' - ' + escapeHtml(review.city) : ''}<span class="review-badge-new">${newBadge}</span></strong>
+            <span class="review-date">${dateLabel}</span>
+          </div>
+        </div>`;
+      // إدراج التقييمات الجديدة في أول القائمة
+      reviewsGrid.insertBefore(col, reviewsGrid.firstChild);
+    }
+
+    // عرض أي تقييمات محفوظة سابقاً من هذا المتصفح
+    loadStoredReviews().forEach(r => renderReviewCard(r, false));
+
+    const gtReviewForm = document.getElementById('gtReviewForm');
+    const reviewFormStatus = document.getElementById('reviewFormStatus');
+
+    if (gtReviewForm) {
+      gtReviewForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('reviewName').value.trim();
+        const city = document.getElementById('reviewCity').value.trim();
+        const text = document.getElementById('reviewText').value.trim();
+        const rating = +reviewRatingValue.value || 5;
+
+        if (!name || !text) {
+          alert(currentLang === 'en' ? 'Please add your name and your comment.' : 'من فضلك اكتب اسمك وتعليقك.');
+          return;
+        }
+
+        const review = { name, city, text, rating, date: new Date().toISOString() };
+
+        const stored = loadStoredReviews();
+        stored.unshift(review);
+        saveStoredReviews(stored);
+
+        renderReviewCard(review, true);
+
+        gtReviewForm.reset();
+        reviewRatingValue.value = 5;
+        paintStars(5);
+
+        const thanksMsg = currentLang === 'en'
+          ? 'Thank you! Your review has been added above.'
+          : 'شكراً لك! تمت إضافة تقييمك بالأعلى.';
+        reviewFormStatus.innerHTML = `<div class="alert" style="background:rgba(243,165,58,.12);border:1px solid var(--gold);color:var(--black-2);border-radius:10px;padding:10px 16px;display:inline-block;">✅ ${thanksMsg}</div>`;
+        setTimeout(() => { reviewFormStatus.innerHTML = ''; }, 4000);
+
+        document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    /* ============================================================
+       تبديل اللغة عربي / إنجليزي مع تبديل اتجاه الصفحة RTL/LTR
+    =============================================================*/
+    const I18N = {
+      "nav.home": { ar: "الرئيسية", en: "Home" },
+      "nav.categories": { ar: "أقسامنا", en: "Sections" },
+      "nav.quality": { ar: "جودة التصنيع", en: "Quality" },
+      "nav.catalogs": { ar: "الكتالوجات", en: "Catalogs" },
+      "nav.why": { ar: "من نحن", en: "About Us" },
+      "nav.works": { ar: "أعمالنا", en: "Our Work" },
+      "nav.location": { ar: "موقعنا", en: "Location" },
+      "nav.areas": { ar: "مناطق الخدمة", en: "Service Areas" },
+      "nav.faq": { ar: "الأسئلة الشائعة", en: "FAQ" },
+      "nav.contactBtn": { ar: "اتصل بنا", en: "Contact Us" },
+
+      "hero.eyebrow": { ar: "نجارة • ستائر • باركيه • شيبورد • برماتريك • صيانة", en: "Carpentry • Curtains • Parquet • SPC • Permatrack • Maintenance" },
+      "hero.title": { ar: "حرفية الخشب والستائر تصنع ", en: "Wood & curtain craftsmanship that creates " },
+      "hero.titleSpan": { ar: "ديكورات فاخرة", en: "luxurious décor" },
+      "hero.desc": { ar: "نحول مساحتك بأعمال نجارة متقنة، تفصيل أرقى موديلات الستائر، وأرضيات وتشطيبات خشبية عالية الجودة في المنطقة الشرقية. من اختيار الخامة والتصميم الدقيق، إلى التركيب الاحترافي وخدمات الصيانة الدورية، لنضمن لك لمسة فخامة تدوم — بخبرة أكثر من 25 عاماً.", en: "We transform your space with precise carpentry, the finest custom curtains, and premium wood flooring and finishes across the Eastern Province. From material selection and detailed design to professional installation and regular maintenance, we guarantee a lasting touch of luxury — backed by over 25 years of experience." },
+      "hero.ctaContact": { ar: "تواصل معنا", en: "Contact Us" },
+      "hero.ctaAbout": { ar: "من نحن", en: "About Us" },
+
+      "cat.eyebrow": { ar: "اكتشف نشاطاتنا وأقسامنا", en: "Discover Our Sections" },
+      "cat.title": { ar: "حلول متكاملة لكل ", en: "Complete solutions for every " },
+      "cat.titleSpan": { ar: "مساحة", en: "space" },
+      "cat.sub": { ar: "من النجارة والتفصيل والستائر إلى الأرضيات والتشطيبات الجدارية وخدمات الصيانة، نقدم حلولاً متكاملة بأعلى معايير الجودة بالمنطقة الشرقية", en: "From carpentry and custom curtains to flooring, wall finishes and maintenance services, we offer complete solutions at the highest quality standards across the Eastern Province." },
+      "cat.c1.small": { ar: "تفصيل مخصص وإتقان حرفي", en: "Custom craftsmanship" },
+      "cat.c1.title": { ar: "أعمال النجارة والتفصيل", en: "Carpentry & Custom Work" },
+      "cat.c1.desc": { ar: "تفصيل خزائن، أبواب، غرف نوم، طاولات، وديكورات خشبية مخصصة بالكامل حسب رغبتك وبأجود أنواع الأخشاب.", en: "Custom cabinets, doors, bedrooms, tables, and fully bespoke wooden décor using the finest wood types." },
+      "cat.c2.small": { ar: "أناقة وخصوصية عصرية", en: "Modern elegance & privacy" },
+      "cat.c2.title": { ar: "تفصيل وتركيب الستائر", en: "Curtain Design & Installation" },
+      "cat.c2.desc": { ar: "أحدث موديلات الستائر الكلاسيكية والمودرن، ستائر رول، بلاك أوت، وأقمشة فاخرة تناسب كافة الأذواق والمساحات.", en: "The latest classic and modern curtain styles, roller blinds, blackout curtains, and premium fabrics for every taste and space." },
+      "cat.c3.small": { ar: "أرضيات دافئة وأنيقة", en: "Warm, elegant flooring" },
+      "cat.c3.title": { ar: "قسم الباركيه", en: "Parquet Flooring" },
+      "cat.c3.desc": { ar: "خشب طبيعي وهندسي بدرجات لونية متعددة، يضيف دفء وفخامة لأي مساحة سكنية أو تجارية.", en: "Natural and engineered wood in a range of shades, adding warmth and luxury to any residential or commercial space." },
+      "cat.c4.small": { ar: "مقاوم للماء وسهل الصيانة", en: "Waterproof & easy to maintain" },
+      "cat.c4.title": { ar: "قسم الشيبورد SPC", en: "SPC Waterproof Flooring" },
+      "cat.c4.desc": { ar: "حل عملي وأنيق للمساحات المعرضة للرطوبة، يجمع بين مظهر الخشب الطبيعي ومقاومة عالية للماء والخدوش.", en: "A practical, elegant solution for moisture-prone areas, combining the look of natural wood with high water and scratch resistance." },
+      "cat.c5.small": { ar: "تصاميم جدارية عصرية", en: "Modern wall designs" },
+      "cat.c5.title": { ar: "قسم البرماتريك", en: "Permatrack Wall Panels" },
+      "cat.c5.desc": { ar: "ألواح خشبية بتصاميم هندسية دقيقة تمنح الجدران طابعاً عصرياً فاخراً، مثالية لواجهات الاستقبال والديكورات المميزة.", en: "Wood panels with precise geometric designs that give walls a modern, luxurious character — ideal for reception areas and statement décor." },
+      "cat.c6.ribbon": { ar: "خدمة سريعة", en: "Fast Service" },
+      "cat.c6.small": { ar: "إصلاح وتجديد بلا تعقيد", en: "Simple repair & renewal" },
+      "cat.c6.title": { ar: "قسم الصيانة", en: "Maintenance" },
+      "cat.c6.desc": { ar: "صيانة الأبواب والخزائن، إصلاح مكانيزمات الستائر، ترميم الباركيه المتضرر، وإصلاح ألواح الشيبورد والبرماتريك بسرعة واحترافية.", en: "Door and cabinet maintenance, curtain mechanism repair, damaged parquet restoration, and SPC/Permatrack panel repair — fast and professional." },
+
+      "quality.eyebrow": { ar: "لماذا تثق بمنتجاتنا", en: "Why Trust Our Products" },
+      "quality.title": { ar: "جودة ", en: "Manufacturing " },
+      "quality.titleSpan": { ar: "التصنيع", en: "Quality" },
+      "quality.sub": { ar: "نصنع منتجات خشبية تجمع بين المتانة والمظهر الفاخر، مطابقة لأعلى معايير الجودة العالمية", en: "We craft wooden products that combine durability with a luxurious look, meeting the highest international quality standards." },
+      "quality.q1.title": { ar: "سهولة التركيب", en: "Easy Installation" },
+      "quality.q1.desc": { ar: "تركيب سريع ونظيف بأنظمة عزل حديثة، بأقل وقت وبدون فوضى في موقع العمل.", en: "Fast, clean installation using modern sealing systems, in minimum time with no mess on site." },
+      "quality.q2.title": { ar: "مقاومة عالية", en: "High Resistance" },
+      "quality.q2.desc": { ar: "مقاوم للرطوبة والحرارة والخدوش، ومصمم ليتحمل الاستخدام اليومي لسنوات طويلة.", en: "Resistant to moisture, heat, and scratches — built to withstand daily use for many years." },
+      "quality.q3.title": { ar: "خامات فاخرة", en: "Premium Materials" },
+      "quality.q3.desc": { ar: "خشب ومواد مختارة بعناية تمنح كل مساحة لمسة دافئة وفخامة تدوم.", en: "Carefully selected wood and materials that give every space a warm, lasting touch of luxury." },
+
+      "catalog.eyebrow": { ar: "حمّل قبل ما تقرر", en: "Download Before You Decide" },
+      "catalog.title": { ar: "كتالوجات ", en: "Our Product " },
+      "catalog.titleSpan": { ar: "منتجاتنا", en: "Catalogs" },
+      "catalog.sub": { ar: "تصفح مواصفات وألوان كل قسم بالتفصيل، وحمّل الكتالوج المناسب لمشروعك", en: "Browse specifications and colors of each section in detail, and download the catalog that fits your project." },
+      "catalog.download": { ar: "تحميل الكتالوج", en: "Download Catalog" },
+      "catalog.c1.title": { ar: "كتالوج الباركيه", en: "Parquet Catalog" },
+      "catalog.c1.desc": { ar: "جميع درجات ألوان الباركيه الطبيعي والهندسي مع أنماط التركيب المتاحة.", en: "All natural and engineered parquet color shades with available installation patterns." },
+      "catalog.c1.count": { ar: "+30 موديل", en: "30+ Models" },
+      "catalog.c2.title": { ar: "كتالوج بديل الشيبورد", en: "SPC Catalog" },
+      "catalog.c2.desc": { ar: "مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.", en: "Specifications of waterproof panels with all available sizes and finishes." },
+      "catalog.c2.count": { ar: "+20 موديل", en: "20+ Models" },
+      "catalog.c3.title": { ar: "كتالوج بديل الشيبورد", en: "SPC Catalog" },
+      "catalog.c3.desc": { ar: "مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.", en: "Specifications of waterproof panels with all available sizes and finishes." },
+      "catalog.c3.count": { ar: "+20 موديل", en: "20+ Models" },
+      "catalog.c4.title": { ar: "كتالوج بديل الشيبورد", en: "SPC Catalog" },
+      "catalog.c4.desc": { ar: "مواصفات الألواح المقاومة للماء بجميع القياسات والتشطيبات المتوفرة.", en: "Specifications of waterproof panels with all available sizes and finishes." },
+      "catalog.c4.count": { ar: "+20 موديل", en: "20+ Models" },
+      "catalog.c5.title": { ar: "كتالوج البرماتريك", en: "Permatrack Catalog" },
+      "catalog.c5.desc": { ar: "تصاميم الألواح الجدارية الهندسية بمختلف الأنماط والألوان الخشبية.", en: "Geometric wall panel designs in various patterns and wood colors." },
+      "catalog.c5.count": { ar: "+15 موديل", en: "15+ Models" },
+
+      "why.eyebrow": { ar: "لماذا تختارنا", en: "Why Choose Us" },
+      "why.title": { ar: "حرفية تصنع ", en: "Craftsmanship that makes a " },
+      "why.titleSpan": { ar: "فرقاً", en: "difference" },
+      "why.p1": { ar: "تتميز الطاولة الذهبية بفريق من الحرفيين والمصممين المتخصصين في أعمال النجارة والتفصيل، الستائر، وجميع أعمال الأرضيات والتشطيبات الخشبية، بخبرة عملية تتجاوز 25 عاماً في المنطقة الشرقية. نحرص على متابعة كل مشروع من أول معاينة الموقع ورفع المقاسات وحتى تسليمه، باستخدام خامات مختارة بعناية وأدوات حديثة تضمن دقة التنفيذ ونظافة العمل.", en: "Golden Table has a team of craftsmen and designers specialized in carpentry, custom curtains, and all flooring and wood finishing work, with over 25 years of hands-on experience across the Eastern Province. We follow every project from the initial site visit and measurements through to delivery, using carefully chosen materials and modern tools that ensure precision and a clean job site." },
+      "why.p2": { ar: "سواء كان مشروعك منزلاً، مكتباً، أو محلاً تجارياً، هدفنا أن تحصل على مساحة تعكس ذوقك وتدوم معك لسنوات دون الحاجة لصيانة متكررة.", en: "Whether your project is a home, an office, or a commercial space, our goal is to give you a space that reflects your taste and lasts for years without frequent maintenance." },
+      "why.cta": { ar: "اطلب عرض سعر", en: "Request a Quote" },
+      "why.stat1": { ar: "سنة خبرة", en: "Years of Experience" },
+      "why.stat2": { ar: "مشروع منجز", en: "Completed Projects" },
+      "why.stat3": { ar: "رضا العملاء", en: "Customer Satisfaction" },
+
+      "loc.eyebrow": { ar: "زورونا", en: "Visit Us" },
+      "loc.title": { ar: "موقع ", en: "Showroom " },
+      "loc.titleSpan": { ar: "المعرض", en: "Location" },
+      "loc.infoTitle": { ar: "بيانات التواصل", en: "Contact Details" },
+      "loc.addr": { ar: "المملكة العربية السعودية - المنطقة الشرقية", en: "Saudi Arabia - Eastern Province" },
+      "loc.hours": { ar: "السبت - الخميس: 9ص - 10م", en: "Sat - Thu: 9AM - 10PM" },
+      "loc.follow": { ar: "تابعنا على مواقع التواصل لمشاهدة أحدث أعمالنا أولاً بأول.", en: "Follow us on social media to see our latest work first." },
+
+      "areas.eyebrow": { ar: "تغطية شاملة", en: "Full Coverage" },
+      "areas.title": { ar: "نخدم ", en: "We Serve the " },
+      "areas.titleSpan": { ar: "المنطقة الشرقية", en: "Eastern Province" },
+      "areas.sub": { ar: "فريقنا الحرفي يصل إليك أينما كنت في كافة مدن ومحافظات المنطقة الشرقية، بالإضافة لتنفيذ المشاريع الخاصة في الطائف ومختلف مناطق المملكة", en: "Our skilled team reaches you wherever you are across all cities and governorates of the Eastern Province, plus special projects in Taif and other regions of the Kingdom." },
+      "areas.fullCoverage": { ar: "تغطية لكافة الأحياء", en: "Coverage for all districts" },
+      "areas.fullCov2": { ar: "تغطية كاملة", en: "Full coverage" },
+      "areas.a1.title": { ar: "الدمام", en: "Dammam" },
+      "areas.a1.desc": { ar: "عاصمة المنطقة الشرقية ومركز الأعمال؛ نغطي كافة الأحياء السكنية والتجارية بدقة متناهية وسرعة إنجاز.", en: "The capital of the Eastern Province and business hub; we cover all residential and commercial districts with precision and speed." },
+      "areas.a2.title": { ar: "الخبر والظهران", en: "Khobar & Dhahran" },
+      "areas.a2.desc": { ar: "أرقى المجمعات والفلل السكنية ومراكز الأعمال؛ خدمات ديكور وتفصيل خشب وستائر بمستوى VIP.", en: "The finest residential compounds, villas, and business centers; VIP-level décor, woodwork, and curtain services." },
+      "areas.a3.title": { ar: "القطيف، سيهات وعنك", en: "Qatif, Saihat & Anak" },
+      "areas.a3.desc": { ar: "حرفية متوارثة وتفصيل راقٍ؛ نصل لكافة مدن وبلدات محافظة القطيف وسيهات وعنك وجزيرة تاروت وصفوى.", en: "Traditional craftsmanship and fine detailing; we reach every town in Qatif governorate, Saihat, Anak, Tarout Island, and Safwa." },
+      "areas.a4.title": { ar: "الجبيل ورأس تنورة", en: "Jubail & Ras Tanura" },
+      "areas.a4.desc": { ar: "خدمات متكاملة للجبيل البلد، الجبيل الصناعية ورأس تنورة؛ للشركات والمساكن ومشاريع الهيئة الملكية.", en: "Complete services for Jubail city, Jubail Industrial, and Ras Tanura; for companies, homes, and Royal Commission projects." },
+      "areas.a5.title": { ar: "الأحساء وبقيق", en: "Al-Ahsa & Baqiq" },
+      "areas.a5.desc": { ar: "نخدم جميع مدن وبلدات واحة الأحساء وبقيق؛ تصاميم تجمع بين الأصالة والفخامة الحديثة للفلل والمجالس.", en: "We serve every town in the Al-Ahsa oasis and Baqiq; designs that blend heritage with modern luxury for villas and majlises." },
+      "areas.a6.title": { ar: "حفر الباطن، الخفجي والنعيرية", en: "Hafr Al-Batin, Khafji & Nairyah" },
+      "areas.a6.desc": { ar: "تغطية شاملة لشمال وغرب المنطقة الشرقية؛ تنفيذ وشحن وتركيب أعمال النجارة والستائر والباركيه المعتمدة.", en: "Full coverage of the north and west of the Eastern Province; execution, shipping, and installation of carpentry, curtains, and parquet." },
+      "areas.special.badge": { ar: "تغطية خاصة للمشاريع والفلل الفاخرة", en: "Special coverage for luxury villas & projects" },
+      "areas.special.title": { ar: "مدينة الطائف وكبرى مدن المملكة", en: "Taif & Major Cities of the Kingdom" },
+      "areas.special.desc": { ar: "نوفر فرق عمل وتجهيزات مخصصة للانتقال المباشر وتنفيذ أرقى أعمال النجارة المخصصة، تفصيل الستائر الفاخرة، تركيب أرضيات الباركيه، بديل الشيبورد SPC وألواح البرماتريك في مدينة الطائف بكافة مناطقها (الهدا، الشفا، الحوية، الوسام، جبرة، الردف، الخالدية) بالإضافة للمشاريع الخاصة في (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق ووفق أعلى معايير الجودة والضمان.", en: "We provide dedicated teams and equipment for direct travel to execute the finest custom carpentry, luxury curtains, parquet flooring, SPC waterproof panels, and Permatrack wall panels in Taif across all its areas (Al-Hada, Al-Shifa, Al-Hawiyah, Al-Wisam, Jabrah, Al-Radf, Al-Khalidiyah), as well as special projects in Riyadh, Jeddah, and Makkah by prior arrangement, following the highest standards of quality and warranty." },
+      "areas.special.cta": { ar: "حجز معاينة لمشروعك", en: "Book a Site Visit" },
+      "areas.hint.strong": { ar: "موقعك في أي مدينة أخرى؟", en: "Are you in another city?" },
+      "areas.hint.text": { ar: "لا تتردد في التواصل معنا — نصل لجميع مواقع المنطقة الشرقية والطائف وكبرى مدن المملكة بكل احترافية وسرعة.", en: "Don't hesitate to reach out — we reach every location in the Eastern Province, Taif, and major cities of the Kingdom professionally and quickly." },
+      "areas.hint.cta": { ar: "تواصل معنا الآن", en: "Contact Us Now" },
+
+      "works.eyebrow": { ar: "معرض الأعمال", en: "Our Portfolio" },
+      "works.title": { ar: "لمسات من ", en: "Highlights from " },
+      "works.titleSpan": { ar: "أعمالنا", en: "Our Work" },
+      "works.sub": { ar: "مجموعة مختارة من مشاريعنا المنفذة في النجارة والتفصيل، الستائر، الباركيه، الشيبورد، والبرماتريك بالمنطقة الشرقية، تعكس دقة التنفيذ ومستوى التشطيب الراقي الذي نلتزم به.", en: "A selection of our completed carpentry, curtain, parquet, SPC, and Permatrack projects across the Eastern Province, reflecting the precision and premium finish we're committed to." },
+
+      "rev.eyebrow": { ar: "تقييمات عملائنا", en: "Customer Reviews" },
+      "rev.title": { ar: "آراء ", en: "Our " },
+      "rev.titleSpan": { ar: "عملائنا", en: "Customers' Reviews" },
+      "rev.r1.text": { ar: "جودة تنفيذ عالية والتزام بالمواعيد، تم تفصيل الخزائن وتركيب الباركيه باحترافية تامة في الخبر.", en: "High-quality execution and on-time delivery — the cabinets and parquet flooring in Khobar were done with complete professionalism." },
+      "rev.r1.name": { ar: "عميل - الخبر", en: "Client - Khobar" },
+      "rev.r2.text": { ar: "فريق محترف من اختيار أقمشة الستائر وتفصيلها لغاية التركيب، النتيجة فاقت التوقعات والتشطيب ممتاز.", en: "A professional team from choosing the curtain fabrics to installation — the result exceeded expectations and the finish was excellent." },
+      "rev.r2.name": { ar: "عميل - القطيف", en: "Client - Qatif" },
+      "rev.r3.text": { ar: "أسعار مناسبة وخامات ممتازة في الباركيه والشيبورد، تعامل راقٍ وسرعة في الإنجاز بالدمام.", en: "Fair prices and excellent materials for parquet and SPC, courteous service and fast delivery in Dammam." },
+      "rev.r3.name": { ar: "عميل - الدمام", en: "Client - Dammam" },
+      "rev.form.title": { ar: "شاركنا رأيك", en: "Share Your Review" },
+      "rev.form.sub": { ar: "عملنا معك؟ نسعد جداً بتقييمك، رأيك يظهر مباشرة في قسم آراء العملاء", en: "Have we worked with you? We'd love your feedback — your review appears right away in the customer reviews section." },
+      "rev.form.ratingLabel": { ar: "تقييمك", en: "Your Rating" },
+      "rev.form.nameLabel": { ar: "الاسم", en: "Name" },
+      "rev.form.namePh": { ar: "اكتب اسمك", en: "Enter your name" },
+      "rev.form.cityLabel": { ar: "المدينة (اختياري)", en: "City (optional)" },
+      "rev.form.cityPh": { ar: "مثال: الدمام", en: "e.g. Dammam" },
+      "rev.form.textLabel": { ar: "تعليقك", en: "Your Comment" },
+      "rev.form.textPh": { ar: "شاركنا تجربتك معنا", en: "Share your experience with us" },
+      "rev.form.submit": { ar: "إرسال التقييم", en: "Submit Review" },
+
+      "trust.t1": { ar: "خدمة عملاء", en: "Customer Support" },
+      "trust.t2": { ar: "إرجاع وتبديل", en: "Return & Exchange" },
+      "trust.t3": { ar: "دفع إلكتروني", en: "Online Payment" },
+      "trust.t4": { ar: "توصيل سريع", en: "Fast Delivery" },
+
+      "faq.eyebrow": { ar: "استفساراتكم", en: "Your Questions" },
+      "faq.title": { ar: "الأسئلة ", en: "Frequently Asked " },
+      "faq.titleSpan": { ar: "الشائعة", en: "Questions" },
+      "faq.q1.q": { ar: "كم تستغرق مدة تنفيذ أعمال النجارة وتركيب الباركيه؟", en: "How long does carpentry work and parquet installation take?" },
+      "faq.q1.a": { ar: "تعتمد المدة على مساحة المشروع ونوع التفصيل، وعادة ما يستغرق تركيب الباركيه من يوم إلى يومين، بينما التفصيل الخشبي المخصص يتم تحديد وقته بدقة والالتزام بموعد التسليم.", en: "The timeframe depends on the project size and the type of work. Parquet installation usually takes one to two days, while custom woodwork timing is precisely scheduled and delivery dates are honored." },
+      "faq.q2.q": { ar: "هل توفرون تفصيل وتركيب الستائر بمقاسات مخصصة؟", en: "Do you offer curtains custom-made to specific measurements?" },
+      "faq.q2.a": { ar: "نعم، نوفر خدمة المعاينة ورفع المقاسات وتفصيل كافة أنواع الستائر (مودرن، كلاسيك، رول، بلاك أوت) بأقمشة عالية الجودة مع التركيب الاحترافي.", en: "Yes, we offer site visits, measurement, and tailoring of all curtain types (modern, classic, roller, blackout) with high-quality fabrics and professional installation." },
+      "faq.q3.q": { ar: "هل الشيبورد مناسب للمطابخ والحمامات؟", en: "Is SPC flooring suitable for kitchens and bathrooms?" },
+      "faq.q3.a": { ar: "نعم، ألواح SPC مقاومة للماء والرطوبة بالكامل وهي الخيار الأمثل للمساحات المعرضة للماء والحرارة.", en: "Yes, SPC panels are fully water and moisture resistant, making them the ideal choice for areas exposed to water and heat." },
+      "faq.q4.q": { ar: "هل تقدمون خدمات صيانة للأعمال المنفذة سابقاً أو المنازل القديمة؟", en: "Do you provide maintenance for previous work or older homes?" },
+      "faq.q4.a": { ar: "نعم، لدينا قسم صيانة مخصص لإصلاح الأبواب والخزائن، معالجة مكانيزمات الستائر، ترميم أجزاء الباركيه المتضررة، وإصلاح ألواح الشيبورد والبرماتريك، سواء كانت من تنفيذنا أو من تنفيذ جهة أخرى.", en: "Yes, we have a dedicated maintenance department for repairing doors and cabinets, fixing curtain mechanisms, restoring damaged parquet, and repairing SPC and Permatrack panels — whether we installed them or another provider did." },
+      "faq.q5.q": { ar: "ما هي المناطق التي تخدمونها؟", en: "Which areas do you serve?" },
+      "faq.q5.a": { ar: "نغطي كافة مدن ومحافظات المنطقة الشرقية (الدمام، الخبر، الظهران، القطيف، سيهات، عنك، الجبيل، الأحساء، رأس تنورة، بقيق، الخفجي، حفر الباطن، والنعيرية). كما نقدم خدماتنا للمشاريع الخاصة والفلل في مدينة الطائف (الهدا، الشفا، الحوية، الوسام، وغيرها) وكبرى مدن المملكة (الرياض، جدة، مكة المكرمة) بالتنسيق المسبق.", en: "We cover all cities and governorates of the Eastern Province (Dammam, Khobar, Dhahran, Qatif, Saihat, Anak, Jubail, Al-Ahsa, Ras Tanura, Baqiq, Khafji, Hafr Al-Batin, and Nairyah). We also serve special projects and villas in Taif (Al-Hada, Al-Shifa, Al-Hawiyah, Al-Wisam, and others) and major cities of the Kingdom (Riyadh, Jeddah, Makkah) by prior arrangement." },
+      "faq.q6.q": { ar: "هل تقدمون ضماناً ومعاينة ميدانية للمشروع؟", en: "Do you offer a warranty and an on-site visit?" },
+      "faq.q6.a": { ar: "بالتأكيد، نوفر معاينة ميدانية مجانية ورفع مقاسات دقيق، وجميع منتجاتنا وأعمال التركيب مغطاة بضمان جودة معتمد.", en: "Absolutely, we offer a free on-site visit and precise measurements, and all our products and installation work are covered by a certified quality warranty." },
+
+      "contact.eyebrow": { ar: "تواصل معنا", en: "Get In Touch" },
+      "contact.title": { ar: "ابدأ ", en: "Start Your " },
+      "contact.titleSpan": { ar: "مشروعك", en: "Project" },
+      "contact.sub": { ar: "فريقنا جاهز للرد على استفساراتك وتقديم عرض سعر مناسب لمشروعك في المنطقة الشرقية والطائف وكافة المناطق", en: "Our team is ready to answer your questions and provide a fitting quote for your project across the Eastern Province, Taif, and beyond." },
+      "contact.wa.title": { ar: "واتساب", en: "WhatsApp" },
+      "contact.wa.desc": { ar: "راسلنا مباشرة لطلب عرض سعر سريع", en: "Message us directly for a quick quote" },
+      "contact.call.title": { ar: "اتصال هاتفي", en: "Phone Call" },
+      "contact.call.desc": { ar: "تحدث مباشرة مع فريق المبيعات", en: "Speak directly with our sales team" },
+      "contact.follow.title": { ar: "تابعنا", en: "Follow Us" },
+      "contact.form.title": { ar: "اطلب عرض سعرك الآن", en: "Request Your Quote Now" },
+      "contact.form.sub": { ar: "عبّي البيانات دي وهتوصلنا مباشرة على واتساب عشان نرد عليك بأسرع وقت", en: "Fill in the details below and it will reach us directly on WhatsApp so we can respond as fast as possible." },
+      "contact.form.nameLabel": { ar: "الاسم الكريم", en: "Full Name" },
+      "contact.form.namePh": { ar: "اكتب اسمك", en: "Enter your name" },
+      "contact.form.phoneLabel": { ar: "رقم الجوال (واتساب)", en: "Mobile Number (WhatsApp)" },
+      "contact.form.serviceLabel": { ar: "نوع الخدمة المطلوبة", en: "Service Needed" },
+      "contact.form.svc1": { ar: "أعمال النجارة والتفصيل المخصص", en: "Custom Carpentry Work" },
+      "contact.form.svc2": { ar: "تفصيل وتركيب الستائر الفاخرة", en: "Luxury Curtain Tailoring & Installation" },
+      "contact.form.svc3": { ar: "أرضيات باركيه خشبية", en: "Wooden Parquet Flooring" },
+      "contact.form.svc4": { ar: "بديل الشيبورد SPC المقاوم للماء", en: "Waterproof SPC Flooring" },
+      "contact.form.svc5": { ar: "ألواح برماتريك جدارية مودرن", en: "Modern Permatrack Wall Panels" },
+      "contact.form.svc6": { ar: "ديكور وتشطيب متكامل للفيلا / الشقة", en: "Complete Villa/Apartment Décor & Finishing" },
+      "contact.form.svc7": { ar: "صيانة أعمال نجارة وديكور سابقة", en: "Maintenance for Previous Work" },
+      "contact.form.svc8": { ar: "طلب استشارة ومعاينة ميدانية", en: "Consultation & Site Visit Request" },
+      "contact.form.cityLabel": { ar: "المدينة / المنطقة", en: "City / Area" },
+      "contact.form.cityPh": { ar: "اختر مدينتك أو منطقتك...", en: "Select your city or area..." },
+      "contact.form.grp1": { ar: "مدن ومحافظات المنطقة الشرقية", en: "Eastern Province Cities" },
+      "contact.form.grp2": { ar: "مدينة الطائف والمشاريع الخاصة", en: "Taif & Special Projects" },
+      "contact.form.city1": { ar: "الدمام (كافة الأحياء)", en: "Dammam (all districts)" },
+      "contact.form.city2": { ar: "الخبر (الحزام الذهبي، الراكة، العليا...)", en: "Khobar (Golden Belt, Rakah, Ulaya...)" },
+      "contact.form.city3": { ar: "الظهران (الدانة، الدوحة، الجامعة...)", en: "Dhahran (Danah, Doha, University...)" },
+      "contact.form.city4": { ar: "القطيف (الناصرة، المجيدية، تاروت، صفوى...)", en: "Qatif (Al-Nasrah, Al-Mujaidiyah, Tarout, Safwa...)" },
+      "contact.form.city5": { ar: "سيهات (الغدير، الكوثر...)", en: "Saihat (Al-Ghadeer, Al-Kawthar...)" },
+      "contact.form.city6": { ar: "عنك وضواحيها", en: "Anak & suburbs" },
+      "contact.form.city7": { ar: "الجبيل والجبيل الصناعية (الفناتير، جلمودة...)", en: "Jubail & Jubail Industrial (Al-Fanateer, Jalmudah...)" },
+      "contact.form.city8": { ar: "الأحساء (الهفوف، المبرز، العيون، العمران)", en: "Al-Ahsa (Hofuf, Mubarraz, Al-Oyoun, Al-Omran)" },
+      "contact.form.city9": { ar: "رأس تنورة (رحيمة)", en: "Ras Tanura (Rahima)" },
+      "contact.form.city10": { ar: "بقيق", en: "Baqiq" },
+      "contact.form.city11": { ar: "الخفجي", en: "Khafji" },
+      "contact.form.city12": { ar: "حفر الباطن", en: "Hafr Al-Batin" },
+      "contact.form.city13": { ar: "النعيرية وقرية العليا", en: "Nairyah & Qaryat Al-Ulya" },
+      "contact.form.city14": { ar: "الطائف (الهدا، الشفا، الوسام)", en: "Taif (Al-Hada, Al-Shifa, Al-Wisam)" },
+      "contact.form.city15": { ar: "الطائف (الحوية، جبرة، الردف، الخالدية...)", en: "Taif (Al-Hawiyah, Jabrah, Al-Radf, Al-Khalidiyah...)" },
+      "contact.form.city16": { ar: "الرياض (مشاريع خاصة)", en: "Riyadh (special projects)" },
+      "contact.form.city17": { ar: "جدة ومكة المكرمة (مشاريع خاصة)", en: "Jeddah & Makkah (special projects)" },
+      "contact.form.city18": { ar: "مدينة أخرى (سأذكرها بالتفاصيل)", en: "Another city (I'll specify in details)" },
+      "contact.form.msgLabel": { ar: "تفاصيل الطلب أو المقاسات (اختياري)", en: "Request Details or Measurements (optional)" },
+      "contact.form.msgPh": { ar: "اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق", en: "Add the space size or any notes that help us prepare an accurate quote" },
+      "contact.form.submit": { ar: "إرسال الطلب عبر واتساب", en: "Send Request via WhatsApp" },
+
+      "float.waLabel": { ar: "تواصل واتساب", en: "WhatsApp Contact" },
+      "float.callLabel": { ar: "اتصال هاتفي", en: "Phone Call" },
+
+      "footer.rights": { ar: "© 2026 الطاولة الذهبية للنجارة والديكور - جميع الحقوق محفوظة", en: "© 2026 Golden Table Carpentry & Décor - All Rights Reserved" },
+      "footer.credit": { ar: "تم التصميم بواسطة", en: "Designed by" }
+    };
+
+    let currentLang = localStorage.getItem('gt_lang') || 'ar';
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const entry = I18N[key];
+        if (entry) el.textContent = entry[lang];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        const entry = I18N[key];
+        if (entry) el.setAttribute('placeholder', entry[lang]);
+      });
+      document.querySelectorAll('[data-i18n-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-label');
+        const entry = I18N[key];
+        if (entry) el.setAttribute('label', entry[lang]);
+      });
+
+      const langSwitchLabel = document.getElementById('langSwitchLabel');
+      if (langSwitchLabel) langSwitchLabel.textContent = lang === 'ar' ? 'EN' : 'AR';
+
+      // إعادة تحميل ملف Bootstrap RTL/LTR المناسب
+      const bsCss = document.getElementById('bsRtlCss');
+      if (bsCss) {
+        bsCss.href = lang === 'ar'
+          ? 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css'
+          : 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css';
+      }
+
+      localStorage.setItem('gt_lang', lang);
+
+      if (reviewsGrid) {
+        reviewsGrid.querySelectorAll('.user-submitted').forEach(el => el.closest('.col-md-4').remove());
+        loadStoredReviews().forEach(r => renderReviewCard(r, false));
+      }
+    }
+
+    const langSwitchBtn = document.getElementById('langSwitchBtn');
+    if (langSwitchBtn) {
+      langSwitchBtn.addEventListener('click', () => {
+        applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+      });
+    }
+
+    applyLanguage(currentLang);
   </script>
 </body>
 
