@@ -8,7 +8,7 @@
   <meta name="description"
     content="الطاولة الذهبية لأعمال النجارة وتفصيل الستائر وتركيب أرضيات الباركيه، بديل الشيبورد (SPC) المقاوم للماء، وألواح البرماتريك بالمنطقة الشرقية (الدمام، الخبر، الظهران، القطيف، سيهات، عنك، الجبيل، الأحساء، بقيق، الخفجي، حفر الباطن) والطائف. اطلب معاينة وعرض سعر الآن.">
   <meta name="keywords"
-    content="نجارة, تفصيل ستائر, تركيب ستاير, ستاير, ستائر رول, باركيه, تركيب باركيه, بديل الشيبورد, SPC, ارضيات SPC, برماتريك, ديكور خشبي, ارضيات خشبية, نجارة الدمام, ستاير الدمام, باركيه الخبر, ستائر الخبر, نجارة القطيف, ستاير سيهات, نجارة الجبيل, باركيه الاحساء, ديكور الطائف, ستائر الطائف, باركيه الطائف, الطاولة الذهبية">
+    content="نجارة, تفصيل ستائر, تركيب ستاير, ستاير, ستائر رول, باركيه, تركيب باركيه, بديل الشيبورد, SPC, ارضيات SPC, برماتريك, ديكور خشبي, ارضيات خشبية, صيانة نجارة, صيانة أبواب, نجارة الدمام, ستاير الدمام, باركيه الخبر, ستائر الخبر, نجارة القطيف, ستاير سيهات, نجارة الجبيل, باركيه الاحساء, ديكور الطائف, ستائر الطائف, باركيه الطائف, الطاولة الذهبية">
   <meta name="author" content="الطاولة الذهبية للنجارة والديكور">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0a0a">
@@ -492,6 +492,27 @@
       color: var(--gold-light);
     }
 
+    .category-card.maintenance-card .cat-overlay {
+      background: linear-gradient(180deg, rgba(11, 11, 13, .15) 0%, rgba(11, 11, 13, .95) 100%);
+    }
+
+    .maintenance-ribbon {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 800;
+      font-size: .72rem;
+      padding: 5px 14px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, .3);
+    }
+
     /* ---------- جودة التصنيع ---------- */
     .quality-card {
       border-radius: 14px;
@@ -614,6 +635,10 @@
 
     .location-info hr {
       border-color: rgba(232, 163, 60, .2);
+    }
+
+    .location-info .phone-line {
+      margin-bottom: 6px;
     }
 
     /* ---------- Gallery ---------- */
@@ -887,6 +912,24 @@
       margin-bottom: 14px;
     }
 
+    .contact-card .phone-num-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .contact-card .phone-num-list a {
+      color: var(--white);
+      font-size: .92rem;
+      opacity: .92;
+      transition: color .3s;
+    }
+
+    .contact-card .phone-num-list a:hover {
+      color: var(--gold-light);
+    }
+
     .social-icons a {
       width: 46px;
       height: 46px;
@@ -974,6 +1017,12 @@
       transform: translateY(-2px);
     }
 
+    .btn-submit-wa:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     /* ---------- Floating buttons ---------- */
     .floating-btns {
       position: fixed;
@@ -983,6 +1032,10 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
+    }
+
+    .fbtn-wrap {
+      position: relative;
     }
 
     .fbtn {
@@ -996,6 +1049,8 @@
       font-size: 1.4rem;
       box-shadow: 0 8px 20px rgba(0, 0, 0, .3);
       position: relative;
+      border: none;
+      cursor: pointer;
     }
 
     .fbtn.whatsapp {
@@ -1017,7 +1072,7 @@
     }
 
     .fbtn.call::before {
-      box-shadow: 0 0 0 0 rgba(232, 163, 60, .45);
+      box-shadow: 0 0 0 0 rgba(232, 163, 58, .45);
       animation: pulseGold 3s infinite;
     }
 
@@ -1039,6 +1094,57 @@
       100% {
         box-shadow: 0 0 0 0 rgba(232, 163, 60, 0);
       }
+    }
+
+    .fbtn-menu {
+      position: absolute;
+      bottom: 68px;
+      left: 0;
+      background: var(--black-2);
+      border: 1px solid rgba(243, 165, 58, .25);
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 190px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all .3s var(--ease);
+    }
+
+    .fbtn-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .fbtn-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: background .25s;
+    }
+
+    .fbtn-menu a i {
+      width: 18px;
+      color: var(--gold-light);
+    }
+
+    .fbtn-menu a:hover {
+      background: rgba(243, 165, 58, .12);
+    }
+
+    .fbtn-menu .menu-label {
+      font-size: .72rem;
+      color: #9a9082;
+      padding: 4px 12px 2px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
     }
 
     .back-top {
@@ -1457,6 +1563,24 @@
       transform: rotate(6deg) scale(1.05);
     }
 
+    .footer-phones {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      font-size: .88rem;
+    }
+
+    .footer-phones a {
+      color: var(--muted);
+      transition: color .3s;
+    }
+
+    .footer-phones a:hover {
+      color: var(--gold-light);
+    }
+
     @media(max-width:991px) {
       .navbar-nav {
         margin: 16px 0;
@@ -1528,9 +1652,9 @@
     <div class="container hero-content text-center">
       <div class="row justify-content-center">
         <div class="col-lg-9 mx-auto">
-          <span class="eyebrow">نجارة • ستائر • باركيه • شيبورد • برماتريك</span>
+          <span class="eyebrow">نجارة • ستائر • باركيه • شيبورد • برماتريك • صيانة</span>
           <h1>حرفية الخشب والستائر تصنع <span>ديكورات فاخرة</span></h1>
-          <p class="mx-auto">نحول مساحتك بأعمال نجارة متقنة، تفصيل أرقى موديلات الستائر، وأرضيات وتشطيبات خشبية عالية الجودة في المنطقة الشرقية. من اختيار الخامة والتصميم الدقيق، إلى التركيب الاحترافي لنضمن لك لمسة فخامة تدوم.</p>
+          <p class="mx-auto">نحول مساحتك بأعمال نجارة متقنة، تفصيل أرقى موديلات الستائر، وأرضيات وتشطيبات خشبية عالية الجودة في المنطقة الشرقية. من اختيار الخامة والتصميم الدقيق، إلى التركيب الاحترافي وخدمات الصيانة الدورية، لنضمن لك لمسة فخامة تدوم.</p>
           <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
             <a href="#contact" class="btn-gold">تواصل معنا</a>
             <a href="#why" class="btn-outline-cream">من نحن</a>
@@ -1556,7 +1680,7 @@
         </div>
         <div class="section-eyebrow">اكتشف نشاطاتنا وأقسامنا</div>
         <h2 class="section-title">حلول متكاملة لكل <span>مساحة</span></h2>
-        <p class="section-sub mx-auto mt-2">من النجارة والتفصيل والستائر إلى الأرضيات والتشطيبات الجدارية، نقدم خدمات متكاملة بأعلى معايير الجودة بالمنطقة الشرقية</p>
+        <p class="section-sub mx-auto mt-2">من النجارة والتفصيل والستائر إلى الأرضيات والتشطيبات الجدارية وخدمات الصيانة، نقدم حلولاً متكاملة بأعلى معايير الجودة بالمنطقة الشرقية</p>
       </div>
       <div class="row g-4 justify-content-center">
         <!-- النجارة والتفصيل -->
@@ -1602,7 +1726,7 @@
           </div>
         </div>
         <!-- الشيبورد SPC -->
-        <div class="col-lg-6 col-md-6 reveal" style="transition-delay:.1s">
+        <div class="col-lg-4 col-md-6 reveal">
           <div class="category-card">
             <img src="https://images.unsplash.com/photo-1575204015311-0fe377370780?w=900&q=80&auto=format&fit=crop"
               alt="قسم الشيبورد">
@@ -1616,7 +1740,7 @@
           </div>
         </div>
         <!-- البرماتريك -->
-        <div class="col-lg-6 col-md-6 reveal" style="transition-delay:.2s">
+        <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.1s">
           <div class="category-card">
             <img src="https://images.unsplash.com/photo-1738666831048-fc9e53345692?w=900&q=80&auto=format&fit=crop"
               alt="قسم البرماتريك">
@@ -1626,6 +1750,21 @@
               <h3>قسم البرماتريك</h3>
               <div class="cat-line"></div>
               <p class="cat-desc mb-0 mt-2">ألواح خشبية بتصاميم هندسية دقيقة تمنح الجدران طابعاً عصرياً فاخراً، مثالية لواجهات الاستقبال والديكورات المميزة.</p>
+            </div>
+          </div>
+        </div>
+        <!-- الصيانة -->
+        <div class="col-lg-4 col-md-6 reveal" style="transition-delay:.2s">
+          <div class="category-card maintenance-card">
+            <span class="maintenance-ribbon"><i class="fa-solid fa-screwdriver-wrench"></i> خدمة سريعة</span>
+            <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=900&q=80&auto=format&fit=crop"
+              alt="قسم صيانة النجارة والديكور">
+            <div class="cat-overlay"></div>
+            <div class="cat-text">
+              <small>إصلاح وتجديد بلا تعقيد</small>
+              <h3>قسم الصيانة</h3>
+              <div class="cat-line"></div>
+              <p class="cat-desc mb-0 mt-2">صيانة الأبواب والخزائن، إصلاح مكانيزمات الستائر، ترميم الباركيه المتضرر، وإصلاح ألواح الشيبورد والبرماتريك بسرعة واحترافية.</p>
             </div>
           </div>
         </div>
@@ -1791,7 +1930,8 @@
           <div class="location-info">
             <h4 class="fw-bold mb-3">بيانات التواصل</h4>
             <p><i class="fa-solid fa-location-dot"></i> المملكة العربية السعودية - المنطقة الشرقية</p>
-            <p><i class="fa-solid fa-phone"></i> <span dir="ltr">+966 57 835 8398</span></p>
+            <p class="phone-line"><i class="fa-solid fa-phone"></i> <span dir="ltr">+966 57 835 8398</span></p>
+            <p><i class="fa-solid fa-phone"></i> <span dir="ltr">+966 56 430 0282</span></p>
             <p><i class="fa-solid fa-clock"></i> السبت - الخميس: 9ص - 10م</p>
             <hr>
             <p class="mb-0">تابعنا على مواقع التواصل لمشاهدة أحدث أعمالنا أولاً بأول.</p>
@@ -2106,6 +2246,15 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#faqMaint">هل تقدمون خدمات صيانة للأعمال المنفذة سابقاً أو المنازل القديمة؟</button>
+              </h2>
+              <div id="faqMaint" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">نعم، لدينا قسم صيانة مخصص لإصلاح الأبواب والخزائن، معالجة مكانيزمات الستائر، ترميم أجزاء الباركيه المتضررة، وإصلاح ألواح الشيبورد والبرماتريك، سواء كانت من تنفيذنا أو من تنفيذ جهة أخرى.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#faq4">ما هي المناطق التي تخدمونها؟</button>
               </h2>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
@@ -2137,18 +2286,26 @@
       </div>
       <div class="row g-4">
         <div class="col-md-4 reveal">
-          <a href="https://wa.me/966578358398" target="_blank" class="contact-card d-block text-decoration-none">
+          <div class="contact-card">
             <i class="fa-brands fa-whatsapp"></i>
             <h5 class="fw-bold text-white">واتساب</h5>
-            <p class="text-white small mb-0">راسلنا مباشرة لطلب عرض سعر سريع</p>
-          </a>
+            <p class="text-white small mb-1">راسلنا مباشرة لطلب عرض سعر سريع</p>
+            <div class="phone-num-list" dir="ltr">
+              <a href="https://wa.me/966578358398" target="_blank" rel="noopener">+966 57 835 8398</a>
+              <a href="https://wa.me/966564300282" target="_blank" rel="noopener">+966 56 430 0282</a>
+            </div>
+          </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.1s">
-          <a href="tel:+966578358398" class="contact-card d-block text-decoration-none">
+          <div class="contact-card">
             <i class="fa-solid fa-phone"></i>
             <h5 class="fw-bold text-white">اتصال هاتفي</h5>
-            <p class="text-white small mb-0">تحدث مباشرة مع فريق المبيعات</p>
-          </a>
+            <p class="text-white small mb-1">تحدث مباشرة مع فريق المبيعات</p>
+            <div class="phone-num-list" dir="ltr">
+              <a href="tel:+966578358398">+966 57 835 8398</a>
+              <a href="tel:+966564300282">+966 56 430 0282</a>
+            </div>
+          </div>
         </div>
         <div class="col-md-4 reveal" style="transition-delay:.2s">
           <div class="contact-card">
@@ -2188,6 +2345,7 @@
                     <option value="بديل الشيبورد SPC">بديل الشيبورد SPC المقاوم للماء</option>
                     <option value="ألواح برماتريك جدارية">ألواح برماتريك جدارية مودرن</option>
                     <option value="ديكور وتشطيب متكامل">ديكور وتشطيب متكامل للفيلا / الشقة</option>
+                    <option value="صيانة أعمال نجارة وديكور">صيانة أعمال نجارة وديكور سابقة</option>
                     <option value="استشارة ومعاينة ميدانية">طلب استشارة ومعاينة ميدانية</option>
                   </select>
                 </div>
@@ -2225,7 +2383,7 @@
                     placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
                 </div>
                 <div class="col-12 mt-3">
-                  <button type="submit" class="btn-submit-wa"><i class="fa-brands fa-whatsapp fs-5"></i> إرسال الطلب عبر واتساب</button>
+                  <button type="submit" class="btn-submit-wa" id="gtSubmitBtn"><i class="fa-brands fa-whatsapp fs-5"></i> إرسال الطلب عبر واتساب</button>
                   <div id="formStatus"></div>
                 </div>
               </div>
@@ -2238,8 +2396,22 @@
 
   <!-- ============ Floating buttons ============ -->
   <div class="floating-btns">
-    <a href="https://wa.me/966578358398" target="_blank" class="fbtn whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="tel:+966578358398" class="fbtn call"><i class="fa-solid fa-phone"></i></a>
+    <div class="fbtn-wrap">
+      <div class="fbtn-menu" id="waMenu">
+        <div class="menu-label">تواصل واتساب</div>
+        <a href="https://wa.me/966578358398" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +966 57 835 8398</a>
+        <a href="https://wa.me/966564300282" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> +966 56 430 0282</a>
+      </div>
+      <button type="button" class="fbtn whatsapp" id="waFbtn" aria-label="تواصل واتساب"><i class="fa-brands fa-whatsapp"></i></button>
+    </div>
+    <div class="fbtn-wrap">
+      <div class="fbtn-menu" id="callMenu">
+        <div class="menu-label">اتصال هاتفي</div>
+        <a href="tel:+966578358398"><i class="fa-solid fa-phone"></i> +966 57 835 8398</a>
+        <a href="tel:+966564300282"><i class="fa-solid fa-phone"></i> +966 56 430 0282</a>
+      </div>
+      <button type="button" class="fbtn call" id="callFbtn" aria-label="اتصال هاتفي"><i class="fa-solid fa-phone"></i></button>
+    </div>
   </div>
   <div class="back-top" id="backTop"><i class="fa-solid fa-arrow-up"></i></div>
 
@@ -2247,6 +2419,10 @@
   <footer class="text-center">
     <div class="container">
       <img src="css/logo.png" alt="الطاولة الذهبية للنجارة" class="footer-logo">
+      <div class="footer-phones" dir="ltr">
+        <a href="tel:+966578358398"><i class="fa-solid fa-phone"></i> +966 57 835 8398</a>
+        <a href="tel:+966564300282"><i class="fa-solid fa-phone"></i> +966 56 430 0282</a>
+      </div>
       <p class="mb-1">© 2026 الطاولة الذهبية للنجارة والديكور - جميع الحقوق محفوظة</p>
       <p class="mb-0 small">تم التصميم بواسطة <a class="credit"
           href="https://www.facebook.com/profile.php?id=100090592885243&locale=ar_AR" target="_blank"
@@ -2260,17 +2436,39 @@
        إعدادات سريعة - أرقام وروابط التواصل
     =============================================================*/
     const CONTACT = {
+      numbers: ["966578358398", "966564300282"],
       whatsapp: "https://wa.me/966578358398",
       phone: "tel:+966578358398",
       instagram: "https://www.instagram.com/_00golden_table",
       tiktok: "https://www.tiktok.com/@golden_table0"
     };
-    document.querySelectorAll('.fbtn.whatsapp, a[href*="wa.me"]').forEach(el => {
-      if (!el.href.includes('text=')) {
-        el.href = CONTACT.whatsapp;
-      }
+
+    /* ---------- Floating buttons: open a small number picker ---------- */
+    const waFbtn = document.getElementById('waFbtn');
+    const callFbtn = document.getElementById('callFbtn');
+    const waMenu = document.getElementById('waMenu');
+    const callMenu = document.getElementById('callMenu');
+
+    function closeAllFbtnMenus() {
+      waMenu.classList.remove('open');
+      callMenu.classList.remove('open');
+    }
+
+    waFbtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !waMenu.classList.contains('open');
+      closeAllFbtnMenus();
+      if (willOpen) waMenu.classList.add('open');
     });
-    document.querySelectorAll('.fbtn.call, a[href^="tel:"]').forEach(el => el.href = CONTACT.phone);
+    callFbtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !callMenu.classList.contains('open');
+      closeAllFbtnMenus();
+      if (willOpen) callMenu.classList.add('open');
+    });
+    document.addEventListener('click', closeAllFbtnMenus);
+    waMenu.addEventListener('click', (e) => e.stopPropagation());
+    callMenu.addEventListener('click', (e) => e.stopPropagation());
 
     /* ---------- Navbar scroll ---------- */
     const nav = document.getElementById('mainNav');
@@ -2339,7 +2537,8 @@
     const totalImages = 60;
     const totalVideos = 6;
     let mediaItems = [];
-    for (let i = 1; i <= totalImages; i++) { mediaItems.push({ type: 'image', src: `css/P%28${i}%29.png` }); }
+    /* ملاحظة: أسماء ملفات الصور "P (1).png" بمسافة قبل القوس - نفس نمط تسمية الفيديوهات "v (1).mp4" */
+    for (let i = 1; i <= totalImages; i++) { mediaItems.push({ type: 'image', src: `css/P%20%28${i}%29.png` }); }
     for (let i = 1; i <= totalVideos; i++) { mediaItems.push({ type: 'video', src: `css/v%20%28${i}%29.mp4` }); }
 
     function interleave(items) {
@@ -2367,7 +2566,8 @@
       if (item.type === 'image') {
         col.innerHTML = `
       <div class="work-item" data-src="${item.src}">
-        <img src="${item.src}" alt="عمل من أعمال الطاولة الذهبية" loading="lazy">
+        <img src="${item.src}" alt="عمل من أعمال الطاولة الذهبية" loading="lazy"
+          onerror="this.closest('.col-6').remove();">
         <div class="work-overlay"><i class="fa-solid fa-expand"></i></div>
       </div>`;
       } else {
@@ -2445,6 +2645,7 @@
     if (gtForm) {
       gtForm.addEventListener('submit', function (e) {
         e.preventDefault();
+
         const name = document.getElementById('gtName').value.trim();
         const phone = document.getElementById('gtPhone').value.trim();
         const service = document.getElementById('gtService').value;
@@ -2465,23 +2666,17 @@
           text += `📝 *تفاصيل إضافية:* ${message}\n`;
         }
 
-        const waNumber = '966578358398';
+        const waNumber = CONTACT.numbers[0];
         const encodedText = encodeURIComponent(text);
-        const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedText}`;
+        const waUrl = `https://wa.me/${waNumber}?text=${encodedText}`;
 
-        const submitBtn = gtForm.querySelector('.btn-submit-wa');
+        const submitBtn = document.getElementById('gtSubmitBtn');
         const origText = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري فتح واتساب...';
 
-        // محاولة الفتح برابط مباشر لتجاوز حظر النوافذ المنبثقة
-        const waLink = document.createElement('a');
-        waLink.href = waUrl;
-        waLink.target = '_blank';
-        waLink.rel = 'noopener noreferrer';
-        document.body.appendChild(waLink);
-        waLink.click();
-        waLink.remove();
+        // فتح مباشر داخل نفس نداء حدث الضغط لتفادي حظر النوافذ المنبثقة في المتصفح والموبايل
+        const opened = window.open(waUrl, '_blank', 'noopener');
 
         setTimeout(() => {
           submitBtn.disabled = false;
@@ -2489,13 +2684,18 @@
           if (formStatus) {
             formStatus.innerHTML = `
               <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.12);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
-                <div class="mb-2">✅ تم تجهيز طلبك بنجاح وجاري نقلك لواتساب!</div>
-                <a href="${waUrl}" target="_blank" class="btn btn-sm btn-success fw-bold px-3 py-1" style="background:#25D366;border:none;">
+                <div class="mb-2">✅ تم تجهيز طلبك بنجاح${opened ? '، وجاري نقلك لواتساب!' : '.'}</div>
+                <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-sm btn-success fw-bold px-3 py-1" style="background:#25D366;border:none;">
                   <i class="fa-brands fa-whatsapp"></i> اضغط هنا إذا لم يفتح واتساب تلقائياً
                 </a>
               </div>`;
           }
-        }, 800);
+        }, 600);
+
+        // في حال حظر المتصفح للنافذة المنبثقة نفتحها في نفس التبويب كحل بديل
+        if (!opened) {
+          window.location.href = waUrl;
+        }
       });
     }
   </script>
