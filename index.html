@@ -1768,11 +1768,16 @@
           <li class="nav-item"><a class="nav-link" href="#location" data-i18n="nav.location">موقعنا</a></li>
           <li class="nav-item"><a class="nav-link" href="#areas" data-i18n="nav.areas">مناطق الخدمة</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq" data-i18n="nav.faq">الأسئلة الشائعة</a></li>
+          <li class="nav-item d-lg-none mt-2">
+            <button type="button" class="lang-switch-btn w-100 text-center" style="border-radius: 8px;">
+              <i class="fa-solid fa-globe"></i> <span class="lang-switch-label">EN</span>
+            </button>
+          </li>
         </ul>
       </div>
       <div class="nav-socials d-none d-lg-flex">
-        <button type="button" class="lang-switch-btn" id="langSwitchBtn">
-          <i class="fa-solid fa-globe"></i> <span id="langSwitchLabel">EN</span>
+        <button type="button" class="lang-switch-btn">
+          <i class="fa-solid fa-globe"></i> <span class="lang-switch-label">EN</span>
         </button>
         <a href="https://www.instagram.com/_00golden_table" target="_blank" rel="noopener" class="nav-social-btn insta"
           title="إنستجرام">
@@ -2468,6 +2473,7 @@
       <h2 class="section-title text-white" data-i18n="contact.title">ابدأ <span data-i18n="contact.titleSpan">مشروعك</span> اليوم</h2>
       <p class="section-sub mx-auto mt-2" style="color:var(--muted)" data-i18n="contact.sub">فريقنا جاهز للرد على استفساراتك وتقديم عرض سعر مناسب لمشروعك في المنطقة الشرقية والطائف وكافة المناطق</p>
     </div>
+    
     <div class="row g-4">
       <div class="col-md-4 reveal">
         <div class="contact-card">
@@ -2480,6 +2486,7 @@
           </div>
         </div>
       </div>
+      
       <div class="col-md-4 reveal" style="transition-delay:.1s">
         <div class="contact-card">
           <i class="fa-solid fa-phone"></i>
@@ -2491,6 +2498,7 @@
           </div>
         </div>
       </div>
+      
       <div class="col-md-4 reveal" style="transition-delay:.2s">
         <div class="contact-card">
           <i class="fa-solid fa-share-nodes"></i>
@@ -2509,19 +2517,19 @@
           <h4 class="mb-2" data-i18n="contact.form.title">اطلب عرض سعرك الآن</h4>
           <p class="form-sub mb-4" data-i18n="contact.form.sub">عبّي البيانات دي وهتوصلنا مباشرة على واتساب عشان نرد عليك بأسرع وقت</p>
           
-          <form class="gt-form" id="gtContactForm">
+          <form class="gt-form" id="gtContactForm" novalidate>
             <div class="row g-3">
               <div class="col-md-6">
-                <label data-i18n="contact.form.nameLabel">الاسم الكريم</label>
-                <input type="text" class="form-control" id="gtName" data-i18n-ph="contact.form.namePh" placeholder="اكتب اسمك" required>
+                <label for="gtName" data-i18n="contact.form.nameLabel">الاسم الكريم</label>
+                <input type="text" class="form-control" id="gtName" name="gtName" data-i18n-ph="contact.form.namePh" placeholder="اكتب اسمك" required>
               </div>
               <div class="col-md-6">
-                <label data-i18n="contact.form.phoneLabel">رقم الجوال (واتساب)</label>
-                <input type="tel" class="form-control" id="gtPhone" placeholder="05XXXXXXXX" dir="ltr" required>
+                <label for="gtPhone" data-i18n="contact.form.phoneLabel">رقم الجوال (واتساب)</label>
+                <input type="tel" class="form-control" id="gtPhone" name="gtPhone" placeholder="05XXXXXXXX" dir="ltr" inputmode="tel" required>
               </div>
               <div class="col-md-6">
-                <label data-i18n="contact.form.serviceLabel">نوع الخدمة المطلوبة</label>
-                <select class="form-select" id="gtService" required>
+                <label for="gtService" data-i18n="contact.form.serviceLabel">نوع الخدمة المطلوبة</label>
+                <select class="form-select custom-select-fix" id="gtService" name="gtService" required>
                   <option value="أعمال النجارة والتفصيل" data-i18n="contact.form.svc1">أعمال النجارة والتفصيل المخصص</option>
                   <option value="تفصيل وتركيب الستائر" data-i18n="contact.form.svc2">تفصيل وتركيب الستائر الفاخرة</option>
                   <option value="أرضيات باركيه" data-i18n="contact.form.svc3">أرضيات باركيه خشبية</option>
@@ -2533,9 +2541,9 @@
                 </select>
               </div>
               <div class="col-md-6">
-                <label data-i18n="contact.form.cityLabel">المدينة / المنطقة</label>
-                <select class="form-select" id="gtCity" required>
-                  <option value="" disabled selected data-i18n="contact.form.cityPh">اختر مدينتك أو منطقتك...</option>
+                <label for="gtCity" data-i18n="contact.form.cityLabel">المدينة / المنطقة</label>
+                <select class="form-select custom-select-fix" id="gtCity" name="gtCity" required>
+                  <option value="" data-i18n="contact.form.cityPh">اختر مدينتك أو منطقتك...</option>
                   <optgroup label="مدن ومحافظات المنطقة الشرقية" data-i18n-label="contact.form.grp1">
                     <option value="الدمام" data-i18n="contact.form.city1">الدمام (كافة الأحياء)</option>
                     <option value="الخبر" data-i18n="contact.form.city2">الخبر (الحزام الذهبي، الراكة، العليا...)</option>
@@ -2561,8 +2569,8 @@
                 </select>
               </div>
               <div class="col-12">
-                <label data-i18n="contact.form.msgLabel">تفاصيل الطلب أو المقاسات (اختياري)</label>
-                <textarea class="form-control" id="gtMessage" rows="3" data-i18n-ph="contact.form.msgPh" placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
+                <label for="gtMessage" data-i18n="contact.form.msgLabel">تفاصيل الطلب أو المقاسات (اختياري)</label>
+                <textarea class="form-control" id="gtMessage" name="gtMessage" rows="3" data-i18n-ph="contact.form.msgPh" placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
               </div>
               <div class="col-12 mt-3">
                 <button type="submit" class="btn-submit-wa" id="gtSubmitBtn">
@@ -2826,90 +2834,112 @@
     /* ---------- Back to top ---------- */
     document.getElementById('backTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    /* ---------- Mobile / WhatsApp helpers ---------- */
-    function isMobileDevice() {
-      return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-    }
+    /* ---------- Quote request form -> WhatsApp (rebuilt, simpler & reliable) ---------- */
+    (function () {
+      const gtForm = document.getElementById('gtContactForm');
+      if (!gtForm) return;
 
-    /* يفتح رابط واتساب بأضمن طريقة تعمل على الموبايل واللاب توب معاً */
-    function openWhatsApp(url) {
-      if (isMobileDevice()) {
-        // على الموبايل: التنقل المباشر في نفس الصفحة هو الطريقة الأضمن
-        // لأن المتصفحات على الموبايل (خصوصاً متصفحات التطبيقات مثل انستجرام/فيسبوك)
-        // تمنع عادة فتح نافذة/تبويب جديدة (window.open) إلا بشروط صارمة جداً
-        window.location.href = url;
-      } else {
-        const opened = window.open(url, '_blank', 'noopener');
-        if (!opened) {
-          // popup blocker على اللاب توب: fallback لنفس الصفحة
-          window.location.href = url;
+      const formStatus = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('gtSubmitBtn');
+
+      const fieldName = document.getElementById('gtName');
+      const fieldPhone = document.getElementById('gtPhone');
+      const fieldService = document.getElementById('gtService');
+      const fieldCity = document.getElementById('gtCity');
+      const fieldMessage = document.getElementById('gtMessage');
+
+      function t(lang) {
+        return {
+          required: lang === 'en'
+            ? 'Please fill in your name, phone number, and choose your city before sending.'
+            : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال',
+          phoneInvalid: lang === 'en'
+            ? 'Please enter a valid phone number.'
+            : 'من فضلك أدخل رقم جوال صحيح.',
+          opening: lang === 'en' ? 'Opening WhatsApp…' : 'جاري تحويلك إلى واتساب...',
+          manual: lang === 'en' ? "Tap here if WhatsApp didn't open automatically" : 'اضغط هنا إذا لم يفتح واتساب تلقائياً'
+        };
+      }
+
+      function buildWaLink(number, text) {
+        const cleanNum = String(number).replace(/\D/g, '');
+        return `https://wa.me/${cleanNum}?text=${encodeURIComponent(text)}`;
+      }
+
+      function buildMessage(data) {
+        let text = 'السلام عليكم ورحمة الله،\n';
+        text += 'طلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n';
+        text += `👤 الاسم: ${data.name}\n`;
+        text += `📱 الجوال: ${data.phone}\n`;
+        text += `🛠 الخدمة المطلوبة: ${data.service}\n`;
+        text += `📍 المدينة / المنطقة: ${data.city}\n`;
+        if (data.message) text += `📝 تفاصيل إضافية: ${data.message}\n`;
+        return text;
+      }
+
+      gtForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const lang = typeof currentLang !== 'undefined' ? currentLang : 'ar';
+        const msgs = t(lang);
+
+        const name = fieldName.value.trim();
+        const phone = fieldPhone.value.trim();
+        const service = fieldService.value;
+        const city = fieldCity.value;
+        const message = fieldMessage.value.trim();
+
+        // تحقق أساسي من الحقول المطلوبة
+        if (!name || !phone || !city) {
+          if (formStatus) {
+            formStatus.innerHTML = `<div class="alert mt-3" style="background:rgba(220,53,69,.15);border:1px solid #dc3545;color:#fff;border-radius:10px;padding:10px 16px;">⚠️ ${msgs.required}</div>`;
+          } else {
+            alert(msgs.required);
+          }
+          (!name ? fieldName : (!phone ? fieldPhone : fieldCity)).focus();
+          return;
         }
-      }
-    }
 
-    /* ---------- Contact form -> WhatsApp ---------- */
- document.addEventListener('DOMContentLoaded', function () {
-  const gtForm = document.getElementById('gtContactForm');
-  const formStatus = document.getElementById('formStatus');
+        // تحقق بسيط من صيغة رقم الجوال (أرقام، مسافات، +، - فقط، وطول معقول)
+        const digitsOnly = phone.replace(/\D/g, '');
+        if (digitsOnly.length < 9) {
+          if (formStatus) {
+            formStatus.innerHTML = `<div class="alert mt-3" style="background:rgba(220,53,69,.15);border:1px solid #dc3545;color:#fff;border-radius:10px;padding:10px 16px;">⚠️ ${msgs.phoneInvalid}</div>`;
+          } else {
+            alert(msgs.phoneInvalid);
+          }
+          fieldPhone.focus();
+          return;
+        }
 
-  if (gtForm) {
-    gtForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+        const businessNumber = (typeof CONTACT !== 'undefined' && CONTACT.numbers && CONTACT.numbers[0]) || '966578358398';
+        const text = buildMessage({ name, phone, service, city, message });
+        const waLink = buildWaLink(businessNumber, text);
 
-      const name = document.getElementById('gtName').value.trim();
-      const phone = document.getElementById('gtPhone').value.trim();
-      const service = document.getElementById('gtService').value;
-      const city = document.getElementById('gtCity').value;
-      const message = document.getElementById('gtMessage').value.trim();
+        // تعطيل الزر مؤقتاً لمنع الإرسال المتكرر
+        if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
 
-      const lang = typeof currentLang !== 'undefined' ? currentLang : 'ar';
+        // فتح واتساب في نفس التبويب على الجوال، وتبويب جديد على الحاسوب
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+          window.location.href = waLink;
+        } else {
+          window.open(waLink, '_blank', 'noopener');
+        }
 
-      if (!name || !phone || !city) {
-        alert(lang === 'en'
-          ? 'Please fill in your name, phone number, and choose your city before sending.'
-          : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال');
-        return;
-      }
+        if (formStatus) {
+          formStatus.innerHTML = `
+            <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.15);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
+              <div class="mb-2 fw-bold">✅ ${msgs.opening}</div>
+              <a href="${waLink}" target="_blank" rel="noopener" class="btn btn-sm btn-success fw-bold px-3 py-2 mt-1" style="background:#25D366;border:none;color:#fff;display:inline-block;text-decoration:none;">
+                <i class="fa-brands fa-whatsapp me-1"></i> ${msgs.manual}
+              </a>
+            </div>`;
+        }
 
-      // بناء نص الرسالة
-      let text = `السلام عليكم ورحمة الله،\nطلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n`;
-      text += `👤 *الاسم:* ${name}\n`;
-      text += `📱 *الجوال:* ${phone}\n`;
-      text += `🛠 *الخدمة المطلوبة:* ${service}\n`;
-      text += `📍 *المدينة / المنطقة:* ${city}\n`;
-      if (message) {
-        text += `📝 *تفاصيل إضافية:* ${message}\n`;
-      }
-
-      // تجهيز الرقم وتنسيقه مجرد من الحروف والرموز
-      let rawNumber = "966578358398";
-      if (typeof CONTACT !== 'undefined' && CONTACT.numbers && CONTACT.numbers[0]) {
-        rawNumber = CONTACT.numbers[0];
-      }
-      const cleanNum = rawNumber.replace(/\D/g, '');
-      const encodedText = encodeURIComponent(text);
-
-      // الروابط المخصصة
-      const waApiUrl = `https://api.whatsapp.com/send?phone=${cleanNum}&text=${encodedText}`;
-      const waProtocolUrl = `whatsapp://send?phone=${cleanNum}&text=${encodedText}`;
-
-      window.location.href = waProtocolUrl;
-
-      if (formStatus) {
-        const successMsg = lang === 'en' ? 'Opening WhatsApp...' : 'جاري تحويلك إلى واتساب...';
-        const manualMsg = lang === 'en' ? "Tap here if WhatsApp didn't open" : 'اضغط هنا لفتح واتساب مباشرة';
-
-        formStatus.innerHTML = `
-          <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.15);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
-            <div class="mb-2 fw-bold">✅ ${successMsg}</div>
-            <a href="${waApiUrl}" target="_blank" rel="noopener" class="btn btn-sm btn-success fw-bold px-3 py-2 mt-1" style="background:#25D366;border:none;color:#fff;display:inline-block;">
-              <i class="fa-brands fa-whatsapp me-1"></i> ${manualMsg}
-            </a>
-          </div>`;
-      }
-    });
-  }
-});
+        if (submitBtn) setTimeout(() => submitBtn.removeAttribute('disabled'), 2000);
+      });
+    })();
     /* ---------- Review form -> render + save to page ---------- */
     const starRatingInput = document.getElementById('starRatingInput');
     const reviewRatingValue = document.getElementById('reviewRatingValue');
@@ -3245,7 +3275,7 @@
       "footer.credit": { ar: "تم التصميم بواسطة", en: "Designed by" }
     };
 
-    let currentLang = localStorage.getItem('gt_lang') || 'ar';
+    var currentLang = localStorage.getItem('gt_lang') || 'ar';
 
     function applyLanguage(lang) {
       currentLang = lang;
@@ -3268,8 +3298,9 @@
         if (entry) el.setAttribute('label', entry[lang]);
       });
 
-      const langSwitchLabel = document.getElementById('langSwitchLabel');
-      if (langSwitchLabel) langSwitchLabel.textContent = lang === 'ar' ? 'EN' : 'AR';
+      document.querySelectorAll('.lang-switch-label').forEach(el => {
+        el.textContent = lang === 'ar' ? 'EN' : 'AR';
+      });
 
       // إعادة تحميل ملف Bootstrap RTL/LTR المناسب
       const bsCss = document.getElementById('bsRtlCss');
@@ -3287,12 +3318,11 @@
       }
     }
 
-    const langSwitchBtn = document.getElementById('langSwitchBtn');
-    if (langSwitchBtn) {
-      langSwitchBtn.addEventListener('click', () => {
+    document.querySelectorAll('.lang-switch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
         applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
       });
-    }
+    });
 
     applyLanguage(currentLang);
   </script>
