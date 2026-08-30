@@ -1031,7 +1031,7 @@
       position: absolute;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(232, 163, 60, .15), transparent 70%);
+      background: radial-gradient(circle, rgba(232, 163, 58, .15), transparent 70%);
       bottom: -200px;
       left: -150px;
     }
@@ -2511,77 +2511,75 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-9 reveal">
-        <div class="contact-form-wrap">
-          <h4 class="mb-2" data-i18n="contact.form.title">اطلب عرض سعرك الآن</h4>
-          <p class="form-sub mb-4" data-i18n="contact.form.sub">عبّي البيانات دي وهتوصلنا مباشرة على واتساب عشان نرد عليك بأسرع وقت</p>
-          
-          <form class="gt-form" id="gtContactForm" novalidate>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="gtName" data-i18n="contact.form.nameLabel">الاسم الكريم</label>
-                <input type="text" class="form-control" id="gtName" name="gtName" data-i18n-ph="contact.form.namePh" placeholder="اكتب اسمك" required>
-              </div>
-              <div class="col-md-6">
-                <label for="gtPhone" data-i18n="contact.form.phoneLabel">رقم الجوال (واتساب)</label>
-                <input type="tel" class="form-control" id="gtPhone" name="gtPhone" placeholder="05XXXXXXXX" dir="ltr" inputmode="tel" required>
-              </div>
-              <div class="col-md-6">
-                <label for="gtService" data-i18n="contact.form.serviceLabel">نوع الخدمة المطلوبة</label>
-                <select class="form-select custom-select-fix" id="gtService" name="gtService" required>
-                  <option value="أعمال النجارة والتفصيل" data-i18n="contact.form.svc1">أعمال النجارة والتفصيل المخصص</option>
-                  <option value="تفصيل وتركيب الستائر" data-i18n="contact.form.svc2">تفصيل وتركيب الستائر الفاخرة</option>
-                  <option value="أرضيات باركيه" data-i18n="contact.form.svc3">أرضيات باركيه خشبية</option>
-                  <option value="بديل الشيبورد SPC" data-i18n="contact.form.svc4">بديل الشيبورد SPC المقاوم للماء</option>
-                  <option value="ألواح برماتريك جدارية" data-i18n="contact.form.svc5">ألواح برماتريك جدارية مودرن</option>
-                  <option value="ديكور وتشطيب متكامل" data-i18n="contact.form.svc6">ديكور وتشطيب متكامل للفيلا / الشقة</option>
-                  <option value="صيانة أعمال نجارة وديكور" data-i18n="contact.form.svc7">صيانة أعمال نجارة وديكور سابقة</option>
-                  <option value="استشارة ومعاينة ميدانية" data-i18n="contact.form.svc8">طلب استشارة ومعاينة ميدانية</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label for="gtCity" data-i18n="contact.form.cityLabel">المدينة / المنطقة</label>
-                <select class="form-select custom-select-fix" id="gtCity" name="gtCity" required>
-                  <option value="" data-i18n="contact.form.cityPh">اختر مدينتك أو منطقتك...</option>
-                  <optgroup label="مدن ومحافظات المنطقة الشرقية" data-i18n-label="contact.form.grp1">
-                    <option value="الدمام" data-i18n="contact.form.city1">الدمام (كافة الأحياء)</option>
-                    <option value="الخبر" data-i18n="contact.form.city2">الخبر (الحزام الذهبي، الراكة، العليا...)</option>
-                    <option value="الظهران" data-i18n="contact.form.city3">الظهران (الدانة، الدوحة، الجامعة...)</option>
-                    <option value="القطيف" data-i18n="contact.form.city4">القطيف (الناصرة، المجيدية، تاروت، صفوى...)</option>
-                    <option value="سيهات" data-i18n="contact.form.city5">سيهات (الغدير، الكوثر...)</option>
-                    <option value="عنك" data-i18n="contact.form.city6">عنك وضواحيها</option>
-                    <option value="الجبيل" data-i18n="contact.form.city7">الجبيل والجبيل الصناعية (الفناتير، جلمودة...)</option>
-                    <option value="الأحساء" data-i18n="contact.form.city8">الأحساء (الهفوف، المبرز، العيون، العمران)</option>
-                    <option value="رأس تنورة" data-i18n="contact.form.city9">رأس تنورة (رحيمة)</option>
-                    <option value="بقيق" data-i18n="contact.form.city10">بقيق</option>
-                    <option value="الخفجي" data-i18n="contact.form.city11">الخفجي</option>
-                    <option value="حفر الباطن" data-i18n="contact.form.city12">حفر الباطن</option>
-                    <option value="النعيرية وقرية العليا" data-i18n="contact.form.city13">النعيرية وقرية العليا</option>
-                  </optgroup>
-                  <optgroup label="مدينة الطائف والمشاريع الخاصة" data-i18n-label="contact.form.grp2">
-                    <option value="الطائف - الهدا والشفا والوسام" data-i18n="contact.form.city14">الطائف (الهدا، الشفا، الوسام)</option>
-                    <option value="الطائف - الحوية وباقي الأحياء" data-i18n="contact.form.city15">الطائف (الحوية، جبرة، الردف، الخالدية...)</option>
-                    <option value="الرياض" data-i18n="contact.form.city16">الرياض (مشاريع خاصة)</option>
-                    <option value="جدة ومكة المكرمة" data-i18n="contact.form.city17">جدة ومكة المكرمة (مشاريع خاصة)</option>
-                  </optgroup>
-                  <option value="مدينة أخرى" data-i18n="contact.form.city18">مدينة أخرى (سأذكرها بالتفاصيل)</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label for="gtMessage" data-i18n="contact.form.msgLabel">تفاصيل الطلب أو المقاسات (اختياري)</label>
-                <textarea class="form-control" id="gtMessage" name="gtMessage" rows="3" data-i18n-ph="contact.form.msgPh" placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
-              </div>
-              <div class="col-12 mt-3">
-                <button type="submit" class="btn-submit-wa" id="gtSubmitBtn">
-                  <i class="fa-brands fa-whatsapp fs-5"></i> <span data-i18n="contact.form.submit">إرسال الطلب عبر واتساب</span>
-                </button>
-                <div id="formStatus"></div>
-              </div>
-            </div>
-          </form>
-        </div>
+    <!-- فورم طلب عرض سعر -> واتساب -->
+    <div class="contact-form-wrap reveal">
+      <div class="text-center mb-4">
+        <h4 data-i18n="contact.form.title">اطلب عرض سعرك الآن</h4>
+        <p class="form-sub mb-0" data-i18n="contact.form.sub">عبّي البيانات دي وهتوصلنا مباشرة على واتساب عشان نرد عليك بأسرع وقت</p>
       </div>
+      <form id="gtContactForm" class="gt-form">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label data-i18n="contact.form.nameLabel">الاسم الكريم</label>
+            <input type="text" class="form-control" id="cfName" data-i18n-ph="contact.form.namePh" placeholder="اكتب اسمك" required>
+          </div>
+          <div class="col-md-6">
+            <label data-i18n="contact.form.phoneLabel">رقم الجوال (واتساب)</label>
+            <input type="tel" class="form-control" id="cfPhone" dir="ltr" placeholder="05XXXXXXXX" required>
+          </div>
+          <div class="col-md-6">
+            <label data-i18n="contact.form.serviceLabel">نوع الخدمة المطلوبة</label>
+            <select class="form-select" id="cfService" required>
+              <option value="" data-i18n="contact.form.cityPh" selected disabled>اختر الخدمة...</option>
+              <option data-i18n="contact.form.svc1">أعمال النجارة والتفصيل المخصص</option>
+              <option data-i18n="contact.form.svc2">تفصيل وتركيب الستائر الفاخرة</option>
+              <option data-i18n="contact.form.svc3">أرضيات باركيه خشبية</option>
+              <option data-i18n="contact.form.svc4">بديل الشيبورد SPC المقاوم للماء</option>
+              <option data-i18n="contact.form.svc5">ألواح برماتريك جدارية مودرن</option>
+              <option data-i18n="contact.form.svc6">ديكور وتشطيب متكامل للفيلا / الشقة</option>
+              <option data-i18n="contact.form.svc7">صيانة أعمال نجارة وديكور سابقة</option>
+              <option data-i18n="contact.form.svc8">طلب استشارة ومعاينة ميدانية</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label data-i18n="contact.form.cityLabel">المدينة / المنطقة</label>
+            <select class="form-select" id="cfCity" required>
+              <option value="" data-i18n="contact.form.cityPh" selected disabled>اختر مدينتك أو منطقتك...</option>
+              <optgroup label="مدن ومحافظات المنطقة الشرقية" data-i18n-label="contact.form.grp1">
+                <option data-i18n="contact.form.city1">الدمام (كافة الأحياء)</option>
+                <option data-i18n="contact.form.city2">الخبر (الحزام الذهبي، الراكة، العليا...)</option>
+                <option data-i18n="contact.form.city3">الظهران (الدانة، الدوحة، الجامعة...)</option>
+                <option data-i18n="contact.form.city4">القطيف (الناصرة، المجيدية، تاروت، صفوى...)</option>
+                <option data-i18n="contact.form.city5">سيهات (الغدير، الكوثر...)</option>
+                <option data-i18n="contact.form.city6">عنك وضواحيها</option>
+                <option data-i18n="contact.form.city7">الجبيل والجبيل الصناعية (الفناتير، جلمودة...)</option>
+                <option data-i18n="contact.form.city8">الأحساء (الهفوف، المبرز، العيون، العمران)</option>
+                <option data-i18n="contact.form.city9">رأس تنورة (رحيمة)</option>
+                <option data-i18n="contact.form.city10">بقيق</option>
+                <option data-i18n="contact.form.city11">الخفجي</option>
+                <option data-i18n="contact.form.city12">حفر الباطن</option>
+                <option data-i18n="contact.form.city13">النعيرية وقرية العليا</option>
+              </optgroup>
+              <optgroup label="مدينة الطائف والمشاريع الخاصة" data-i18n-label="contact.form.grp2">
+                <option data-i18n="contact.form.city14">الطائف (الهدا، الشفا، الوسام)</option>
+                <option data-i18n="contact.form.city15">الطائف (الحوية، جبرة، الردف، الخالدية...)</option>
+                <option data-i18n="contact.form.city16">الرياض (مشاريع خاصة)</option>
+                <option data-i18n="contact.form.city17">جدة ومكة المكرمة (مشاريع خاصة)</option>
+                <option data-i18n="contact.form.city18">مدينة أخرى (سأذكرها بالتفاصيل)</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="col-12">
+            <label data-i18n="contact.form.msgLabel">تفاصيل الطلب أو المقاسات (اختياري)</label>
+            <textarea class="form-control" id="cfMessage" rows="3" data-i18n-ph="contact.form.msgPh" placeholder="اكتب مساحة المكان أو أي ملاحظات وتفاصيل تساعدنا نجهزلك عرض سعر دقيق"></textarea>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn-submit-wa" id="cfSubmitBtn">
+            <i class="fa-brands fa-whatsapp fs-5"></i> <span data-i18n="contact.form.submit">إرسال الطلب عبر واتساب</span>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -2834,200 +2832,47 @@
     /* ---------- Back to top ---------- */
     document.getElementById('backTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    /* ---------- Quote request form -> WhatsApp (rebuilt, simpler & reliable) ---------- */
-    (function () {
-      const gtForm = document.getElementById('gtContactForm');
-      if (!gtForm) return;
-
-      const formStatus = document.getElementById('formStatus');
-      const submitBtn = document.getElementById('gtSubmitBtn');
-
-      const fieldName = document.getElementById('gtName');
-      const fieldPhone = document.getElementById('gtPhone');
-      const fieldService = document.getElementById('gtService');
-      const fieldCity = document.getElementById('gtCity');
-      const fieldMessage = document.getElementById('gtMessage');
-
-      gtForm.addEventListener('submit', function (e) {
+    /* ---------- Contact form -> WhatsApp ---------- */
+    const gtContactForm = document.getElementById('gtContactForm');
+    if (gtContactForm) {
+      gtContactForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        const lang = typeof currentLang !== 'undefined' ? currentLang : 'ar';
-        const isEn = lang === 'en';
-        
-        const msgs = {
-          required: isEn ? 'Please fill in your name, phone number, and choose your city.' : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك.',
-          phoneInvalid: isEn ? 'Please enter a valid phone number.' : 'من فضلك أدخل رقم جوال صحيح.',
-          opening: isEn ? 'Opening WhatsApp…' : 'جاري تحويلك إلى واتساب...',
-          manual: isEn ? "Tap here if WhatsApp didn't open" : 'اضغط هنا إذا لم يفتح واتساب'
-        };
+        const name = document.getElementById('cfName').value.trim();
+        const phone = document.getElementById('cfPhone').value.trim();
+        const service = document.getElementById('cfService').value;
+        const city = document.getElementById('cfCity').value;
+        const message = document.getElementById('cfMessage').value.trim();
 
-        const name = fieldName.value.trim();
-        const phone = fieldPhone.value.trim();
-        const service = fieldService.value;
-        const city = fieldCity.value;
-        const message = fieldMessage.value.trim();
-
-        if (!name || !phone || !city) {
-          if (formStatus) {
-            formStatus.innerHTML = `<div class="alert mt-3" style="background:rgba(220,53,69,.15);border:1px solid #dc3545;color:#fff;border-radius:10px;padding:10px 16px;">⚠️ ${msgs.required}</div>`;
-          } else {
-            alert(msgs.required);
-          }
-          (!name ? fieldName : (!phone ? fieldPhone : fieldCity)).focus();
+        if (!name || !phone || !service || !city) {
+          alert(currentLang === 'en' ? 'Please fill in all required fields.' : 'من فضلك عبّي كل الحقول المطلوبة.');
           return;
         }
 
-        const digitsOnly = phone.replace(/\D/g, '');
-        if (digitsOnly.length < 9) {
-          if (formStatus) {
-            formStatus.innerHTML = `<div class="alert mt-3" style="background:rgba(220,53,69,.15);border:1px solid #dc3545;color:#fff;border-radius:10px;padding:10px 16px;">⚠️ ${msgs.phoneInvalid}</div>`;
-          } else {
-            alert(msgs.phoneInvalid);
-          }
-          fieldPhone.focus();
-          return;
-        }
+        const lines = currentLang === 'en'
+          ? [
+              'Hello, I would like to request a quote from Golden Table:',
+              `Name: ${name}`,
+              `Phone: ${phone}`,
+              `Service: ${service}`,
+              `City/Area: ${city}`,
+              message ? `Details: ${message}` : null
+            ]
+          : [
+              'مرحباً، أرغب في طلب عرض سعر من الطاولة الذهبية:',
+              `الاسم: ${name}`,
+              `رقم الجوال: ${phone}`,
+              `الخدمة المطلوبة: ${service}`,
+              `المدينة/المنطقة: ${city}`,
+              message ? `التفاصيل: ${message}` : null
+            ];
 
-        let text = 'السلام عليكم ورحمة الله،\n';
-        text += 'طلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n';
-        text += `👤 الاسم: ${name}\n`;
-        text += `📱 الجوال: ${phone}\n`;
-        text += `🛠 الخدمة المطلوبة: ${service}\n`;
-        text += `📍 المدينة / المنطقة: ${city}\n`;
-        if (message) text += `📝 تفاصيل إضافية: ${message}\n`;
+        const text = lines.filter(Boolean).join('\n');
+        const waUrl = `https://wa.me/966578358398?text=${encodeURIComponent(text)}`;
 
-        const businessNumber = (typeof CONTACT !== 'undefined' && CONTACT.numbers && CONTACT.numbers[0]) || '966578358398';
-        const cleanNum = String(businessNumber).replace(/\D/g, '');
-        
-        // استخدام api.whatsapp.com مع التوجيه المباشر لضمان عمله على كافة الجوالات
-        const waLink = `https://api.whatsapp.com/send?phone=${cleanNum}&text=${encodeURIComponent(text)}`;
+        window.open(waUrl, '_blank');
 
-        if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
-
-        if (formStatus) {
-          formStatus.innerHTML = `
-            <div class="alert mt-3 text-center" style="background:rgba(37,211,102,.15);border:1px solid #25D366;color:#fff;border-radius:10px;padding:12px 16px;">
-              <div class="mb-2 fw-bold">✅ ${msgs.opening}</div>
-              <a href="${waLink}" class="btn btn-sm btn-success fw-bold px-3 py-2 mt-1" style="background:#25D366;border:none;color:#fff;display:inline-block;text-decoration:none;">
-                <i class="fa-brands fa-whatsapp me-1"></i> ${msgs.manual}
-              </a>
-            </div>`;
-        }
-
-        // التوجيه المباشر بدون فتح نوافذ جديدة (يعمل بنسبة 100% على الآيفون والأندرويد)
-        window.location.href = waLink;
-
-        if (submitBtn) setTimeout(() => submitBtn.removeAttribute('disabled'), 2000);
-      });
-    })();
-    /* ---------- Review form -> render + save to page ---------- */
-    const starRatingInput = document.getElementById('starRatingInput');
-    const reviewRatingValue = document.getElementById('reviewRatingValue');
-    const starIcons = starRatingInput ? Array.from(starRatingInput.querySelectorAll('i')) : [];
-
-    function paintStars(val) {
-      starIcons.forEach(icon => {
-        icon.classList.toggle('selected', +icon.dataset.val <= val);
-      });
-    }
-    paintStars(5);
-
-    starIcons.forEach(icon => {
-      icon.addEventListener('click', () => {
-        const val = +icon.dataset.val;
-        reviewRatingValue.value = val;
-        paintStars(val);
-      });
-      icon.addEventListener('mouseenter', () => {
-        const val = +icon.dataset.val;
-        starIcons.forEach(i => i.classList.toggle('hovered', +i.dataset.val <= val));
-      });
-      icon.addEventListener('mouseleave', () => {
-        starIcons.forEach(i => i.classList.remove('hovered'));
-      });
-    });
-
-    const reviewsGrid = document.getElementById('reviewsGrid');
-    const REVIEWS_STORAGE_KEY = 'gt_customer_reviews_v1';
-
-    function loadStoredReviews() {
-      try {
-        const raw = localStorage.getItem(REVIEWS_STORAGE_KEY);
-        return raw ? JSON.parse(raw) : [];
-      } catch (err) {
-        return [];
-      }
-    }
-
-    function saveStoredReviews(list) {
-      try {
-        localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(list));
-      } catch (err) { /* تجاهل أي خطأ تخزين */ }
-    }
-
-    function escapeHtml(str) {
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    }
-
-    function renderReviewCard(review, animate) {
-      const col = document.createElement('div');
-      col.className = 'col-md-4' + (animate ? ' reveal show' : '');
-      const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-      const dateLabel = new Date(review.date).toLocaleDateString(currentLang === 'en' ? 'en-GB' : 'ar-SA');
-      const newBadge = currentLang === 'en' ? 'New' : 'جديد';
-      col.innerHTML = `
-        <div class="review-card user-submitted">
-          <div class="review-stars mb-2">${stars}</div>
-          <p class="mb-3">${escapeHtml(review.text)}</p>
-          <div class="review-name-row">
-            <strong>${escapeHtml(review.name)}${review.city ? ' - ' + escapeHtml(review.city) : ''}<span class="review-badge-new">${newBadge}</span></strong>
-            <span class="review-date">${dateLabel}</span>
-          </div>
-        </div>`;
-      // إدراج التقييمات الجديدة في أول القائمة
-      reviewsGrid.insertBefore(col, reviewsGrid.firstChild);
-    }
-
-    // عرض أي تقييمات محفوظة سابقاً من هذا المتصفح
-    loadStoredReviews().forEach(r => renderReviewCard(r, false));
-
-    const gtReviewForm = document.getElementById('gtReviewForm');
-    const reviewFormStatus = document.getElementById('reviewFormStatus');
-
-    if (gtReviewForm) {
-      gtReviewForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const name = document.getElementById('reviewName').value.trim();
-        const city = document.getElementById('reviewCity').value.trim();
-        const text = document.getElementById('reviewText').value.trim();
-        const rating = +reviewRatingValue.value || 5;
-
-        if (!name || !text) {
-          alert(currentLang === 'en' ? 'Please add your name and your comment.' : 'من فضلك اكتب اسمك وتعليقك.');
-          return;
-        }
-
-        const review = { name, city, text, rating, date: new Date().toISOString() };
-
-        const stored = loadStoredReviews();
-        stored.unshift(review);
-        saveStoredReviews(stored);
-
-        renderReviewCard(review, true);
-
-        gtReviewForm.reset();
-        reviewRatingValue.value = 5;
-        paintStars(5);
-
-        const thanksMsg = currentLang === 'en'
-          ? 'Thank you! Your review has been added above.'
-          : 'شكراً لك! تمت إضافة تقييمك بالأعلى.';
-        reviewFormStatus.innerHTML = `<div class="alert" style="background:rgba(243,165,58,.12);border:1px solid var(--gold);color:var(--black-2);border-radius:10px;padding:10px 16px;display:inline-block;">✅ ${thanksMsg}</div>`;
-        setTimeout(() => { reviewFormStatus.innerHTML = ''; }, 4000);
-
-        document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        gtContactForm.reset();
       });
     }
 
