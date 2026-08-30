@@ -2848,40 +2848,18 @@
       const fieldCity = document.getElementById('gtCity');
       const fieldMessage = document.getElementById('gtMessage');
 
-      function t(lang) {
-        return {
-          required: lang === 'en'
-            ? 'Please fill in your name, phone number, and choose your city before sending.'
-            : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك قبل الإرسال',
-          phoneInvalid: lang === 'en'
-            ? 'Please enter a valid phone number.'
-            : 'من فضلك أدخل رقم جوال صحيح.',
-          opening: lang === 'en' ? 'Opening WhatsApp…' : 'جاري تحويلك إلى واتساب...',
-          manual: lang === 'en' ? "Tap here if WhatsApp didn't open automatically" : 'اضغط هنا إذا لم يفتح واتساب تلقائياً'
-        };
-      }
-
-      function buildWaLink(number, text) {
-        const cleanNum = String(number).replace(/\D/g, '');
-        return `https://wa.me/${cleanNum}?text=${encodeURIComponent(text)}`;
-      }
-
-      function buildMessage(data) {
-        let text = 'السلام عليكم ورحمة الله،\n';
-        text += 'طلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n';
-        text += `👤 الاسم: ${data.name}\n`;
-        text += `📱 الجوال: ${data.phone}\n`;
-        text += `🛠 الخدمة المطلوبة: ${data.service}\n`;
-        text += `📍 المدينة / المنطقة: ${data.city}\n`;
-        if (data.message) text += `📝 تفاصيل إضافية: ${data.message}\n`;
-        return text;
-      }
-
       gtForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const lang = typeof currentLang !== 'undefined' ? currentLang : 'ar';
-        const msgs = t(lang);
+        const isEn = lang === 'en';
+        
+        const msgs = {
+          required: isEn ? 'Please fill in your name, phone number, and choose your city.' : 'من فضلك أكمل الاسم، رقم الجوال، واختر مدينتك.',
+          phoneInvalid: isEn ? 'Please enter a valid phone number.' : 'من فضلك أدخل رقم جوال صحيح.',
+          opening: isEn ? 'Opening WhatsApp…' : 'جاري تحويلك إلى واتساب...',
+          manual: isEn ? "Tap here if WhatsApp didn't open" : 'اضغط هنا إذا لم يفتح واتساب'
+        };
 
         const name = fieldName.value.trim();
         const phone = fieldPhone.value.trim();
@@ -2889,7 +2867,6 @@
         const city = fieldCity.value;
         const message = fieldMessage.value.trim();
 
-        // تحقق أساسي من الحقول المطلوبة
         if (!name || !phone || !city) {
           if (formStatus) {
             formStatus.innerHTML = `<div class="alert mt-3" style="background:rgba(220,53,69,.15);border:1px solid #dc3545;color:#fff;border-radius:10px;padding:10px 16px;">⚠️ ${msgs.required}</div>`;
@@ -2900,7 +2877,6 @@
           return;
         }
 
-        // تحقق بسيط من صيغة رقم الجوال (أرقام، مسافات، +، - فقط، وطول معقول)
         const digitsOnly = phone.replace(/\D/g, '');
         if (digitsOnly.length < 9) {
           if (formStatus) {
@@ -2912,20 +2888,21 @@
           return;
         }
 
+        let text = 'السلام عليكم ورحمة الله،\n';
+        text += 'طلب عرض سعر جديد من موقع الطاولة الذهبية 🌟\n\n';
+        text += `👤 الاسم: ${name}\n`;
+        text += `📱 الجوال: ${phone}\n`;
+        text += `🛠 الخدمة المطلوبة: ${service}\n`;
+        text += `📍 المدينة / المنطقة: ${city}\n`;
+        if (message) text += `📝 تفاصيل إضافية: ${message}\n`;
+
         const businessNumber = (typeof CONTACT !== 'undefined' && CONTACT.numbers && CONTACT.numbers[0]) || '966578358398';
-        const text = buildMessage({ name, phone, service, city, message });
-        const waLink = buildWaLink(businessNumber, text);
+        const cleanNum = String(businessNumber).replace(/\D/g, '');
+        
+        // استخدام api.whatsapp.com كونه الأكثر استقراراً لفتح التطبيق
+        const waLink = `https://api.whatsapp.com/send?phone=${cleanNum}&text=${encodeURIComponent(text)}`;
 
-        // تعطيل الزر مؤقتاً لمنع الإرسال المتكرر
         if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
-
-        // فتح واتساب في نفس التبويب على الجوال، وتبويب جديد على الحاسوب
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobile) {
-          window.location.href = waLink;
-        } else {
-          window.open(waLink, '_blank', 'noopener');
-        }
 
         if (formStatus) {
           formStatus.innerHTML = `
@@ -2936,6 +2913,15 @@
               </a>
             </div>`;
         }
+
+        // إنشاء رابط وهمي والضغط عليه يدوياً لتجنب مشاكل window.open
+        const linkElem = document.createElement('a');
+        linkElem.href = waLink;
+        linkElem.target = '_blank';
+        linkElem.rel = 'noopener noreferrer';
+        document.body.appendChild(linkElem);
+        linkElem.click();
+        document.body.removeChild(linkElem);
 
         if (submitBtn) setTimeout(() => submitBtn.removeAttribute('disabled'), 2000);
       });
