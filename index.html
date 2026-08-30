@@ -1746,6 +1746,8 @@
     @media(max-width:991px) {
       .navbar-nav {
         margin: 16px 0;
+        flex-direction: column !important;
+        align-items: flex-start;
       }
 
       .why-section {
@@ -2674,7 +2676,7 @@
 
     /* ---------- Works Gallery (no filters, no data attrs) ---------- */
     const worksGrid = document.getElementById('worksGrid');
-    const totalImages = 60;
+    const totalImages = 54;
     const totalVideos = 6;
     let mediaItems = [];
     /* ملاحظة: أسماء ملفات الصور "P (1).png" بمسافة قبل القوس - نفس نمط تسمية الفيديوهات "v (1).mp4" */
