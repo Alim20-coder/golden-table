@@ -710,14 +710,7 @@
       inset: 0;
       background: radial-gradient(circle at 20% 20%, rgba(232, 163, 60, .08), transparent 45%),
         radial-gradient(circle at 80% 80%, rgba(232, 163, 60, .06), transparent 45%);
-    }
-
-    .works-section .section-title {
-      color: var(--white);
-    }
-
-    .works-section .section-sub {
-      color: var(--muted);
+      pointer-events: none;
     }
 
     .works-grid {
@@ -1036,6 +1029,8 @@
       background: radial-gradient(circle, rgba(232, 163, 58, .15), transparent 70%);
       bottom: -200px;
       left: -150px;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .contact-card {
@@ -1047,6 +1042,8 @@
       height: 100%;
       transition: all .4s var(--ease);
       color: var(--white);
+      position: relative;
+      z-index: 1;
     }
 
     .contact-card:hover {
@@ -1088,8 +1085,16 @@
       align-items: center;
       justify-content: center;
       color: var(--white);
-      margin: 4px;
+      margin: 4px !important;
       transition: all .35s var(--ease);
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-icons a i {
+      line-height: 1.5;
+      display: block;
+      transform: translateY(1px);
     }
 
     .social-icons a:hover {
@@ -1342,6 +1347,7 @@
       height: 340px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(243, 165, 58, .12), transparent 70%);
+      pointer-events: none;
     }
 
     .catalogs-section .section-title {
@@ -1744,6 +1750,15 @@
       .stat-box {
         border-left: none;
         border-bottom: 1px solid rgba(232, 163, 60, .2);
+      }
+
+      .hero-content {
+        padding-top: 96px;
+      }
+
+      .hero-content .eyebrow {
+        font-size: .8rem;
+        line-height: 1.9;
       }
     }
   </style>
@@ -2504,20 +2519,16 @@
         </div>
       </div>
       
-      <div class="col-md-4 reveal" style="transition-delay:.2s">
-        <div class="contact-card">
-          <i class="fa-solid fa-share-nodes"></i>
-          <h5 class="fw-bold" data-i18n="contact.follow.title">تابعنا</h5>
-          <div class="social-icons mt-2">
-            <a href="https://www.tiktok.com/@golden_table0" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://www.instagram.com/_00golden_table" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
+<div class="col-md-4 reveal" style="transition-delay:.2s">
+  <div class="contact-card">
+    <i class="fa-solid fa-share-nodes"></i>
+    <h5 class="fw-bold" data-i18n="contact.follow.title">تابعنا</h5>
+    <div class="social-icons mt-2">
+      <a href="https://www.tiktok.com/@golden_table0" target="_blank" rel="noopener" class="d-inline-block position-relative"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/_00golden_table" target="_blank" rel="noopener" class="d-inline-block position-relative"><i class="fa-brands fa-instagram"></i></a>
     </div>
-
-  
- </div>
+  </div>
+</div>
 </section>
 
   <!-- ============ Floating buttons ============ -->
